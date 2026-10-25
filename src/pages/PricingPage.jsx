@@ -90,15 +90,22 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
   // Monthly base price for comparison
   const monthlyBasePrice = plan.monthly_price ? parseFloat(plan.monthly_price) : 0;
 
-  // Auto-calculated savings badge vs monthly price (or original price)
-  let savingsPercent = null;
-  if (!isFree && !isComingSoon) {
+  // Auto-calculated savings badge: vs Monthly for multi-month cycles, or vs Original Price for discounts
+  const savingsText = useMemo(() => {
+    if (isFree || isComingSoon) return null;
+
     if (isMultiMonth && monthlyBasePrice > 0 && monthlyEquivalent < monthlyBasePrice) {
-      savingsPercent = Math.round(((monthlyBasePrice - monthlyEquivalent) / monthlyBasePrice) * 100);
-    } else if (originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent) {
-      savingsPercent = Math.round(((parseFloat(originalMonthlyEquivalent) - monthlyEquivalent) / parseFloat(originalMonthlyEquivalent)) * 100);
+      const pct = Math.round(((monthlyBasePrice - monthlyEquivalent) / monthlyBasePrice) * 100);
+      if (pct > 0) return `Save ${pct}% vs Monthly`;
     }
-  }
+
+    if (originalPrice && parseFloat(originalPrice) > price) {
+      const pct = Math.round(((parseFloat(originalPrice) - price) / parseFloat(originalPrice)) * 100);
+      if (pct > 0) return `Save ${pct}%`;
+    }
+
+    return null;
+  }, [isFree, isComingSoon, isMultiMonth, monthlyBasePrice, monthlyEquivalent, originalPrice, price]);
 
   // Taxes (18% for INR)
   const monthlyTaxAmount = (currency === 'INR' && price > 0) ? ((price * 0.18) / cycleMultiplier) : 0;
@@ -196,10 +203,10 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
           )}
         </div>
         
-        {savingsPercent && (
+        {savingsText && (
           <div className="mt-2">
             <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">
-              Save {savingsPercent}% vs Monthly
+              {savingsText}
             </span>
           </div>
         )}
