@@ -150,41 +150,39 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
         </div>
       )}
 
-      {/* Standardized Title & PreTitle slot - Fixed 64px height */}
-      <div className="text-center h-[64px] flex flex-col justify-center mb-4">
-        <h3 className="text-2xl font-bold text-gray-800 mb-1 leading-tight">{plan.name}</h3>
+      {/* Standardized Title & PreTitle slot - Fixed height */}
+      <div className="text-center h-[52px] sm:h-[56px] flex flex-col justify-center mb-2">
+        <h3 className="text-2xl font-bold text-gray-800 mb-0.5 leading-tight">{plan.name}</h3>
         
         {benefitData.preTitle ? (
           <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest line-clamp-2">
             {benefitData.preTitle}
           </p>
         ) : (
-          <div className="h-[14px]" />
+          <div className="h-[12px]" />
         )}
       </div>
 
-      {/* Standardized Pricing & Savings Badge slot - Fixed 148px height so all buttons align horizontally */}
-      <div className="h-[148px] flex flex-col items-center justify-center mb-6">
+      {/* Standardized Pricing & Savings Badge slot - Compact fixed height so all buttons align horizontally */}
+      <div className="h-[102px] sm:h-[108px] flex flex-col items-center justify-center mb-3 sm:mb-4">
         {!isComingSoon ? (
           <div className="flex flex-col items-center justify-center w-full">
-            {originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent ? (
-              <span className="text-xs font-semibold text-gray-400 line-through mb-0.5">
-                {formatPrice(originalMonthlyEquivalent, currency)}
-              </span>
-            ) : (
-              <span className="text-xs invisible select-none mb-0.5">
-                {formatPrice(0, currency)}
-              </span>
-            )}
+            <div className="h-[14px] flex items-center justify-center mb-0.5">
+              {originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent ? (
+                <span className="text-xs font-semibold text-gray-400 line-through leading-none">
+                  {formatPrice(originalMonthlyEquivalent, currency)}
+                </span>
+              ) : null}
+            </div>
 
-            <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap">
+            <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap leading-none">
               <span className="text-3xl font-black text-gray-800 tracking-tight">
                 {formatPrice(monthlyEquivalent, currency)}
               </span>
               {!isFree && (
                 <div className="inline-flex flex-col items-start justify-end ml-1 self-stretch pb-0.5">
                   {currency === 'INR' && monthlyTaxAmount > 0 && (
-                    <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight mb-0.5 whitespace-nowrap">
+                    <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight whitespace-nowrap">
                       (+{formatPrice(monthlyTaxAmount, currency, 0)} Taxes / mo)
                     </span>
                   )}
@@ -195,46 +193,50 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
               )}
             </div>
 
-            {billingCadenceText ? (
-              <span className="text-xs text-gray-500 font-medium mt-1">
-                {billingCadenceText}
-              </span>
-            ) : (
-              <span className="text-xs invisible select-none mt-1">
-                Billed monthly
-              </span>
-            )}
+            <div className="h-[14px] flex items-center justify-center mt-0.5">
+              {billingCadenceText ? (
+                <span className="text-xs text-gray-500 font-medium leading-none">
+                  {billingCadenceText}
+                </span>
+              ) : (
+                <span className="text-xs invisible select-none leading-none">
+                  Billed monthly
+                </span>
+              )}
+            </div>
 
-            {!isFree ? (
-              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">
-                {`${formatPrice(price / cycleDays, currency, 2)} per day`}
-              </span>
-            ) : (
-              <span className="text-[10px] invisible select-none mt-1">
-                Free per day
-              </span>
-            )}
+            <div className="h-[13px] flex items-center justify-center mt-0.5">
+              {!isFree ? (
+                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">
+                  {`${formatPrice(price / cycleDays, currency, 2)} per day`}
+                </span>
+              ) : (
+                <span className="text-[10px] invisible select-none leading-none">
+                  Free per day
+                </span>
+              )}
+            </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center py-4">
+          <div className="flex items-center justify-center py-2">
             <span className="text-xl font-bold text-blue-500 uppercase tracking-tighter">Coming Soon</span>
           </div>
         )}
         
         {/* Savings Badge slot with fixed height so buttons don't jump vertically */}
-        <div className="h-6 flex items-center justify-center mt-2">
+        <div className="h-5 flex items-center justify-center mt-1">
           {savingsText ? (
-            <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">
+            <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide leading-none">
               {savingsText}
             </span>
           ) : null}
         </div>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-5 sm:mb-6">
         <button 
           className={cn(
-            "w-full h-12 py-3 px-6 rounded-xl font-black text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center",
+            "w-full h-11 sm:h-12 py-2.5 sm:py-3 px-6 rounded-xl font-black text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center",
             buttonStyle,
             isComingSoon && "opacity-50 cursor-not-allowed shadow-none"
           )}
@@ -324,7 +326,7 @@ const PricingPage = () => {
       if (p.is_yearly_active && p.yearly_price > 0) cycles.yearly = true;
       if (p.is_weekly_active && p.weekly_price > 0) cycles.weekly = true;
     });
-    const ordered = ['monthly', 'quarterly', 'half_yearly', 'yearly', 'weekly'];
+    const ordered = ['weekly', 'monthly', 'quarterly', 'half_yearly', 'yearly'];
     return ordered.filter(c => cycles[c]);
   }, [plans]);
 
