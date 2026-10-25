@@ -11,7 +11,7 @@ import { cn } from '../lib/utils';
 const API_BASE_URL = "https://apis.budlee.ai/api";
 
 const formatPrice = (price, currency, fractionDigits = 0) => {
-    const symbols = {
+  const symbols = {
     'SAR': 'SR',
     'QAR': 'QR',
     'AED': 'AED',
@@ -65,28 +65,63 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
   const price = useMemo(() => {
     if (cycle === 'weekly') return plan.weekly_price || 0;
     if (cycle === 'yearly') return plan.yearly_price || 0;
+    if (cycle === 'half_yearly') return plan.six_month_price || 0;
+    if (cycle === 'quarterly') return plan.three_month_price || 0;
     return plan.monthly_price || 0;
   }, [plan, cycle]);
 
   const originalPrice = useMemo(() => {
     if (cycle === 'weekly') return plan.original_price_weekly;
     if (cycle === 'yearly') return plan.original_price_yearly;
+    if (cycle === 'half_yearly') return plan.original_price_six_month;
+    if (cycle === 'quarterly') return plan.original_price_three_month;
     return plan.original_price_monthly;
   }, [plan, cycle]);
 
-  const savings = useMemo(() => {
-    if (!originalPrice || isFree || isComingSoon) return null;
-    const diff = parseFloat(originalPrice) - parseFloat(price);
-    if (diff > 0) {
-      return `Save ${formatPrice(diff, currency)}`;
-    }
-    return null;
-  }, [originalPrice, price, currency, isFree, isComingSoon]);
+  // Billing cycle calculations
+  const cycleMultiplier = cycle === 'yearly' ? 12 : cycle === 'half_yearly' ? 6 : cycle === 'quarterly' ? 3 : 1;
+  const cycleDays = cycle === 'yearly' ? 365 : cycle === 'half_yearly' ? 180 : cycle === 'quarterly' ? 90 : cycle === 'weekly' ? 7 : 30;
+  const isMultiMonth = ['quarterly', 'half_yearly', 'yearly'].includes(cycle);
 
-  // Original button styles
+  // Normalized monthly equivalent
+  const monthlyEquivalent = isFree ? 0 : isMultiMonth ? (price / cycleMultiplier) : price;
+  const originalMonthlyEquivalent = (originalPrice && isMultiMonth) ? (parseFloat(originalPrice) / cycleMultiplier) : originalPrice;
+
+  // Monthly base price for comparison
+  const monthlyBasePrice = plan.monthly_price ? parseFloat(plan.monthly_price) : 0;
+
+  // Auto-calculated savings badge vs monthly price (or original price)
+  let savingsPercent = null;
+  if (!isFree && !isComingSoon) {
+    if (isMultiMonth && monthlyBasePrice > 0 && monthlyEquivalent < monthlyBasePrice) {
+      savingsPercent = Math.round(((monthlyBasePrice - monthlyEquivalent) / monthlyBasePrice) * 100);
+    } else if (originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent) {
+      savingsPercent = Math.round(((parseFloat(originalMonthlyEquivalent) - monthlyEquivalent) / parseFloat(originalMonthlyEquivalent)) * 100);
+    }
+  }
+
+  // Taxes (18% for INR)
+  const monthlyTaxAmount = (currency === 'INR' && price > 0) ? ((price * 0.18) / cycleMultiplier) : 0;
+
+  // Billing Cadence caption
+  const billingCadenceText = useMemo(() => {
+    if (isFree || isComingSoon || cycle === 'weekly') return null;
+    if (cycle === 'yearly') {
+      return `Billed ${formatPrice(price, currency)} annually`;
+    }
+    if (cycle === 'half_yearly') {
+      return `Billed ${formatPrice(price, currency)} every 6 months`;
+    }
+    if (cycle === 'quarterly') {
+      return `Billed ${formatPrice(price, currency)} every 3 months`;
+    }
+    return `Billed ${formatPrice(price, currency)} monthly`;
+  }, [cycle, price, currency, isFree, isComingSoon]);
+
+  // Button styles
   const buttonStyle = isFree 
     ? "bg-gray-100 hover:bg-gray-200 text-gray-800" 
-    : cycle === 'yearly' 
+    : (cycle === 'yearly' || cycle === 'half_yearly' || cycle === 'quarterly')
       ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white"
       : "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white";
 
@@ -120,28 +155,39 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
         <div className="mb-2">
           {!isComingSoon ? (
             <div className="flex flex-col items-center">
+              {originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent && (
+                <span className="text-xs font-semibold text-gray-400 line-through mb-0.5">
+                  {formatPrice(originalMonthlyEquivalent, currency)}
+                </span>
+              )}
+
               <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap">
-                <span className="text-3xl font-black text-gray-800 tracking-tight">{formatPrice(price, currency)}</span>
+                <span className="text-3xl font-black text-gray-800 tracking-tight">
+                  {formatPrice(monthlyEquivalent, currency)}
+                </span>
                 {!isFree && (
                   <div className="inline-flex flex-col items-start justify-end ml-1 self-stretch pb-0.5">
-                    {currency === 'INR' && price > 0 && (
+                    {currency === 'INR' && monthlyTaxAmount > 0 && (
                       <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight mb-0.5 whitespace-nowrap">
-                        (+{formatPrice(price * 0.18, currency, 0)} Taxes)
+                        (+{formatPrice(monthlyTaxAmount, currency, 0)} Taxes / mo)
                       </span>
                     )}
                     <span className="text-gray-500 text-xs font-bold leading-none">
-                      /{cycle === 'yearly' ? 'year' : cycle === 'weekly' ? 'week' : 'month'}
+                      /{cycle === 'weekly' ? 'week' : 'mo'}
                     </span>
                   </div>
                 )}
               </div>
+
+              {billingCadenceText && (
+                <span className="text-xs text-gray-500 font-medium mt-1">
+                  {billingCadenceText}
+                </span>
+              )}
+
               {!isFree && (
                 <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">
-                  {(() => {
-                    const days = cycle === 'yearly' ? 365 : cycle === 'weekly' ? 7 : 30;
-                    const daily = price / days;
-                    return `${formatPrice(daily, currency, 2)} per day`;
-                  })()}
+                  {`${formatPrice(price / cycleDays, currency, 2)} per day`}
                 </span>
               )}
             </div>
@@ -150,10 +196,10 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
           )}
         </div>
         
-        {savings && (
+        {savingsPercent && (
           <div className="mt-2">
             <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">
-              {savings}
+              Save {savingsPercent}% vs Monthly
             </span>
           </div>
         )}
@@ -202,6 +248,14 @@ const PricingPage = () => {
   const [activeCycle, setActiveCycle] = useState('monthly');
   const [isLoading, setIsLoading] = useState(true);
 
+  const cycleLabels = {
+    monthly: 'Monthly',
+    quarterly: 'Quarterly',
+    half_yearly: 'Half-Yearly',
+    yearly: 'Yearly',
+    weekly: 'Weekly'
+  };
+
   useEffect(() => {
     mixpanel.track('Pricing Page Viewed');
     fetchPlans();
@@ -218,12 +272,14 @@ const PricingPage = () => {
           setPlanCurrency(data.detected_currency);
         }
         
-        // Find first available cycle
+        // Find first available cycle based on priority: monthly, quarterly, half_yearly, yearly, weekly
         const p = data.plans[0];
         if (p) {
-          if (p.is_monthly_active) setActiveCycle('monthly');
-          else if (p.is_yearly_active) setActiveCycle('yearly');
-          else if (p.is_weekly_active) setActiveCycle('weekly');
+          if (p.is_monthly_active && p.monthly_price > 0) setActiveCycle('monthly');
+          else if (p.is_three_month_active && p.three_month_price > 0) setActiveCycle('quarterly');
+          else if (p.is_six_month_active && p.six_month_price > 0) setActiveCycle('half_yearly');
+          else if (p.is_yearly_active && p.yearly_price > 0) setActiveCycle('yearly');
+          else if (p.is_weekly_active && p.weekly_price > 0) setActiveCycle('weekly');
         }
       }
     } catch (err) {
@@ -234,13 +290,16 @@ const PricingPage = () => {
   };
 
   const availableCycles = useMemo(() => {
-    const cycles = { weekly: false, monthly: false, yearly: false };
+    const cycles = { monthly: false, quarterly: false, half_yearly: false, yearly: false, weekly: false };
     plans.forEach(p => {
-      if (p.is_weekly_active && p.weekly_price > 0) cycles.weekly = true;
       if (p.is_monthly_active && p.monthly_price > 0) cycles.monthly = true;
+      if (p.is_three_month_active && p.three_month_price > 0) cycles.quarterly = true;
+      if (p.is_six_month_active && p.six_month_price > 0) cycles.half_yearly = true;
       if (p.is_yearly_active && p.yearly_price > 0) cycles.yearly = true;
+      if (p.is_weekly_active && p.weekly_price > 0) cycles.weekly = true;
     });
-    return Object.keys(cycles).filter(c => cycles[c]);
+    const ordered = ['monthly', 'quarterly', 'half_yearly', 'yearly', 'weekly'];
+    return ordered.filter(c => cycles[c]);
   }, [plans]);
 
   const sortedPlans = useMemo(() => {
@@ -248,6 +307,8 @@ const PricingPage = () => {
       .filter(plan => {
         if (plan.is_coming_soon || plan.is_free) return true;
         if (activeCycle === 'weekly') return plan.is_weekly_active && plan.weekly_price > 0;
+        if (activeCycle === 'quarterly') return plan.is_three_month_active && plan.three_month_price > 0;
+        if (activeCycle === 'half_yearly') return plan.is_six_month_active && plan.six_month_price > 0;
         if (activeCycle === 'yearly') return plan.is_yearly_active && plan.yearly_price > 0;
         return plan.is_monthly_active && plan.monthly_price > 0;
       })
@@ -266,7 +327,13 @@ const PricingPage = () => {
         }
 
         // 4. Regular plans: Sort by price
-        const getPrice = (p) => activeCycle === 'yearly' ? p.yearly_price : activeCycle === 'weekly' ? p.weekly_price : p.monthly_price;
+        const getPrice = (p) => {
+          if (activeCycle === 'yearly') return p.yearly_price;
+          if (activeCycle === 'half_yearly') return p.six_month_price;
+          if (activeCycle === 'quarterly') return p.three_month_price;
+          if (activeCycle === 'weekly') return p.weekly_price;
+          return p.monthly_price;
+        };
         return (getPrice(a) || 0) - (getPrice(b) || 0);
       });
   }, [plans, activeCycle]);
@@ -331,11 +398,16 @@ const PricingPage = () => {
                           key={cycle}
                           onClick={() => setActiveCycle(cycle)}
                           className={cn(
-                            "rounded-lg px-6 py-2 text-sm font-bold transition-all duration-300 uppercase tracking-wide",
+                            "relative rounded-lg px-6 py-2 text-sm font-bold transition-all duration-300 tracking-wide",
                             activeCycle === cycle ? "bg-white text-green-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
                           )}
                         >
-                          {cycle}
+                          {cycleLabels[cycle] || cycle}
+                          {cycle === 'yearly' && (
+                            <span className="ml-1.5 px-1.5 py-0.5 text-[10px] font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full">
+                              BEST
+                            </span>
+                          )}
                         </button>
                       ))}
                     </div>
