@@ -134,7 +134,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
 
   return (
     <div className={cn(
-      "relative bg-white rounded-2xl transition-all duration-300 p-8 border flex flex-col w-full sm:max-w-[240px]",
+      "relative bg-white rounded-2xl transition-all duration-300 p-8 border flex flex-col flex-1 h-full w-full",
       isComingSoon 
         ? "border-blue-400 shadow-[0_8px_30px_rgb(59,130,246,0.1)] opacity-80" 
         : isPopular 
@@ -150,72 +150,91 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
         </div>
       )}
 
-      <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-gray-800 mb-1">{plan.name}</h3>
+      {/* Standardized Title & PreTitle slot - Fixed 64px height */}
+      <div className="text-center h-[64px] flex flex-col justify-center mb-4">
+        <h3 className="text-2xl font-bold text-gray-800 mb-1 leading-tight">{plan.name}</h3>
         
-        {benefitData.preTitle && (
-          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-4">
+        {benefitData.preTitle ? (
+          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest line-clamp-2">
             {benefitData.preTitle}
           </p>
+        ) : (
+          <div className="h-[14px]" />
         )}
+      </div>
 
-        <div className="mb-2">
-          {!isComingSoon ? (
-            <div className="flex flex-col items-center">
-              {originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent && (
-                <span className="text-xs font-semibold text-gray-400 line-through mb-0.5">
-                  {formatPrice(originalMonthlyEquivalent, currency)}
-                </span>
-              )}
+      {/* Standardized Pricing & Savings Badge slot - Fixed 148px height so all buttons align horizontally */}
+      <div className="h-[148px] flex flex-col items-center justify-center mb-6">
+        {!isComingSoon ? (
+          <div className="flex flex-col items-center justify-center w-full">
+            {originalMonthlyEquivalent && parseFloat(originalMonthlyEquivalent) > monthlyEquivalent ? (
+              <span className="text-xs font-semibold text-gray-400 line-through mb-0.5">
+                {formatPrice(originalMonthlyEquivalent, currency)}
+              </span>
+            ) : (
+              <span className="text-xs invisible select-none mb-0.5">
+                {formatPrice(0, currency)}
+              </span>
+            )}
 
-              <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap">
-                <span className="text-3xl font-black text-gray-800 tracking-tight">
-                  {formatPrice(monthlyEquivalent, currency)}
-                </span>
-                {!isFree && (
-                  <div className="inline-flex flex-col items-start justify-end ml-1 self-stretch pb-0.5">
-                    {currency === 'INR' && monthlyTaxAmount > 0 && (
-                      <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight mb-0.5 whitespace-nowrap">
-                        (+{formatPrice(monthlyTaxAmount, currency, 0)} Taxes / mo)
-                      </span>
-                    )}
-                    <span className="text-gray-500 text-xs font-bold leading-none">
-                      /{cycle === 'weekly' ? 'week' : 'mo'}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {billingCadenceText && (
-                <span className="text-xs text-gray-500 font-medium mt-1">
-                  {billingCadenceText}
-                </span>
-              )}
-
+            <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap">
+              <span className="text-3xl font-black text-gray-800 tracking-tight">
+                {formatPrice(monthlyEquivalent, currency)}
+              </span>
               {!isFree && (
-                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">
-                  {`${formatPrice(price / cycleDays, currency, 2)} per day`}
-                </span>
+                <div className="inline-flex flex-col items-start justify-end ml-1 self-stretch pb-0.5">
+                  {currency === 'INR' && monthlyTaxAmount > 0 && (
+                    <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight mb-0.5 whitespace-nowrap">
+                      (+{formatPrice(monthlyTaxAmount, currency, 0)} Taxes / mo)
+                    </span>
+                  )}
+                  <span className="text-gray-500 text-xs font-bold leading-none">
+                    /{cycle === 'weekly' ? 'week' : 'mo'}
+                  </span>
+                </div>
               )}
             </div>
-          ) : (
+
+            {billingCadenceText ? (
+              <span className="text-xs text-gray-500 font-medium mt-1">
+                {billingCadenceText}
+              </span>
+            ) : (
+              <span className="text-xs invisible select-none mt-1">
+                Billed monthly
+              </span>
+            )}
+
+            {!isFree ? (
+              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-1">
+                {`${formatPrice(price / cycleDays, currency, 2)} per day`}
+              </span>
+            ) : (
+              <span className="text-[10px] invisible select-none mt-1">
+                Free per day
+              </span>
+            )}
+          </div>
+        ) : (
+          <div className="flex items-center justify-center py-4">
             <span className="text-xl font-bold text-blue-500 uppercase tracking-tighter">Coming Soon</span>
-          )}
-        </div>
+          </div>
+        )}
         
-        {savingsText && (
-          <div className="mt-2">
+        {/* Savings Badge slot with fixed height so buttons don't jump vertically */}
+        <div className="h-6 flex items-center justify-center mt-2">
+          {savingsText ? (
             <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">
               {savingsText}
             </span>
-          </div>
-        )}
+          ) : null}
+        </div>
       </div>
 
       <div className="mb-8">
         <button 
           className={cn(
-            "w-full py-4 px-6 rounded-xl font-black text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95",
+            "w-full h-12 py-3 px-6 rounded-xl font-black text-sm transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 flex items-center justify-center",
             buttonStyle,
             isComingSoon && "opacity-50 cursor-not-allowed shadow-none"
           )}
@@ -230,7 +249,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
         </button>
       </div>
 
-      <div className="flex-1">
+      <div className="flex-1 flex flex-col">
         {benefitData.listHeading && (
           <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-100 pb-2">
             {benefitData.listHeading}:
@@ -421,15 +440,16 @@ const PricingPage = () => {
                   </div>
                 )}
 
-                <div className="flex flex-wrap justify-center gap-6">
+                <div className="flex flex-wrap justify-center gap-6 items-stretch">
                   {sortedPlans.map((plan) => (
-                    <PlanCard
-                      key={plan.id}
-                      plan={plan}
-                      cycle={activeCycle}
-                      currency={planCurrency}
-                      isPopular={plan.is_most_popular}
-                    />
+                    <div key={plan.id} className="flex flex-col w-full sm:w-[250px] self-stretch">
+                      <PlanCard
+                        plan={plan}
+                        cycle={activeCycle}
+                        currency={planCurrency}
+                        isPopular={plan.is_most_popular}
+                      />
+                    </div>
                   ))}
                 </div>
               </>
