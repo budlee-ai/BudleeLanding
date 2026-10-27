@@ -18,113 +18,131 @@ const PrivacyPage = () => {
               Privacy Policy
             </h1>
             <p className="text-gray-700 text-base md:text-lg font-medium">
-              Effective Date: June 10, 2026
+              Effective Date: October 27, 2026
             </p>
           </div>
- 
+
           <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
             <p className="mb-6">
-              At Budlee AI (a product of Needoo AI Innovations LLP, hereinafter "we," "us," or "our"), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service, including our AI-powered chat, community features, quests, and related functionalities. By using the Service, you consent to the practices described herein.
+              At Budlee AI (a product of Needoo AI Innovations LLP, hereinafter "we," "us," or "our"), we are deeply committed to protecting the privacy and personal data of our users, including students, parents, and teachers. This Privacy Policy explains how we collect, process, protect, and handle your information across our AI-powered learning platform and 1-on-1 live tuition virtual classroom. By accessing or using the Service, you consent to the practices described in this policy.
             </p>
             <p className="mb-6">
-              This Privacy Policy is adapted for Budlee AI and complies with applicable data protection laws, including transparency requirements for artificial intelligence systems.
+              This Privacy Policy complies with applicable Indian data protection and information technology laws, including the Information Technology Act, 2000, and the Digital Personal Data Protection standards.
             </p>
- 
+
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">1. Information We Collect</h2>
             <p className="mb-4">
-              We collect information to provide and improve our Service:
+              We collect information necessary to deliver educational services, facilitate live classes, and maintain platform security:
             </p>
-            <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li><strong>Personal Information:</strong> Name, email, phone number, and payment details when you register or make transactions.</li>
-              <li><strong>Usage Data:</strong> Information about how you interact with the Service, such as chat logs, quest completions, community posts, and device information (e.g., IP address, browser type).</li>
-              <li><strong>AI Interaction Content:</strong> The text, queries, and content you share during chat interactions with Budlee AI.</li>
-              <li><strong>Audio & Voice Data:</strong> When using our microphone-enabled voice-to-text or speech-to-text chat tools, we access your device's microphone to transcribe your spoken queries. This access requires your system permission, and the captured audio is processed ephemerally to generate text transcripts. We do not store raw audio recordings on our servers.</li>
-              <li><strong>Payment Information:</strong> Processed via third-party providers like Stripe and RazorPay; we do not store full payment details on our servers.</li>
+            <ul className="list-disc pl-6 mb-6 space-y-3">
+              <li>
+                <strong>Student & Parent Information:</strong> Full name, email address, grade, educational board, phone number (verified via one-time password), and parent/guardian contact details.
+              </li>
+              <li>
+                <strong>Teacher Professional & Financial KYC Data:</strong> For registered tutors, we collect educational qualifications, subjects taught, profile photo, introduction video, Permanent Account Number (PAN), and bank account payout details (account holder name, bank name, account number, IFSC code, and UPI ID). This information is collected solely to verify identity, fulfill statutory tax reporting (TDS), and disburse earnings.
+              </li>
+              <li>
+                <strong>Live Classroom Audio & Video Data:</strong> During live 1-on-1 tutoring sessions, real-time video and audio streams are transmitted between student and teacher to enable face-to-face instruction. Camera and microphone access require your explicit system permission. Background blurring and virtual background features are processed locally on your device.
+              </li>
+              <li>
+                <strong>Speech & Voice Search Queries:</strong> When using voice input to ask questions to Budlee AI, spoken audio is converted to text queries ephemerally. Raw speech clips are not retained on our servers.
+              </li>
+              <li>
+                <strong>AI Interaction Data:</strong> Text queries, practice questions, and study material shared with the Budlee AI assistant.
+              </li>
+              <li>
+                <strong>Payment Information:</strong> Processed through PCI-DSS compliant third-party payment gateways (Stripe and Razorpay). We do not store complete debit or credit card details on our servers.
+              </li>
+              <li>
+                <strong>Device & Usage Data:</strong> IP address, device type, browser settings, login timestamps, and classroom attendance logs (join time, duration, and connection stability).
+              </li>
             </ul>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">2. How We Use Information</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">2. How We Use Your Information</h2>
             <p className="mb-4">
-              We use your information to:
+              We use collected information to:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>Provide, maintain, and personalize the Service.</li>
-              <li>Process payments securely through Stripe and RazorPay.</li>
-              <li>Improve AI responses, community interactions, and quest features.</li>
-              <li>Train and improve our AI models (subject to your explicit consent).</li>
-              <li>Communicate updates, support, and marketing (where permitted).</li>
-              <li>Ensure security and comply with legal obligations.</li>
+              <li>Provide, personalize, and operate the Budlee AI learning experience and live tutoring sessions.</li>
+              <li>Schedule classes, sync Google Calendar notifications, and send session reminders via WhatsApp/SMS.</li>
+              <li>Process student payments and disburse biweekly earnings settlements to teachers.</li>
+              <li>Comply with statutory tax reporting obligations under Indian law.</li>
+              <li>Verify teacher credentials, track classroom attendance, and investigate no-show claims.</li>
+              <li>Ensure child safety, prevent harassment, and maintain a secure learning environment.</li>
             </ul>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">3. Sharing of Information</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">3. Live Classroom Recordings & Compliance</h2>
             <p className="mb-4">
-              We do not sell your personal information. We may share it:
+              To safeguard students and teachers and maintain the highest educational standards, live 1-on-1 tutoring sessions may be recorded:
+            </p>
+            <ul className="list-disc pl-6 mb-6 space-y-3">
+              <li>
+                <strong>Purpose of Recording:</strong> Recordings are captured strictly for internal quality control, child safety auditing, verifying attendance disputes, and administrative compliance review.
+              </li>
+              <li>
+                <strong>Admin-Only Compliance Access:</strong> Recordings are strictly confidential and accessible solely to authorized Budlee safety and compliance administrators. To protect user privacy, direct video streaming, downloads, or playback access are not provided to students, parents, or teachers.
+              </li>
+            </ul>
+
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">4. Sharing and Disclosure of Information</h2>
+            <p className="mb-4">
+              We do not sell, rent, or trade your personal information. Data may be shared only under the following limited conditions:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>With service providers (e.g., payment processors and technical infrastructure partners).</li>
-              <li>With AI service partners to process and generate responses (data is typically anonymized or pseudonymized).</li>
-              <li>For legal reasons, such as responding to court orders.</li>
-              <li>In case of a merger or acquisition.</li>
+              <li><strong>Between Session Participants:</strong> Students and assigned teachers see first names, grades, and subjects to facilitate learning. Private contact details (phone number, physical address, financial data) are never shared between participants.</li>
+              <li><strong>With Trusted Infrastructure Providers:</strong> Essential payment processors, communication gateways (WhatsApp/SMS), and encrypted cloud hosting partners who operate under strict non-disclosure obligations.</li>
+              <li><strong>Legal & Safety Obligations:</strong> When required by court order, law enforcement, or government authority under applicable Indian law, or to protect the safety of minors.</li>
             </ul>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">4. Data Security</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">5. Data Security</h2>
             <p className="mb-6">
-              We implement reasonable security measures to protect your data, including encryption and access controls. However, no method of transmission over the internet or electronic storage is 100% secure.
+              We implement comprehensive technical, physical, and organizational security measures—including end-to-end data encryption in transit and encrypted storage at rest—to safeguard your information. Access to financial data and class recordings is strictly restricted through role-based access controls.
             </p>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">5. Your Rights & Data Deletion</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">6. Children's Privacy & Minor Protection</h2>
+            <p className="mb-6">
+              Budlee AI is designed for educational use by students, including minors. We require parental or guardian consent before any student under 18 years of age can book or attend 1-on-1 live tuition classes. Parents have the right to review their child's account activity and request the deletion of their child's personal information at any time.
+            </p>
+
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">7. Your Rights & Self-Service Account Deletion</h2>
             <p className="mb-4">
-              You have the right to access, correct, or request the deletion of your personal data.
+              You maintain full control over your personal data:
             </p>
-            <p className="mb-4 font-semibold">Self-Service Account Deletion:</p>
-            <p className="mb-6">
-              You can initiate the permanent deletion of your account directly within the Budlee AI app by navigating to <strong>Settings &gt; Danger Zone &gt; Delete Account</strong>. Upon confirmation, your personal profile data (name, email, phone, social links) will be permanently deleted from our active records. Historical transaction and payment records are preserved in an anonymized format for financial compliance.
-            </p>
+            <ul className="list-disc pl-6 mb-6 space-y-2">
+              <li><strong>Self-Service Account Deletion:</strong> You can permanently delete your account directly inside the Budlee AI app by navigating to <strong>Settings &gt; Danger Zone &gt; Delete Account</strong>. Your personal profile, contact information, and preferences will be permanently wiped from active databases.</li>
+              <li><strong>Financial Records:</strong> Transactional billing invoices and statutory tax records (TDS records for teachers) are retained in anonymized format as required by Indian financial and tax laws.</li>
+            </ul>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">6. Cookies and Tracking</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">8. Cookies & Tracking Technologies</h2>
             <p className="mb-6">
-              We use cookies to enhance your experience. You can manage cookie preferences in your browser settings.
-            </p>
-
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">7. Third-Party Services</h2>
-            <p className="mb-6">
-              Our Service integrates with third parties like Stripe and RazorPay for payments. Their privacy policies apply to their handling of your data.
-            </p>
-
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">8. Children's Privacy</h2>
-            <p className="mb-6">
-              The Service is not intended for children under 18 without parental or guardian guidance. We do not knowingly collect data from minors without such consent.
+              We use essential, functional, and analytics cookies to preserve your login session, remember your virtual classroom audio/video device preferences, and analyze platform performance. For complete details, please visit our <a href="/cookies" className="text-green-600 hover:text-green-700 underline font-semibold">Cookie Policy</a>.
             </p>
 
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">9. AI Interaction & Data Consent</h2>
             <p className="mb-4">
-              Budlee AI uses generative artificial intelligence to provide educational assistance.
+              Budlee AI provides interactive study assistance using artificial intelligence:
             </p>
-            <ul className="list-disc pl-6 mb-6 space-y-4">
+            <ul className="list-disc pl-6 mb-6 space-y-3">
               <li>
-                <strong>Model Training:</strong> We may use anonymized chat interactions to train and improve Budlee AI's accuracy and safety. We only do this with your explicit consent.
+                <strong>Model Training Consent:</strong> Anonymized educational queries may be used to enhance AI tutoring quality only if you grant explicit consent. You can toggle this setting at any time in <strong>Settings &gt; Privacy & AI Settings</strong>.
               </li>
               <li>
-                <strong>Opt-In/Opt-Out:</strong> You can grant or withdraw your AI Data Usage Consent at any time via <strong>Settings &gt; Privacy & AI Settings &gt; AI Data Usage Consent</strong>. If you opt-out, your future interactions will not be used for model training.
-              </li>
-              <li>
-                <strong>Accuracy Warning:</strong> Budlee AI is an advanced tool, but it can occasionally generate incorrect information. Users are encouraged to verify important facts with textbooks or teachers.
-              </li>
-              <li>
-                <strong>Safety:</strong> Do not share sensitive personal information (passwords, health data, or financial secrets) within the chat interface.
+                <strong>Academic Verification:</strong> While Budlee AI provides accurate study assistance, students should cross-verify important exam facts with their official textbooks and live tutors.
               </li>
             </ul>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">10. Changes to This Policy</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">10. Updates to This Policy</h2>
             <p className="mb-6">
-              We may update this Policy. We will notify you of any significant changes by posting the new Policy and updating the "Effective Date" at the top of this page.
+              We may update this Privacy Policy from time to time. When changes are made, we will update the "Effective Date" at the top of this document and notify active users through platform announcements.
             </p>
 
-            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">11. Contact Us</h2>
+            <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text mt-8">11. Contact Our Privacy Officer</h2>
             <div className="mb-6">
-              <p className="mb-2">For privacy inquiries:</p>
-              <p className="font-semibold">Budlee AI Data Privacy Team</p>
+              <p className="mb-2">If you have any questions or data privacy requests:</p>
+              <p className="font-semibold">Budlee AI Data Protection Officer</p>
               <p><a href="mailto:privacy@budlee.ai" className="text-green-600 hover:text-green-700 underline">privacy@budlee.ai</a></p>
               <p className="mt-2">
+                Needoo AI Innovations LLP<br />
                 Budlee AI Corporate Office,<br />
                 BUILDING NO 18 214 C KODUR PO NEAR BHARATH PETROLEUM,<br />
                 MALAPPURAM, KODUR-MALABAR,<br />

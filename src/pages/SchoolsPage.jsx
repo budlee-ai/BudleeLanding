@@ -154,13 +154,13 @@ const SchoolsPage = () => {
             </div>
         </section>
 
-        {/* CBSE Curriculum Section - Informational Only */}
+        {/* Curriculum Support Section */}
         <section className="w-full bg-white/80 backdrop-blur-sm py-4 md:py-5 px-4 md:px-12 lg:px-20 border-t border-gray-100 relative z-10">
           <div className="max-w-6xl mx-auto flex justify-center">
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
               {/* Curriculum Text */}
               <span className="text-gray-500 font-medium text-sm md:text-base">
-                Currently supporting <span className="gradient-text font-bold">CBSE</span>
+                Supporting <span className="gradient-text font-bold">CBSE & 7 State Syllabuses</span>
               </span>
               
               <span className="text-gray-300">·</span>
@@ -168,14 +168,14 @@ const SchoolsPage = () => {
               {/* Science with Icon */}
               <div className="flex items-center gap-1.5">
                 <FlaskConical className="w-4 h-4 text-green-500" />
-                <span className="text-gray-600 font-medium text-sm md:text-base">Science and Math</span>
+                <span className="text-gray-600 font-medium text-sm md:text-base">Science (Physics, Chemistry, Biology)</span>
               </div>
               
               <span className="text-gray-300">·</span>
               
               {/* Grades Pill */}
               <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 text-white font-bold text-xs md:text-sm px-3 py-1 rounded-full">
-                Grades 6–12
+                Grades 6–10
               </span>
             </div>
           </div>

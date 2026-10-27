@@ -2,7 +2,7 @@ import React from 'react';
 
 const AppDownloadSection = () => {
   return (
-    <section className="w-full bg-white pt-2 pb-0 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+    <section id="download-app" className="w-full bg-white pt-2 pb-0 px-4 md:px-12 lg:px-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-2 md:gap-12">
         {/* Text Side */}
         <div className="text-center md:text-left relative z-10">

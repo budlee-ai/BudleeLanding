@@ -15,8 +15,8 @@ const PracticeSection = ({ videoUrl }) => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
-          {/* Left Side - Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
+          {/* Right Side on Desktop / Top on Mobile - Text Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
             {/* Headline - Same font as hero tagline with green color */}
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">
               Practice that actually helps
@@ -36,8 +36,8 @@ const PracticeSection = ({ videoUrl }) => {
             </div>
           </div>
 
-          {/* Right Side - Video Placeholder/Trigger */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+          {/* Left Side on Desktop / Bottom on Mobile - Video Placeholder/Trigger */}
+          <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger asChild>
                 <div className="relative cursor-pointer group/hero">

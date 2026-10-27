@@ -30,8 +30,8 @@ const CuriositySection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
-          {/* Left Side - Circular Orbital Design */}
-          <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-1">
+          {/* Right Side on Desktop / Bottom on Mobile - Circular Orbital Design */}
+          <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-2">
             <div className="relative">
               {/* Outer glow */}
               <div className="absolute inset-0 w-[280px] h-[280px] md:w-[360px] md:h-[360px] bg-gradient-to-br from-green-200/30 to-yellow-200/30 rounded-full blur-xl -m-4"></div>
@@ -108,8 +108,8 @@ const CuriositySection = () => {
             </div>
           </div>
 
-          {/* Right Side - Text Content */}
-          <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
+          {/* Left Side on Desktop / Top on Mobile - Text Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-1">
             {/* Headline - Same font as hero tagline with green color */}
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">
               When curiosity shows up
