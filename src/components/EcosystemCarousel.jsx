@@ -62,18 +62,18 @@ const EcosystemCarousel = () => {
   const handleMouseLeave = () => { speedRef.current = 0.6; };
 
   return (
-    <section className="w-full bg-white py-12 md:py-16 overflow-hidden">
+    <section className="w-full bg-white dark:bg-gray-950 py-12 md:py-16 overflow-hidden transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 md:px-12 lg:px-20 text-center mb-10">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-1.5 mb-5 shadow-sm">
+        <div className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-full px-4 py-1.5 mb-5 shadow-sm">
           <svg className="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
-          <span className="text-sm font-semibold text-gray-700">Backed by the Best</span>
+          <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Backed by the Best</span>
         </div>
 
         {/* Heading */}
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100">
           Supported by leading ecosystem partners
         </h2>
       </div>
@@ -87,13 +87,11 @@ const EcosystemCarousel = () => {
         >
           {/* Left fade gradient */}
           <div
-            className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, white, transparent)' }}
+            className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-gray-950 to-transparent"
           />
           {/* Right fade gradient */}
           <div
-            className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to left, white, transparent)' }}
+            className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-gray-950 to-transparent"
           />
 
           <div
@@ -109,7 +107,7 @@ const EcosystemCarousel = () => {
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className={`${partner.heightClass} w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 hover:scale-105`}
+                  className={`${partner.heightClass} w-auto object-contain grayscale dark:brightness-125 dark:invert hover:grayscale-0 dark:hover:invert-0 transition-all duration-300 hover:scale-105`}
                   onContextMenu={(e) => e.preventDefault()}
                   draggable={false}
                 />

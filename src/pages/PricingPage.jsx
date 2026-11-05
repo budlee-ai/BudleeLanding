@@ -127,19 +127,19 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
 
   // Button styles
   const buttonStyle = isFree 
-    ? "bg-gray-100 hover:bg-gray-200 text-gray-800" 
+    ? "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-100" 
     : (cycle === 'yearly' || cycle === 'half_yearly' || cycle === 'quarterly')
       ? "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white"
       : "bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white";
 
   return (
     <div className={cn(
-      "relative bg-white rounded-2xl transition-all duration-300 p-8 border flex flex-col flex-1 h-full w-full",
+      "relative bg-white dark:bg-gray-900 rounded-2xl transition-all duration-300 p-8 border flex flex-col flex-1 h-full w-full",
       isComingSoon 
-        ? "border-blue-400 shadow-[0_8px_30px_rgb(59,130,246,0.1)] opacity-80" 
+        ? "border-blue-400 dark:border-blue-500/60 shadow-[0_8px_30px_rgb(59,130,246,0.1)] opacity-80" 
         : isPopular 
-          ? "border-orange-300 ring-2 ring-orange-200 shadow-lg" 
-          : "border-gray-100 shadow-lg"
+          ? "border-orange-300 dark:border-orange-500/60 ring-2 ring-orange-200 dark:ring-orange-950/60 shadow-lg" 
+          : "border-gray-100 dark:border-gray-800 shadow-lg"
     )}>
       {isPopular && (
         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -152,10 +152,10 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
 
       {/* Standardized Title & PreTitle slot - Fixed height */}
       <div className="text-center h-[52px] sm:h-[56px] flex flex-col justify-center mb-2">
-        <h3 className="text-2xl font-bold text-gray-800 mb-0.5 leading-tight">{plan.name}</h3>
+        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-0.5 leading-tight">{plan.name}</h3>
         
         {benefitData.preTitle ? (
-          <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest line-clamp-2">
+          <p className="text-[10px] text-gray-400 dark:text-gray-400 font-bold uppercase tracking-widest line-clamp-2">
             {benefitData.preTitle}
           </p>
         ) : (
@@ -176,17 +176,17 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
             </div>
 
             <div className="flex items-baseline justify-center gap-1 sm:gap-1.5 flex-nowrap whitespace-nowrap leading-none">
-              <span className="text-3xl font-black text-gray-800 tracking-tight">
+              <span className="text-3xl font-black text-gray-800 dark:text-gray-100 tracking-tight">
                 {formatPrice(monthlyEquivalent, currency)}
               </span>
               {!isFree && (
                 <div className="inline-flex flex-col items-start justify-end ml-1 self-stretch pb-0.5">
                   {currency === 'INR' && monthlyTaxAmount > 0 && (
-                    <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 leading-tight whitespace-nowrap">
+                    <span className="text-[8px] sm:text-[9px] font-semibold text-gray-500 dark:text-gray-400 leading-tight whitespace-nowrap">
                       (+{formatPrice(monthlyTaxAmount, currency, 0)} Taxes / mo)
                     </span>
                   )}
-                  <span className="text-gray-500 text-xs font-bold leading-none">
+                  <span className="text-gray-500 dark:text-gray-400 text-xs font-bold leading-none">
                     /{cycle === 'weekly' ? 'week' : 'mo'}
                   </span>
                 </div>
@@ -195,7 +195,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
 
             <div className="h-[14px] flex items-center justify-center mt-0.5">
               {billingCadenceText ? (
-                <span className="text-xs text-gray-500 font-medium leading-none">
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium leading-none">
                   {billingCadenceText}
                 </span>
               ) : (
@@ -226,7 +226,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
         {/* Savings Badge slot with fixed height so buttons don't jump vertically */}
         <div className="h-5 flex items-center justify-center mt-1">
           {savingsText ? (
-            <span className="inline-block bg-green-100 text-green-800 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide leading-none">
+            <span className="inline-block bg-green-100 dark:bg-emerald-950 text-green-800 dark:text-emerald-300 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wide leading-none border border-transparent dark:border-emerald-800/60">
               {savingsText}
             </span>
           ) : null}
@@ -253,7 +253,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
 
       <div className="flex-1 flex flex-col">
         {benefitData.listHeading && (
-          <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-100 pb-2">
+          <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">
             {benefitData.listHeading}:
           </h4>
         )}
@@ -261,7 +261,7 @@ const PlanCard = ({ plan, cycle, currency, isPopular }) => {
           {benefitData.points.map((feature, idx) => (
             <li key={idx} className="flex items-start gap-3 text-left group">
               <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-gray-600 text-xs font-medium leading-relaxed">{feature.trim()}</span>
+              <span className="text-gray-600 dark:text-gray-300 text-xs font-medium leading-relaxed">{feature.trim()}</span>
             </li>
           ))}
         </ul>
@@ -373,13 +373,13 @@ const PricingPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section - Restored Old Theme */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/30 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden transition-colors duration-200">
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/30"></div>
           
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
             <div className="absolute top-8 left-[8%] text-green-300 animate-pulse">
@@ -400,7 +400,7 @@ const PricingPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
               Budlee AI <span className="gradient-text">Pricing</span> Plans
             </h1>
-            <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
               Localized pricing based on your region. Unlock the power of personalized learning.
             </p>
           </div>
@@ -413,21 +413,21 @@ const PricingPage = () => {
             {isLoading ? (
               <div className="flex flex-col items-center justify-center py-20 space-y-4">
                 <Loader2 className="w-12 h-12 text-green-600 animate-spin" />
-                <p className="text-gray-500 font-medium">Loading localized plans...</p>
+                <p className="text-gray-500 dark:text-gray-400 font-medium">Loading localized plans...</p>
               </div>
             ) : (
               <>
-                {/* Cycle Toggle - Light Style */}
+                {/* Cycle Toggle - Light / Dark Style */}
                 {availableCycles.length > 1 && (
                   <div className="flex justify-center mb-12">
-                    <div className="bg-gray-100 p-1.5 rounded-xl flex items-center gap-1">
+                    <div className="bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl flex items-center gap-1 border border-transparent dark:border-gray-700">
                       {availableCycles.map((cycle) => (
                         <button
                           key={cycle}
                           onClick={() => setActiveCycle(cycle)}
                           className={cn(
-                            "relative rounded-lg px-6 py-2 text-sm font-bold transition-all duration-300 tracking-wide",
-                            activeCycle === cycle ? "bg-white text-green-600 shadow-sm" : "text-gray-500 hover:text-gray-700"
+                            "relative rounded-lg px-6 py-2 text-sm font-bold transition-all duration-300 tracking-wide cursor-pointer",
+                            activeCycle === cycle ? "bg-white dark:bg-gray-900 text-green-600 dark:text-emerald-400 shadow-sm" : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
                           )}
                         >
                           {cycleLabels[cycle] || cycle}
@@ -460,7 +460,7 @@ const PricingPage = () => {
         </section>
 
         {/* How to Subscribe - Restored */}
-        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/50 transition-colors duration-200">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl mb-8 gradient-text">How to Subscribe</h2>
             <div className="grid md:grid-cols-3 gap-8">
@@ -468,49 +468,49 @@ const PricingPage = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-800 mb-2">Sign up or log in</h3>
-                <p className="text-gray-600 text-sm">Create your account to get started</p>
+                <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Sign up or log in</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">Create your account to get started</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CreditCard className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-800 mb-2">Select your plan</h3>
-                <p className="text-gray-600 text-sm">Choose the best fit for your needs</p>
+                <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Select your plan</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">Choose the best fit for your needs</p>
               </div>
               <div className="text-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="font-bold text-gray-800 mb-2">Enjoy access</h3>
-                <p className="text-gray-600 text-sm">Pay and start learning immediately</p>
+                <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Enjoy access</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">Pay and start learning immediately</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Important Notes - Restored */}
-        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-white">
+        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-white dark:bg-gray-950 transition-colors duration-200">
           <div className="max-w-4xl mx-auto">
             <h2 className="hero-tagline text-2xl md:text-3xl mb-8 gradient-text text-center">Important Notes</h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex items-start gap-4">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 flex items-start gap-4">
                 <Shield className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-gray-800 mb-2">Pricing Details</h3>
-                  <ul className="text-gray-600 text-sm space-y-1 list-disc list-inside">
+                  <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Pricing Details</h3>
+                  <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-1 list-disc list-inside">
                     <li>Prices exclude applicable taxes</li>
                     <li>No refunds for active periods</li>
                     <li>Cancel anytime from settings</li>
                   </ul>
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex items-start gap-4">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 flex items-start gap-4">
                 <HelpCircle className="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-gray-800 mb-2">Need Help?</h3>
-                  <p className="text-gray-600 text-sm">
-                    Visit our <Link to="/faqs" className="text-green-600 font-medium hover:underline">FAQs</Link> or contact support via email.
+                  <h3 className="font-bold text-gray-800 dark:text-gray-100 mb-2">Need Help?</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Visit our <Link to="/faqs" className="text-green-600 dark:text-emerald-400 font-medium hover:underline">FAQs</Link> or contact support via email.
                   </p>
                 </div>
               </div>
@@ -519,17 +519,17 @@ const PricingPage = () => {
         </section>
 
         {/* Support Section - Restored Old Gradient */}
-        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400">
+        <section className="w-full py-12 md:py-6 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Budlee AI Support Team</h2>
-            <p className="text-green-100 text-lg mb-8 font-medium">Have questions? We're here to help you choose the right plan.</p>
+            <p className="text-green-100 dark:text-gray-300 text-lg mb-8 font-medium">Have questions? We're here to help you choose the right plan.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 flex flex-col items-center">
-                <Mail className="w-6 h-6 mb-2" />
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 dark:border-gray-700/60 flex flex-col items-center">
+                <Mail className="w-6 h-6 mb-2 text-white dark:text-emerald-400" />
                 <span className="font-bold">help@budlee.ai</span>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 flex flex-col items-center">
-                <MapPin className="w-6 h-6 mb-2" />
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-2xl border border-white/20 dark:border-gray-700/60 flex flex-col items-center">
+                <MapPin className="w-6 h-6 mb-2 text-white dark:text-emerald-400" />
                 <span className="font-bold">Global Learning Support</span>
               </div>
             </div>

@@ -10,14 +10,14 @@ const OurStoryPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -73,7 +73,7 @@ const OurStoryPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Our <span className="gradient-text">Story</span>
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
               How four passionate founders came together to revolutionize learning through AI
             </p>
           </div>
@@ -85,7 +85,7 @@ const OurStoryPage = () => {
             {/* The Beginning */}
             <div className="mb-10">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">The Beginning</h2>
-              <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
+              <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p className="mb-4">
                   Budlee AI was born from a shared frustration with traditional education. Our founders, who have known each other for several years through startup events and founder communities in Chennai and Bangalore, recognized a fundamental problem: students were memorizing information without truly understanding concepts, and there was no structured way to explore interests during school years.
                 </p>
@@ -99,15 +99,15 @@ const OurStoryPage = () => {
             <div className="mb-10">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">The Problem We Saw</h2>
               <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Students Memorizing, Not Understanding</h3>
-                  <p className="text-gray-600">
+                <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl border border-transparent dark:border-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Students Memorizing, Not Understanding</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
                     Even academically strong students often move forward without deep understanding or clarity about what they truly want to pursue, creating a gap between school learning and interest-driven growth.
                   </p>
                 </div>
-                <div className="bg-gray-50 p-6 rounded-xl">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">No Structured Interest Exploration</h3>
-                  <p className="text-gray-600">
+                <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-xl border border-transparent dark:border-gray-800">
+                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">No Structured Interest Exploration</h3>
+                  <p className="text-gray-600 dark:text-gray-300">
                     Students rely heavily on tuition to clear doubts and have no structured way to explore their interests during school, missing opportunities to build real expertise early.
                   </p>
                 </div>
@@ -117,7 +117,7 @@ const OurStoryPage = () => {
             {/* Our Solution */}
             <div className="mb-10">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Our Solution</h2>
-              <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
+              <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
                 <p className="mb-4">
                   We started working on Budlee AI in mid-2025, initially as a part-time project while validating our learning flow with real students. Our approach is unique: we connect everyday school learning with guided exploration, creating a single connected journey where understanding concepts, practicing, testing, and exploring interests are tightly linked.
                 </p>
@@ -133,22 +133,22 @@ const OurStoryPage = () => {
             {/* Our Progress */}
             <div className="mb-10">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Where We Are Today</h2>
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-xl border border-transparent dark:border-gray-800">
                 <div className="grid md:grid-cols-3 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-green-600 mb-2">2025</div>
-                    <div className="text-gray-600">Founded</div>
+                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">2025</div>
+                    <div className="text-gray-600 dark:text-gray-300">Founded</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-green-600 mb-2">CBSE + 7 States</div>
-                    <div className="text-gray-600">Curricula Focus</div>
+                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">CBSE + 7 States</div>
+                    <div className="text-gray-600 dark:text-gray-300">Curricula Focus</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-green-600 mb-2">6–10</div>
-                    <div className="text-gray-600">Grades (Science)</div>
+                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">6–10</div>
+                    <div className="text-gray-600 dark:text-gray-300">Grades (Science)</div>
                   </div>
                 </div>
-                <p className="text-center text-gray-600 mt-6">
+                <p className="text-center text-gray-600 dark:text-gray-300 mt-6">
                   Based in Bangalore with access to top talent and the education ecosystem, we're building the future of learning with CBSE and State Boards across Kerala, Tamil Nadu, Karnataka, Andhra Pradesh, Telangana, Maharashtra, and Gujarat.
                 </p>
               </div>
@@ -157,7 +157,7 @@ const OurStoryPage = () => {
             {/* Call to Action */}
             <div className="text-center">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Join Our Mission</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium mb-8 max-w-2xl mx-auto">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium mb-8 max-w-2xl mx-auto">
                 We're just getting started. Help us build the learning companion that every student deserves.
               </p>
               <a

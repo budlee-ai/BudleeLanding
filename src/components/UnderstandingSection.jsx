@@ -11,7 +11,7 @@ const UnderstandingSection = ({ videoUrl }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-yellow-50/30 py-16 md:py-5 px-4 md:px-12 lg:px-20">
+    <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-yellow-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 py-16 md:py-5 px-4 md:px-12 lg:px-20 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
@@ -21,26 +21,26 @@ const UnderstandingSection = ({ videoUrl }) => {
               <DialogTrigger asChild>
                 <div className="relative cursor-pointer group/hero">
                   {/* Decorative background shape */}
-                  <div className="absolute -inset-4 bg-gradient-to-br from-green-100 to-yellow-50 rounded-3xl transform -rotate-2 group-hover/hero:-rotate-1 transition-transform duration-500"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-br from-green-100 to-yellow-50 dark:from-emerald-950/60 dark:to-yellow-950/30 rounded-3xl transform -rotate-2 group-hover/hero:-rotate-1 transition-transform duration-500"></div>
                   
                   {/* Video Frame Container */}
-                  <div className="relative bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl w-[300px] h-[220px] md:w-[420px] md:h-[280px] border-4 border-white">
+                  <div className="relative bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl w-[300px] h-[220px] md:w-[420px] md:h-[280px] border-4 border-white dark:border-gray-800">
                     {/* Video Placeholder Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-100 via-white to-yellow-50">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-100 via-white to-yellow-50 dark:from-gray-900 dark:via-gray-850 dark:to-gray-900">
                       {/* Decorative elements inside video frame */}
-                      <div className="absolute top-4 left-4 w-12 h-12 bg-green-200 rounded-full opacity-40"></div>
-                      <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-orange-200 rounded-full opacity-30"></div>
+                      <div className="absolute top-4 left-4 w-12 h-12 bg-green-200 dark:bg-emerald-800/40 rounded-full opacity-40"></div>
+                      <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-orange-200 dark:bg-orange-800/40 rounded-full opacity-30"></div>
                       
                       {/* Chat bubble hints */}
-                      <div className="absolute top-8 left-16 bg-white/60 rounded-xl px-3 py-1.5 shadow-sm">
+                      <div className="absolute top-8 left-16 bg-white/60 dark:bg-gray-800/80 rounded-xl px-3 py-1.5 shadow-sm border border-transparent dark:border-gray-700/60">
                         <div className="flex items-center gap-1">
-                          <span className="text-gray-400 text-xs">?</span>
-                          <div className="w-12 h-1.5 bg-gray-200 rounded"></div>
+                          <span className="text-gray-400 dark:text-gray-300 text-xs">?</span>
+                          <div className="w-12 h-1.5 bg-gray-200 dark:bg-gray-700 rounded"></div>
                         </div>
                       </div>
-                      <div className="absolute top-20 right-12 bg-green-100/80 rounded-xl px-3 py-1.5 shadow-sm">
+                      <div className="absolute top-20 right-12 bg-green-100/80 dark:bg-emerald-950/80 rounded-xl px-3 py-1.5 shadow-sm border border-transparent dark:border-emerald-800/60">
                         <div className="flex items-center gap-1">
-                          <div className="w-16 h-1.5 bg-green-300 rounded"></div>
+                          <div className="w-16 h-1.5 bg-green-300 dark:bg-emerald-500 rounded"></div>
                         </div>
                       </div>
                     </div>
@@ -51,7 +51,7 @@ const UnderstandingSection = ({ videoUrl }) => {
                         {/* Outer pulsing ring */}
                         <div className="absolute inset-0 w-20 h-20 -m-2 rounded-full bg-teal-400/30 animate-ping"></div>
                         {/* Main button */}
-                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white dark:bg-gray-900 shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative z-10">
                           <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center shadow-lg">
                             <Play className="w-5 h-5 md:w-6 md:h-6 text-white fill-white ml-1" />
                           </div>
@@ -63,10 +63,10 @@ const UnderstandingSection = ({ videoUrl }) => {
                     <div className="absolute bottom-12 right-8 md:bottom-14 md:right-12 z-20">
                       <div className="relative">
                         {/* Speech bubble - Talk to Budlee */}
-                        <div className="absolute -top-10 md:-top-11 left-1/2 -translate-x-1/2 bg-white rounded-xl px-3 py-1.5 shadow-lg whitespace-nowrap">
-                          <span className="text-gray-700 text-xs md:text-sm font-semibold">Talk to Budlee</span>
+                        <div className="absolute -top-10 md:-top-11 left-1/2 -translate-x-1/2 bg-white dark:bg-gray-800 rounded-xl px-3 py-1.5 shadow-lg whitespace-nowrap border border-gray-100 dark:border-gray-700">
+                          <span className="text-gray-700 dark:text-gray-200 text-xs md:text-sm font-semibold">Talk to Budlee</span>
                           {/* Bubble tail */}
-                          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white transform rotate-45"></div>
+                          <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white dark:bg-gray-800 border-r border-b border-gray-100 dark:border-gray-700 transform rotate-45"></div>
                         </div>
                         {/* Budlee with wave animation - increased size */}
                         <img 
@@ -115,10 +115,10 @@ const UnderstandingSection = ({ videoUrl }) => {
             
             {/* Story Lines */}
             <div className="space-y-3 md:space-y-4">
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 Students ask questions <span className="gradient-text font-bold">freely</span>.
               </p>
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 Budlee explains{' '}
                 <span className="gradient-text font-semibold">calmly</span>,{' '}
                 <span className="gradient-text font-semibold italic">clearly</span>,{' '}

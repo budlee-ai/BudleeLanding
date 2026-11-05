@@ -2,7 +2,7 @@ import React from 'react';
 
 const AfterSchoolSection = () => {
   return (
-    <section className="w-full bg-white py-16 md:py-5 px-4 md:px-12 lg:px-20">
+    <section className="w-full bg-white dark:bg-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
@@ -15,23 +15,23 @@ const AfterSchoolSection = () => {
             
             {/* Story Lines - First Group */}
             <div className="space-y-3 md:space-y-4 mb-8">
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 Homework is done.
               </p>
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 But <span className="gradient-text font-bold">doubts</span> remain.
               </p>
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
-                <span className="gradient-text font-bold">Curiosity</span> <em className="text-gray-500">quietly fades.</em>
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
+                <span className="gradient-text font-bold">Curiosity</span> <em className="text-gray-500 dark:text-gray-400">quietly fades.</em>
               </p>
             </div>
             
             {/* Story Lines - Second Group */}
             <div className="space-y-3 md:space-y-4">
-              <p className="text-xl md:text-2xl text-gray-500 font-medium">
-                Marks don't show <span className="text-gray-700 font-semibold">understanding</span>.
+              <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium">
+                Marks don't show <span className="text-gray-700 dark:text-gray-200 font-semibold">understanding</span>.
               </p>
-              <p className="text-xl md:text-2xl text-gray-500 font-semibold">
+              <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-semibold">
                 They never show <span className="gradient-text font-bold">curiosity</span>.
               </p>
             </div>
@@ -41,10 +41,10 @@ const AfterSchoolSection = () => {
           <div className="w-full lg:w-1/2 flex justify-center">
             <div className="relative">
               {/* Decorative background shape */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-green-100 to-yellow-50 rounded-3xl transform rotate-2"></div>
+              <div className="absolute -inset-4 bg-gradient-to-br from-green-100 to-yellow-50 dark:from-emerald-950/60 dark:to-yellow-950/30 rounded-3xl transform rotate-2"></div>
               
               {/* Main illustration container */}
-              <div className="relative bg-gradient-to-br from-orange-50 to-yellow-50 rounded-3xl p-8 md:p-12">
+              <div className="relative bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800/90 rounded-3xl p-8 md:p-12 border border-transparent dark:border-gray-800">
                 {/* Illustration - Student thinking */}
                 <div className="relative">
                   {/* Student figure - SVG illustration */}

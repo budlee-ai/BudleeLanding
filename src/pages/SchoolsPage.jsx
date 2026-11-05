@@ -33,16 +33,16 @@ const SchoolsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header 
         ctaText="Request a School Demo" 
         ctaLink="/contact#demo-form"
       />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -111,7 +111,7 @@ const SchoolsPage = () => {
               </div>
               
               {/* Subtext */}
-              <p className="text-gray-600 text-base md:text-lg lg:text-xl text-center max-w-3xl mx-auto mb-6 md:mb-8">
+              <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg lg:text-xl text-center max-w-3xl mx-auto mb-6 md:mb-8">
                 Budlee supports schools by improving learning clarity, helping teachers guide students better, and keeping parents informed without adding pressure.
               </p>
 
@@ -120,20 +120,20 @@ const SchoolsPage = () => {
                 {benefits.map((benefit, index) => (
                   <div 
                     key={index}
-                    className="bg-white rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+                    className="bg-white dark:bg-gray-900 rounded-2xl md:rounded-3xl p-5 md:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-800 group"
                   >
                     {/* Icon + Title in same row */}
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br ${benefit.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}>
                         <benefit.icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-gray-800">
+                      <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">
                         {benefit.title}
                       </h3>
                     </div>
                     
                     {/* Description */}
-                    <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
                       {benefit.description}
                     </p>
                   </div>
@@ -155,23 +155,23 @@ const SchoolsPage = () => {
         </section>
 
         {/* Curriculum Support Section */}
-        <section className="w-full bg-white/80 backdrop-blur-sm py-4 md:py-5 px-4 md:px-12 lg:px-20 border-t border-gray-100 relative z-10">
+        <section className="w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm py-4 md:py-5 px-4 md:px-12 lg:px-20 border-t border-gray-100 dark:border-gray-800 relative z-10">
           <div className="max-w-6xl mx-auto flex justify-center">
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
               {/* Curriculum Text */}
-              <span className="text-gray-500 font-medium text-sm md:text-base">
+              <span className="text-gray-500 dark:text-gray-400 font-medium text-sm md:text-base">
                 Supporting <span className="gradient-text font-bold">CBSE & 7 State Syllabuses</span>
               </span>
               
-              <span className="text-gray-300">·</span>
+              <span className="text-gray-300 dark:text-gray-700">·</span>
               
               {/* Science with Icon */}
               <div className="flex items-center gap-1.5">
                 <FlaskConical className="w-4 h-4 text-green-500" />
-                <span className="text-gray-600 font-medium text-sm md:text-base">Science (Physics, Chemistry, Biology)</span>
+                <span className="text-gray-600 dark:text-gray-300 font-medium text-sm md:text-base">Science (Physics, Chemistry, Biology)</span>
               </div>
               
-              <span className="text-gray-300">·</span>
+              <span className="text-gray-300 dark:text-gray-700">·</span>
               
               {/* Grades Pill */}
               <span className="bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 text-white font-bold text-xs md:text-sm px-3 py-1 rounded-full">
@@ -182,14 +182,14 @@ const SchoolsPage = () => {
         </section>
 
         {/* Section 2 - How Schools Get Started */}
-        <section className="w-full bg-gray-50 py-16 md:py-5 px-4 md:px-12 lg:px-20">
+        <section className="w-full bg-gray-50 dark:bg-gray-900/40 py-16 md:py-5 px-4 md:px-12 lg:px-20">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-2 md:mb-16">
               <h2 className="hero-tagline text-2xl sm:text-3xl md:text-4xl mb-4">
                 How <span className="gradient-text">Schools</span> Get Started
               </h2>
-              <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl max-w-2xl mx-auto font-medium">
                 Budlee is introduced through a simple, low-pressure pilot approach.
               </p>
             </div>
@@ -207,9 +207,9 @@ const SchoolsPage = () => {
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center mb-4 shadow-lg relative z-10">
                       <Calendar className="w-7 h-7 text-white" />
                     </div>
-                    <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Step 1</span>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">Request a School Demo</h3>
-                    <p className="text-gray-500 text-sm">See how Budlee fits your grades and classrooms</p>
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Step 1</span>
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Request a School Demo</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">See how Budlee fits your grades and classrooms</p>
                   </div>
 
                   {/* Step 2 */}
@@ -217,9 +217,9 @@ const SchoolsPage = () => {
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center mb-4 shadow-lg relative z-10">
                       <Beaker className="w-7 h-7 text-white" />
                     </div>
-                    <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Step 2</span>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">Start with a Pilot</h3>
-                    <p className="text-gray-500 text-sm">Use Budlee with selected classes</p>
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Step 2</span>
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Start with a Pilot</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Use Budlee with selected classes</p>
                   </div>
 
                   {/* Step 3 */}
@@ -227,9 +227,9 @@ const SchoolsPage = () => {
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center mb-4 shadow-lg relative z-10">
                       <BarChart3 className="w-7 h-7 text-white" />
                     </div>
-                    <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Step 3</span>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">Review Progress</h3>
-                    <p className="text-gray-500 text-sm">Teachers and school leaders review learning outcomes</p>
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Step 3</span>
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Review Progress</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Teachers and school leaders review learning outcomes</p>
                   </div>
 
                   {/* Step 4 */}
@@ -237,9 +237,9 @@ const SchoolsPage = () => {
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center mb-4 shadow-lg relative z-10">
                       <Rocket className="w-7 h-7 text-white" />
                     </div>
-                    <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Step 4</span>
-                    <h3 className="text-lg font-bold text-gray-800 mb-2">Expand Gradually</h3>
-                    <p className="text-gray-500 text-sm">Scale across grades when ready</p>
+                    <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-2">Step 4</span>
+                    <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2">Expand Gradually</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">Scale across grades when ready</p>
                   </div>
                 </div>
               </div>
@@ -253,12 +253,12 @@ const SchoolsPage = () => {
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center shadow-lg">
                     <Calendar className="w-5 h-5 text-white" />
                   </div>
-                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 mt-2"></div>
+                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 dark:from-emerald-600 dark:to-emerald-900 mt-2"></div>
                 </div>
                 <div className="pb-6">
-                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Step 1</span>
-                  <h3 className="text-lg font-bold text-gray-800 mt-1">Request a School Demo</h3>
-                  <p className="text-gray-500 text-sm mt-1">See how Budlee fits your grades and classrooms</p>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Step 1</span>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white mt-1">Request a School Demo</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">See how Budlee fits your grades and classrooms</p>
                 </div>
               </div>
 
@@ -268,12 +268,12 @@ const SchoolsPage = () => {
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center shadow-lg">
                     <Beaker className="w-5 h-5 text-white" />
                   </div>
-                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 mt-2"></div>
+                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 dark:from-emerald-600 dark:to-emerald-900 mt-2"></div>
                 </div>
                 <div className="pb-6">
-                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Step 2</span>
-                  <h3 className="text-lg font-bold text-gray-800 mt-1">Start with a Pilot</h3>
-                  <p className="text-gray-500 text-sm mt-1">Use Budlee with selected classes</p>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Step 2</span>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white mt-1">Start with a Pilot</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Use Budlee with selected classes</p>
                 </div>
               </div>
 
@@ -283,12 +283,12 @@ const SchoolsPage = () => {
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 flex items-center justify-center shadow-lg">
                     <BarChart3 className="w-5 h-5 text-white" />
                   </div>
-                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 mt-2"></div>
+                  <div className="w-0.5 h-full bg-gradient-to-b from-emerald-300 to-emerald-100 dark:from-emerald-600 dark:to-emerald-900 mt-2"></div>
                 </div>
                 <div className="pb-6">
-                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Step 3</span>
-                  <h3 className="text-lg font-bold text-gray-800 mt-1">Review Progress</h3>
-                  <p className="text-gray-500 text-sm mt-1">Teachers and school leaders review learning outcomes</p>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Step 3</span>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white mt-1">Review Progress</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Teachers and school leaders review learning outcomes</p>
                 </div>
               </div>
 
@@ -300,9 +300,9 @@ const SchoolsPage = () => {
                   </div>
                 </div>
                 <div>
-                  <span className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Step 4</span>
-                  <h3 className="text-lg font-bold text-gray-800 mt-1">Expand Gradually</h3>
-                  <p className="text-gray-500 text-sm mt-1">Scale across grades when ready</p>
+                  <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Step 4</span>
+                  <h3 className="text-lg font-bold text-gray-800 dark:text-white mt-1">Expand Gradually</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Scale across grades when ready</p>
                 </div>
               </div>
             </div>
@@ -310,7 +310,7 @@ const SchoolsPage = () => {
         </section>
 
         {/* Section 3 - Middle East Presence */}
-        <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-emerald-50/30 py-16 md:py-5 px-4 md:px-12 lg:px-20">
+        <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-emerald-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-10 md:mb-14">
@@ -320,7 +320,7 @@ const SchoolsPage = () => {
                   Middle East <span className="gradient-text">Presence</span>
                 </h2>
               </div>
-              <p className="text-gray-700 text-lg md:text-xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl font-medium">
                 Budlee AI is live in the Middle East.
               </p>
             </div>
@@ -331,14 +331,14 @@ const SchoolsPage = () => {
                 href="https://kedu.ae/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-white rounded-2xl md:rounded-3xl shadow-xl overflow-hidden border border-gray-100 max-w-lg w-full hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+                className="bg-white dark:bg-gray-900 rounded-2xl md:rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-800 max-w-lg w-full hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer"
               >
                 {/* Gradient Top Border */}
                 <div className="h-1.5 bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400"></div>
                 
                 <div className="p-6 md:p-8 flex flex-col sm:flex-row items-center gap-6">
                   {/* Logo Container */}
-                  <div className="flex-shrink-0 w-28 h-28 md:w-32 md:h-32 bg-gray-50 rounded-2xl flex items-center justify-center p-4 border border-gray-100">
+                  <div className="flex-shrink-0 w-28 h-28 md:w-32 md:h-32 bg-gray-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center p-4 border border-gray-100 dark:border-gray-700">
                     <img 
                       src="/images/partners/kedu.png" 
                       alt="KEDU Logo" 
@@ -354,12 +354,12 @@ const SchoolsPage = () => {
                     </span>
                     
                     {/* Partner Name */}
-                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
+                    <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">
                       KEDU
                     </h3>
                     
                     {/* Description */}
-                    <p className="text-gray-500 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
                       Regional partner supporting school onboarding and implementation.
                     </p>
                   </div>

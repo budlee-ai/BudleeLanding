@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { ChevronDown, Menu, X, Sparkles } from 'lucide-react';
 import axios from 'axios';
+import ThemeToggle from './ThemeToggle';
 
 const Header = ({
   ctaText = "Explore Budlee AI",
@@ -77,8 +78,8 @@ const Header = ({
 
   return (
     <header className={`w-full py-3 md:py-4 px-4 md:px-12 lg:px-20 sticky top-0 z-50 transition-all duration-300 ${isScrolled
-      ? 'bg-white/95 backdrop-blur-md shadow-md'
-      : 'bg-gradient-to-r from-green-50/80 via-yellow-50/80 to-orange-50/80'
+      ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md border-b border-transparent dark:border-gray-800/80'
+      : 'bg-gradient-to-r from-green-50/80 via-yellow-50/80 to-orange-50/80 dark:from-gray-950/90 dark:via-gray-900/90 dark:to-gray-950/90 border-b border-transparent dark:border-gray-800/40'
       }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo - Clickable, links to home */}
@@ -86,7 +87,13 @@ const Header = ({
           <img
             src="/images/logo_tagline_black.png"
             alt="Budlee AI"
-            className="w-40 md:w-52 h-auto object-contain"
+            className="w-40 md:w-52 h-auto object-contain dark:hidden"
+            onContextMenu={(e) => e.preventDefault()}
+          />
+          <img
+            src="/images/logo_tagline_white.png"
+            alt="Budlee AI"
+            className="w-40 md:w-52 h-auto object-contain hidden dark:block"
             onContextMenu={(e) => e.preventDefault()}
           />
         </Link>
@@ -97,30 +104,30 @@ const Header = ({
           <div className="relative" ref={resourcesRef}>
             <button
               onClick={() => toggleDropdown('resources')}
-              className="flex items-center text-gray-700 hover:text-green-600 font-medium transition-colors duration-200"
+              className="flex items-center text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200"
             >
               Resources
               <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
             </button>
             {activeDropdown === 'resources' && (
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
-                <Link to="/blog" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
+                <Link to="/blog" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Blog
                 </Link>
-                <Link to="/help" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/help" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Help Center
                 </Link>
-                <Link to="/tutorials" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/tutorials" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Tutorials
                 </Link>
-                <Link to="/faqs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/faqs" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   FAQs
                 </Link>
-                <div className="border-t border-gray-100 mt-2 pt-2">
-                  <Link to="/schools" className="block px-4 py-2 text-sm font-semibold text-green-600 hover:bg-green-50 hover:text-green-700 transition-colors" onClick={closeDropdown}>
+                <div className="border-t border-gray-100 dark:border-gray-700 mt-2 pt-2">
+                  <Link to="/schools" className="block px-4 py-2 text-sm font-semibold text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-700 dark:hover:text-green-300 transition-colors" onClick={closeDropdown}>
                     For Schools
                   </Link>
-                  <Link to="/contact#demo-form" className="block px-4 py-2 text-sm font-semibold text-green-600 hover:bg-green-50 hover:text-green-700 transition-colors" onClick={closeDropdown}>
+                  <Link to="/contact#demo-form" className="block px-4 py-2 text-sm font-semibold text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-700 dark:hover:text-green-300 transition-colors" onClick={closeDropdown}>
                     Request a Demo
                   </Link>
                 </div>
@@ -132,44 +139,44 @@ const Header = ({
           <div className="relative" ref={aboutRef}>
             <button
               onClick={() => toggleDropdown('about')}
-              className="flex items-center text-gray-700 hover:text-green-600 font-medium transition-colors duration-200"
+              className="flex items-center text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200"
             >
               About Us
               <ChevronDown className={`ml-1 w-4 h-4 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
             </button>
             {activeDropdown === 'about' && (
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
-                <Link to="/our-story" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
+                <Link to="/our-story" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Our Story
                 </Link>
-                <Link to="/mission-vision" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/mission-vision" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Mission and Vision
                 </Link>
-                <Link to="/team" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/team" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Meet our Team
                 </Link>
-                <Link to="/core-values" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/core-values" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Core Values
                 </Link>
-                <Link to="/careers" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/careers" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Careers
                 </Link>
-                <Link to="/partner-programs" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/partner-programs" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Referral/Affiliate/Partner Programs
                 </Link>
-                <Link to="/contact" className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 transition-colors" onClick={closeDropdown}>
+                <Link to="/contact" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Contact Us
                 </Link>
               </div>
             )}
           </div>
           {/* Pricing - No Dropdown */}
-          <Link to="/pricing" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200">
+          <Link to="/pricing" className="text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200">
             Pricing
           </Link>
         </nav>
 
-        {/* CTA Buttons and Mobile Menu */}
+        {/* CTA Buttons, Theme Toggle, and Mobile Menu */}
         <div className="flex items-center gap-2 md:gap-3">
           {/* Mobile Auth Buttons - Top Header */}
           <div className="flex md:hidden items-center gap-1.5 mr-1">
@@ -177,7 +184,7 @@ const Header = ({
               <Button
                 variant="outline"
                 size="sm"
-                className="border-green-500 text-green-600 font-bold px-2 py-1 h-8 text-[10px] rounded-lg transition-all duration-300"
+                className="border-green-500 text-green-600 dark:text-green-400 dark:border-green-500/80 font-bold px-2 py-1 h-8 text-[10px] rounded-lg transition-all duration-300"
               >
                 Login
               </Button>
@@ -192,13 +199,13 @@ const Header = ({
             </a>
           </div>
 
-          {/* Desktop CTA Buttons */}
+          {/* Desktop CTA Buttons & Theme Toggle */}
           <div className="hidden md:flex items-center gap-3">
             {/* School Login Button */}
             <a href="https://dash.budlee.ai">
               <Button
                 variant="outline"
-                className="border-2 border-green-500 bg-transparent text-green-600 hover:bg-green-50 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
+                className="border-2 border-green-500 bg-transparent text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-950/40 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
               >
                 School Login
               </Button>
@@ -210,7 +217,7 @@ const Header = ({
                 <a href="https://app.budlee.ai/#/login">
                   <Button
                     variant="outline"
-                    className="border-2 border-emerald-500 bg-transparent text-emerald-600 hover:bg-emerald-50 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
+                    className="border-2 border-emerald-500 bg-transparent text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
                   >
                     Login
                   </Button>
@@ -229,7 +236,7 @@ const Header = ({
                   <a href={secondaryCtaLink} target={secondaryCtaTarget} rel="noopener noreferrer">
                     <Button
                       variant="outline"
-                      className="border-2 border-emerald-500 bg-transparent text-emerald-600 hover:bg-emerald-50 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
+                      className="border-2 border-emerald-500 bg-transparent text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-bold px-4 py-4 md:px-6 md:py-5 text-xs md:text-sm rounded-xl transition-all duration-300"
                     >
                       {secondaryCtaText}
                     </Button>
@@ -253,12 +260,15 @@ const Header = ({
                 )}
               </>
             )}
+
+            {/* Dark Mode Toggle on Header Bar */}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMobileMenu}
-            className="md:hidden p-2 rounded-lg text-gray-700 hover:text-green-600 hover:bg-green-50 transition-colors duration-200"
+            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800 transition-colors duration-200"
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
@@ -274,12 +284,12 @@ const Header = ({
           <>
             {/* Backdrop */}
             <div
-              className="md:hidden fixed inset-0 top-[73px] bg-black/20 backdrop-blur-sm z-30"
+              className="md:hidden fixed inset-0 top-[73px] bg-black/40 backdrop-blur-sm z-30"
               onClick={closeMobileMenu}
             />
             {/* Menu Content */}
-            <div className="md:hidden fixed inset-0 top-[73px] z-40">
-              <div className="bg-white/95 backdrop-blur-sm shadow-lg min-h-full">
+            <div className="md:hidden fixed inset-0 top-[73px] z-40 overflow-y-auto">
+              <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg min-h-full border-t border-gray-100 dark:border-gray-800">
                 <div className="px-4 py-6 space-y-4">
                   {/* Mobile Navigation Menu */}
                   <div className="space-y-4">
@@ -287,23 +297,23 @@ const Header = ({
                     <div>
                       <button
                         onClick={() => toggleDropdown('resources')}
-                        className="flex items-center justify-between w-full text-left text-gray-700 hover:text-green-600 font-medium py-2 transition-colors duration-200"
+                        className="flex items-center justify-between w-full text-left text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium py-2 transition-colors duration-200"
                       >
                         Resources
                         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'resources' ? 'rotate-180' : ''}`} />
                       </button>
                       {activeDropdown === 'resources' && (
                         <div className="mt-2 ml-4 space-y-2">
-                          <Link to="/blog" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/blog" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Blog
                           </Link>
-                          <Link to="/tutorials" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/tutorials" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Tutorials
                           </Link>
-                          <Link to="/help" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/help" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Help Center
                           </Link>
-                          <Link to="/faqs" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/faqs" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             FAQs
                           </Link>
                         </div>
@@ -311,17 +321,17 @@ const Header = ({
                     </div>
 
                     {/* Direct High-Priority Links for Mobile */}
-                    <div className="pt-2 border-t border-gray-100">
-                      <Link to="/schools" className="flex items-center gap-2 py-3 text-base font-bold text-green-600 hover:text-green-700 transition-colors" onClick={closeMobileMenu}>
-                        <div className="p-2 bg-green-50 rounded-lg">
+                    <div className="pt-2 border-t border-gray-100 dark:border-gray-800">
+                      <Link to="/schools" className="flex items-center gap-2 py-3 text-base font-bold text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors" onClick={closeMobileMenu}>
+                        <div className="p-2 bg-green-50 dark:bg-green-950/60 rounded-lg">
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                           </svg>
                         </div>
                         For Schools
                       </Link>
-                      <Link to="/contact#demo-form" className="flex items-center gap-2 py-3 text-base font-bold text-emerald-600 hover:text-emerald-700 transition-colors" onClick={closeMobileMenu}>
-                        <div className="p-2 bg-emerald-50 rounded-lg">
+                      <Link to="/contact#demo-form" className="flex items-center gap-2 py-3 text-base font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors" onClick={closeMobileMenu}>
+                        <div className="p-2 bg-emerald-50 dark:bg-emerald-950/60 rounded-lg">
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                           </svg>
@@ -334,32 +344,32 @@ const Header = ({
                     <div>
                       <button
                         onClick={() => toggleDropdown('about')}
-                        className="flex items-center justify-between w-full text-left text-gray-700 hover:text-green-600 font-medium py-2 transition-colors duration-200"
+                        className="flex items-center justify-between w-full text-left text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium py-2 transition-colors duration-200"
                       >
                         About Us
                         <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
                       </button>
                       {activeDropdown === 'about' && (
                         <div className="mt-2 ml-4 space-y-2">
-                          <Link to="/our-story" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/our-story" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Our Story
                           </Link>
-                          <Link to="/team" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/team" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Meet our Team
                           </Link>
-                          <Link to="/careers" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/careers" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Careers
                           </Link>
-                          <Link to="/contact" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/contact" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Contact Us
                           </Link>
-                          <Link to="/mission-vision" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/mission-vision" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Mission and Vision
                           </Link>
-                          <Link to="/core-values" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/core-values" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Core Values
                           </Link>
-                          <Link to="/partner-programs" className="block py-2 text-sm text-gray-600 hover:text-green-600 transition-colors" onClick={closeMobileMenu}>
+                          <Link to="/partner-programs" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Referral/Affiliate/Partner Programs
                           </Link>
                         </div>
@@ -367,18 +377,26 @@ const Header = ({
                     </div>
 
                     {/* Pricing - No Dropdown */}
-                    <Link to="/pricing" className="block py-2 text-gray-700 hover:text-green-600 font-medium transition-colors duration-200" onClick={closeMobileMenu}>
+                    <Link to="/pricing" className="block py-2 text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200" onClick={closeMobileMenu}>
                       Pricing
                     </Link>
+
+                    {/* Theme Mode Switcher in Mobile Drawer */}
+                    <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between py-2">
+                      <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                        Theme
+                      </span>
+                      <ThemeToggle showLabel={true} />
+                    </div>
                   </div>
 
                   {/* Mobile CTA Buttons */}
-                  <div className="pt-4 border-t border-gray-200 space-y-4">
+                  <div className="pt-4 border-t border-gray-200 dark:border-gray-800 space-y-4">
                     <div className="flex flex-row justify-center gap-3">
                       <a href="https://dash.budlee.ai" className="flex-1">
                         <Button
                           variant="outline"
-                          className="w-full border-2 border-green-500 bg-transparent text-green-600 hover:bg-green-50 font-bold py-3 rounded-xl transition-all duration-300"
+                          className="w-full border-2 border-green-500 bg-transparent text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-950/40 font-bold py-3 rounded-xl transition-all duration-300"
                         >
                           School Login
                         </Button>
@@ -389,7 +407,7 @@ const Header = ({
                       <a href="https://app.budlee.ai/#/login" className="flex-1">
                         <Button
                           variant="outline"
-                          className="w-full border-2 border-emerald-500 bg-transparent text-emerald-600 hover:bg-emerald-50 font-bold py-3 rounded-xl transition-all duration-300"
+                          className="w-full border-2 border-emerald-500 bg-transparent text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-bold py-3 rounded-xl transition-all duration-300"
                         >
                           Login
                         </Button>
@@ -409,7 +427,7 @@ const Header = ({
                           <a href={secondaryCtaLink} target={secondaryCtaTarget} rel="noopener noreferrer" onClick={closeMobileMenu}>
                             <Button
                               variant="outline"
-                              className="w-full border-2 border-emerald-500 bg-transparent text-emerald-600 hover:bg-emerald-50 font-bold py-3 rounded-xl transition-all duration-300"
+                              className="w-full border-2 border-emerald-500 bg-transparent text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 font-bold py-3 rounded-xl transition-all duration-300"
                             >
                               {secondaryCtaText}
                             </Button>

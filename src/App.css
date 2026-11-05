@@ -28,6 +28,10 @@
   line-height: 1.3;
 }
 
+.dark .hero-tagline {
+  color: #f1f5f9;
+}
+
 /* Floating animations */
 @keyframes float-slow {
   0%, 100% { transform: translateY(0) rotate(0deg); }

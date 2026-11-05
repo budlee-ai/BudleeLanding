@@ -11,11 +11,11 @@ const VoiceTutorSection = () => {
   return (
     <section 
       aria-label="AI Voice Tutor Feature"
-      className="w-full bg-gradient-to-br from-white via-emerald-50/20 to-teal-50/15 py-16 md:py-20 px-4 md:px-12 lg:px-20 relative overflow-hidden"
+      className="w-full bg-gradient-to-br from-white via-emerald-50/20 to-teal-50/15 dark:from-gray-950 dark:via-gray-900 dark:to-teal-950/20 py-16 md:py-20 px-4 md:px-12 lg:px-20 relative overflow-hidden transition-colors duration-200"
     >
       {/* Background ambient decorative shapes */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-emerald-100/40 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100/30 rounded-full blur-3xl translate-y-1/3 translate-x-1/4 pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-emerald-100/40 dark:bg-emerald-900/20 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-100/30 dark:bg-teal-900/20 rounded-full blur-3xl translate-y-1/3 translate-x-1/4 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -25,15 +25,15 @@ const VoiceTutorSection = () => {
             
             {/* Feature Tags */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 shadow-2xs">
-                <Headphones className="w-4 h-4 text-emerald-600 animate-pulse" />
-                <span className="text-xs md:text-sm font-bold text-emerald-800 tracking-wide uppercase">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 shadow-2xs">
+                <Headphones className="w-4 h-4 text-emerald-600 dark:text-emerald-400 animate-pulse" />
+                <span className="text-xs md:text-sm font-bold text-emerald-800 dark:text-emerald-300 tracking-wide uppercase">
                   AI Voice Tutor
                 </span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200/80 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-teal-600" />
-                <span className="text-xs md:text-sm font-bold text-teal-800 tracking-wide uppercase">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/80 dark:border-teal-800/80 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-teal-600 dark:text-teal-400" />
+                <span className="text-xs md:text-sm font-bold text-teal-800 dark:text-teal-300 tracking-wide uppercase">
                   Teach Me
                 </span>
               </div>
@@ -45,37 +45,37 @@ const VoiceTutorSection = () => {
             </h2>
             
             {/* Story Paragraphs */}
-            <div className="space-y-3.5 mb-8 text-gray-700">
+            <div className="space-y-3.5 mb-8 text-gray-700 dark:text-gray-200">
               <p className="text-lg md:text-xl font-medium leading-relaxed">
                 No typing required. Just ask your doubts <span className="gradient-text font-bold">out loud</span>.
               </p>
-              <p className="text-base md:text-lg text-gray-600 font-normal leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-normal leading-relaxed">
                 Budlee listens patiently, breaks down complex Science concepts, and responds in friendly, real-time voice conversations.
               </p>
             </div>
 
             {/* Highlighted Micro-Cards */}
             <div className="grid sm:grid-cols-2 gap-3.5 text-left">
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 flex items-center justify-center text-emerald-600">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <Mic className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">Hands-Free Learning</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">Hands-Free Learning</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   Speak doubts while studying or solving homework without stopping to type.
                 </p>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-teal-100/80 flex items-center justify-center text-teal-600">
+                  <div className="w-7 h-7 rounded-lg bg-teal-100/80 dark:bg-teal-950/80 flex items-center justify-center text-teal-600 dark:text-teal-400">
                     <Sparkles className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">Adaptive Explanations</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">Adaptive Explanations</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   Simplifies challenging Physics, Chemistry, and Biology terms into friendly analogies.
                 </p>
               </div>
@@ -88,23 +88,23 @@ const VoiceTutorSection = () => {
             <div className="relative w-full max-w-[360px] md:max-w-[420px]">
               
               {/* Decorative back rotated aura card */}
-              <div className="absolute -inset-3 bg-gradient-to-tr from-emerald-200/50 via-teal-100/40 to-yellow-100/30 rounded-3xl transform rotate-1.5 blur-xs" />
+              <div className="absolute -inset-3 bg-gradient-to-tr from-emerald-200/50 via-teal-100/40 to-yellow-100/30 dark:from-emerald-950/60 dark:via-teal-950/40 dark:to-emerald-900/30 rounded-3xl transform rotate-1.5 blur-xs" />
 
               {/* Main Simulated Phone / Voice Call Container */}
-              <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-emerald-100 overflow-hidden">
+              <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-3xl p-6 shadow-xl border border-emerald-100 dark:border-gray-800 overflow-hidden">
                 
                 {/* Voice Status Header */}
-                <div className="flex items-center justify-between pb-4 mb-5 border-b border-gray-100">
+                <div className="flex items-center justify-between pb-4 mb-5 border-b border-gray-100 dark:border-gray-800">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
                     </span>
-                    <span className="text-xs font-bold text-gray-800 uppercase tracking-wider">
+                    <span className="text-xs font-bold text-gray-800 dark:text-gray-100 uppercase tracking-wider">
                       Budlee Voice • Live Call
                     </span>
                   </div>
-                  <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60">
+                  <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                     Grade 6–10 Science
                   </span>
                 </div>
@@ -119,7 +119,7 @@ const VoiceTutorSection = () => {
                     
                     {/* Avatar Circle */}
                     <div className="relative w-20 h-20 md:w-22 md:h-22 rounded-full bg-gradient-to-tr from-green-400 via-emerald-400 to-teal-400 p-1 shadow-lg shadow-emerald-500/20">
-                      <div className="w-full h-full bg-white rounded-full flex items-center justify-center p-2.5">
+                      <div className="w-full h-full bg-white dark:bg-gray-800 rounded-full flex items-center justify-center p-2.5">
                         <img
                           src="/images/logo.png"
                           alt="Budlee AI Voice Assistant"
@@ -139,7 +139,7 @@ const VoiceTutorSection = () => {
                     <span className="w-1 bg-teal-400 rounded-full animate-sound-bar" style={{ animationDuration: '0.9s' }} />
                     <span className="w-1 bg-emerald-500 rounded-full animate-sound-bar" style={{ animationDuration: '1.1s' }} />
                   </div>
-                  <span className="text-[11px] font-semibold text-emerald-700 tracking-wide mt-1.5">
+                  <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-400 tracking-wide mt-1.5">
                     Budlee is explaining...
                   </span>
                 </div>
@@ -157,10 +157,10 @@ const VoiceTutorSection = () => {
 
                   {/* Budlee Answer Bubble */}
                   <div className="flex items-start gap-2 justify-start">
-                    <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 mt-0.5">
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
+                    <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center shrink-0 mt-0.5">
+                      <Volume2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
                     </div>
-                    <div className="bg-gray-50 border border-gray-100 text-gray-800 rounded-2xl rounded-tl-xs px-4 py-2.5 max-w-[85%] shadow-xs">
+                    <div className="bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-800 dark:text-gray-100 rounded-2xl rounded-tl-xs px-4 py-2.5 max-w-[85%] shadow-xs">
                       <p className="text-xs md:text-sm leading-snug">
                         "When daylight decreases, chlorophyll breaks down, letting warm yellow & orange carotenoids shine through!"
                       </p>
@@ -169,15 +169,15 @@ const VoiceTutorSection = () => {
                 </div>
 
                 {/* Bottom Call Controls Bar */}
-                <div className="mt-5 pt-3.5 border-t border-gray-100 flex items-center justify-between">
+                <div className="mt-5 pt-3.5 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="w-9 h-9 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-xs">
                       <Mic className="w-4 h-4" />
                     </div>
-                    <span className="text-xs text-gray-600 font-medium">Microphone On</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">Microphone On</span>
                   </div>
                   
-                  <span className="text-[11px] font-bold text-gray-500 bg-gray-100/80 px-2.5 py-1 rounded-md">
+                  <span className="text-[11px] font-bold text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-800/80 px-2.5 py-1 rounded-md">
                     Instant Voice AI
                   </span>
                 </div>

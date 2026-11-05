@@ -10,14 +10,14 @@ const MissionVisionPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -73,7 +73,7 @@ const MissionVisionPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Our <span className="gradient-text">Mission</span> & Vision
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
               Building the future of education through AI-powered learning that connects understanding with curiosity
             </p>
           </div>
@@ -89,8 +89,8 @@ const MissionVisionPage = () => {
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Our Mission</h2>
             </div>
 
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 md:p-12 rounded-2xl">
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed text-center mb-8">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800 p-8 md:p-12 rounded-2xl border border-transparent dark:border-gray-800">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mb-8">
                 To empower every student to understand concepts deeply, explore their interests freely, and build real expertise during their school years.
               </p>
 
@@ -99,22 +99,22 @@ const MissionVisionPage = () => {
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Lightbulb className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Deep Understanding</h3>
-                  <p className="text-gray-600 text-sm">Move beyond memorization to true comprehension</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Deep Understanding</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Move beyond memorization to true comprehension</p>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Heart className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Interest Discovery</h3>
-                  <p className="text-gray-600 text-sm">Guide students toward subjects they love</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Interest Discovery</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Guide students toward subjects they love</p>
                 </div>
                 <div className="text-center">
                   <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Users className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 mb-2">Real Expertise</h3>
-                  <p className="text-gray-600 text-sm">Build lasting knowledge and skills</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Real Expertise</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">Build lasting knowledge and skills</p>
                 </div>
               </div>
             </div>
@@ -122,7 +122,7 @@ const MissionVisionPage = () => {
         </section>
 
         {/* Vision Section */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/40">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 rounded-full mb-6">
@@ -131,15 +131,15 @@ const MissionVisionPage = () => {
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Our Vision</h2>
             </div>
 
-            <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg">
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed text-center mb-8">
+            <div className="bg-white dark:bg-gray-900 p-8 md:p-12 rounded-2xl shadow-lg border border-transparent dark:border-gray-800">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mb-8">
                 A world where every student graduates with both academic excellence and a clear understanding of their passions and potential.
               </p>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">The Problem Today</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">The Problem Today</h3>
+                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex items-start gap-3">
                       <span className="text-red-500 mt-1">•</span>
                       Students memorize without understanding core concepts
@@ -160,8 +160,8 @@ const MissionVisionPage = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-4">Our Vision for Tomorrow</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Our Vision for Tomorrow</h3>
+                  <ul className="space-y-3 text-gray-600 dark:text-gray-300">
                     <li className="flex items-start gap-3">
                       <span className="text-green-500 mt-1">•</span>
                       Students understand concepts deeply and intuitively
@@ -190,7 +190,7 @@ const MissionVisionPage = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">How We Achieve Our Mission</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 Budlee AI bridges the gap between school learning and interest-driven growth
               </p>
             </div>
@@ -200,8 +200,8 @@ const MissionVisionPage = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl">📚</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Connected Learning</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Connected Learning</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Understanding concepts, practicing, testing, and exploring interests are tightly linked in a single journey.
                 </p>
               </div>
@@ -210,8 +210,8 @@ const MissionVisionPage = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl">🤖</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">AI-Powered Guidance</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">AI-Powered Guidance</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Continuous observation of learning patterns helps guide students toward subjects and topics they enjoy.
                 </p>
               </div>
@@ -220,8 +220,8 @@ const MissionVisionPage = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-400 via-red-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-6">
                   <span className="text-2xl">👨‍👩‍👧‍👦</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Family Involvement</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Family Involvement</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Parents gain clear visibility into what their child understands, struggles with, and is becoming interested in.
                 </p>
               </div>
@@ -230,29 +230,29 @@ const MissionVisionPage = () => {
         </section>
 
         {/* Our Impact Goals */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap text-white">Our Impact Goals</h2>
-            <p className="text-green-100 text-lg mb-8">
+            <p className="text-green-100 dark:text-gray-300 text-lg mb-8">
               Supporting CBSE and 7 State Syllabuses across Grades 6–10 Science, with our vision extending globally
             </p>
 
             <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl border border-white/10 dark:border-gray-700/60">
                 <div className="text-3xl font-bold text-white mb-2">2025</div>
-                <div className="text-green-100">Launch Year</div>
+                <div className="text-green-100 dark:text-emerald-300">Launch Year</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl border border-white/10 dark:border-gray-700/60">
                 <div className="text-3xl font-bold text-white mb-2">1K+</div>
-                <div className="text-green-100">Students</div>
+                <div className="text-green-100 dark:text-emerald-300">Students</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl border border-white/10 dark:border-gray-700/60">
                 <div className="text-3xl font-bold text-white mb-2">8</div>
-                <div className="text-green-100">Curricula & Boards</div>
+                <div className="text-green-100 dark:text-emerald-300">Curricula & Boards</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl">
+              <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-6 rounded-xl border border-white/10 dark:border-gray-700/60">
                 <div className="text-3xl font-bold text-white mb-2">Global</div>
-                <div className="text-green-100">Expansion</div>
+                <div className="text-green-100 dark:text-emerald-300">Expansion</div>
               </div>
             </div>
           </div>
@@ -262,7 +262,7 @@ const MissionVisionPage = () => {
         <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Join Our Mission</h2>
-            <p className="text-gray-700 text-xl md:text-2xl font-medium mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium mb-8 max-w-2xl mx-auto">
               Help us build the learning companion that empowers every student to reach their full potential.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -274,7 +274,7 @@ const MissionVisionPage = () => {
               </a>
               <a
                 href="/team"
-                className="inline-block border-2 border-green-500 text-green-600 hover:bg-green-50 font-bold px-8 py-4 rounded-xl transition-all duration-300"
+                className="inline-block border-2 border-green-500 text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-green-950/40 font-bold px-8 py-4 rounded-xl transition-all duration-300"
               >
                 Meet Our Team
               </a>

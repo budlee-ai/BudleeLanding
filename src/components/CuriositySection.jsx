@@ -26,7 +26,7 @@ const CuriositySection = () => {
   };
 
   return (
-    <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-yellow-50/30 py-16 md:py-5 px-4 md:px-12 lg:px-20">
+    <section className="w-full bg-gradient-to-br from-green-50/50 via-white to-yellow-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 py-16 md:py-5 px-4 md:px-12 lg:px-20 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           
@@ -34,15 +34,15 @@ const CuriositySection = () => {
           <div className="w-full lg:w-1/2 flex justify-center order-2 lg:order-2">
             <div className="relative">
               {/* Outer glow */}
-              <div className="absolute inset-0 w-[280px] h-[280px] md:w-[360px] md:h-[360px] bg-gradient-to-br from-green-200/30 to-yellow-200/30 rounded-full blur-xl -m-4"></div>
+              <div className="absolute inset-0 w-[280px] h-[280px] md:w-[360px] md:h-[360px] bg-gradient-to-br from-green-200/30 to-yellow-200/30 dark:from-emerald-600/10 dark:to-teal-600/10 rounded-full blur-xl -m-4"></div>
               
               {/* Main Circular Container */}
-              <div className="relative w-[280px] h-[280px] md:w-[360px] md:h-[360px] rounded-full bg-gradient-to-br from-white to-green-50/80 shadow-2xl border-4 border-white">
+              <div className="relative w-[280px] h-[280px] md:w-[360px] md:h-[360px] rounded-full bg-gradient-to-br from-white to-green-50/80 dark:from-gray-900 dark:to-gray-800 shadow-2xl border-4 border-white dark:border-gray-800">
                 
                 {/* Orbital rings */}
-                <div className="absolute inset-4 md:inset-6 rounded-full border border-green-200/40"></div>
-                <div className="absolute inset-12 md:inset-16 rounded-full border border-green-200/30"></div>
-                <div className="absolute inset-20 md:inset-24 rounded-full border border-green-200/20"></div>
+                <div className="absolute inset-4 md:inset-6 rounded-full border border-green-200/40 dark:border-emerald-500/20"></div>
+                <div className="absolute inset-12 md:inset-16 rounded-full border border-green-200/30 dark:border-emerald-500/15"></div>
+                <div className="absolute inset-20 md:inset-24 rounded-full border border-green-200/20 dark:border-emerald-500/10"></div>
 
                 {/* Floating Interest Bubbles - Evenly distributed at 45° intervals */}
                 {interestTopics.map((topic, index) => {
@@ -117,13 +117,13 @@ const CuriositySection = () => {
             
             {/* Story Lines */}
             <div className="space-y-3 md:space-y-4">
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 Some students return to <span className="gradient-text font-bold">space</span>.
               </p>
-              <p className="text-xl md:text-2xl text-gray-700 font-medium">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 font-medium">
                 Some explore <span className="gradient-text font-bold">physics</span> deeper.
               </p>
-              <p className="text-xl md:text-2xl text-gray-500 font-medium mt-6">
+              <p className="text-xl md:text-2xl text-gray-500 dark:text-gray-400 font-medium mt-6">
                 Budlee <span className="gradient-text font-semibold italic">notices</span> ~ and <span className="gradient-text font-bold">follows</span>.
               </p>
             </div>

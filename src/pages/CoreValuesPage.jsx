@@ -79,14 +79,14 @@ const CoreValuesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -142,7 +142,7 @@ const CoreValuesPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Our <span className="gradient-text">Core Values</span>
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               The principles that guide everything we do at Budlee AI, from product development to how we work as a team
             </p>
           </div>
@@ -153,26 +153,26 @@ const CoreValuesPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {coreValues.map((value, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 group">
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 dark:border-gray-800 group">
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-br ${value.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <value.icon className="w-8 h-8 text-white" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
                     {value.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {value.description}
                   </p>
 
                   {/* Details */}
                   <ul className="space-y-2">
                     {value.details.map((detail, idx) => (
-                      <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                      <li key={idx} className="text-gray-600 dark:text-gray-300 text-sm flex items-start gap-2">
                         <span className="text-green-500 mt-1">•</span>
                         {detail}
                       </li>
@@ -185,32 +185,32 @@ const CoreValuesPage = () => {
         </section>
 
         {/* Why Values Matter */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/40">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Why Our Values Matter</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 In education technology, values aren't just nice-to-have—they're essential for building trust and creating real impact
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">For Students</h3>
-                <p className="text-gray-600 mb-4">
+              <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-transparent dark:border-gray-800">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">For Students</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Our student-centric approach ensures that Budlee AI adapts to how students actually learn, not how adults think they should learn. This creates more effective, engaging, and personalized learning experiences.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   When students trust their learning companion, they're more likely to engage deeply and build lasting understanding.
                 </p>
               </div>
 
-              <div className="bg-white p-8 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">For Educators & Parents</h3>
-                <p className="text-gray-600 mb-4">
+              <div className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-transparent dark:border-gray-800">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">For Educators & Parents</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Transparency and collaboration mean that teachers and parents are active participants in the learning journey, not passive observers. They understand how our AI works and can provide meaningful input.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   This collaborative approach leads to better outcomes for everyone involved in a student's education.
                 </p>
               </div>
@@ -223,29 +223,29 @@ const CoreValuesPage = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">How We Live Our Values</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 Our values guide our daily work and long-term decisions
               </p>
             </div>
 
             <div className="space-y-8">
-              <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">In Product Development</h3>
-                <p className="text-gray-600">
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl border border-transparent dark:border-gray-800">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">In Product Development</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   Every feature starts with real student needs. We conduct extensive user research, test with actual students, and iterate based on feedback. Our AI recommendations are transparent and explainable, building trust through understanding.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">In Our Team Culture</h3>
-                <p className="text-gray-600">
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl border border-transparent dark:border-gray-800">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">In Our Team Culture</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   We embrace fast execution and fearless experimentation. Team members are encouraged to take calculated risks, learn from failures, and share knowledge openly. Our collaborative approach extends beyond the team to include educators, students, and parents.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-2xl">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">In Our Partnerships</h3>
-                <p className="text-gray-600">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-gray-900 dark:to-gray-800 p-8 rounded-2xl border border-transparent dark:border-gray-800">
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">In Our Partnerships</h3>
+                <p className="text-gray-600 dark:text-gray-300">
                   We work with schools, educators, and parents as true partners. We share data transparently, involve them in decision-making, and ensure our technology serves their needs, not just our business goals.
                 </p>
               </div>
@@ -254,22 +254,22 @@ const CoreValuesPage = () => {
         </section>
 
         {/* Call to Action */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Experience Our Values in Action</h2>
-            <p className="text-green-100 text-lg mb-8">
+            <p className="text-green-100 dark:text-gray-300 text-lg mb-8">
               See how our commitment to student-centric, innovative learning is transforming education
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://app.budlee.ai/"
-                className="inline-block bg-white text-green-600 hover:bg-green-50 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-block bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Try Budlee AI
               </a>
               <a
                 href="/schools"
-                className="inline-block border-2 border-white text-white hover:bg-white hover:text-green-600 font-bold px-8 py-4 rounded-xl transition-all duration-300"
+                className="inline-block border-2 border-white dark:border-gray-700 text-white dark:text-gray-200 hover:bg-white hover:text-green-600 dark:hover:bg-gray-800 dark:hover:text-white font-bold px-8 py-4 rounded-xl transition-all duration-300"
               >
                 Learn for Schools
               </a>

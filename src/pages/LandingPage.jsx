@@ -33,7 +33,7 @@ const LandingPage = () => {
   const questVideo = useSignedVideo('settings/landing_videos/quest.mp4');
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         <HeroSection videos={heroVideos} videoUrl={heroVideoFallback} />

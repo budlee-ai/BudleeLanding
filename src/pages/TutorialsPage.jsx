@@ -196,14 +196,14 @@ const TutorialsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -259,7 +259,7 @@ const TutorialsPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               <span className="gradient-text">Tutorials</span>
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
               Master Budlee AI with our comprehensive tutorials. Learn how to make the most of our AI-powered learning platform.
             </p>
           </div>
@@ -283,19 +283,19 @@ const TutorialsPage = () => {
                 {/* Content Cards */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {section.content.map((item, itemIndex) => (
-                    <div key={itemIndex} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100">
-                      <h3 className="text-lg font-bold text-gray-800 mb-3">
+                    <div key={itemIndex} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 dark:border-gray-800">
+                      <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3">
                         {item.title}
                       </h3>
                       {item.description && (
-                        <p className="text-gray-600 mb-4 leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                           {item.description}
                         </p>
                       )}
                       {item.steps.length > 0 && (
                         <ol className="space-y-2">
                           {item.steps.map((step, stepIndex) => (
-                            <li key={stepIndex} className="text-gray-600 text-sm flex items-start gap-2">
+                            <li key={stepIndex} className="text-gray-600 dark:text-gray-300 text-sm flex items-start gap-2">
                               <span className="text-green-500 font-bold mt-1">{stepIndex + 1}.</span>
                               {step}
                             </li>
@@ -311,11 +311,11 @@ const TutorialsPage = () => {
         </section>
 
         {/* Quick Tips */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/40">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Quick Tips & Tricks</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 Make the most of your Budlee AI experience
               </p>
             </div>
@@ -326,8 +326,8 @@ const TutorialsPage = () => {
                   <div className="w-16 h-16 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-4">
                     <tip.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">{tip.title}</h3>
-                  <p className="text-gray-600 text-sm">{tip.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">{tip.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{tip.description}</p>
                 </div>
               ))}
             </div>
@@ -338,7 +338,7 @@ const TutorialsPage = () => {
         <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Need More Help?</h2>
-            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Check out our FAQs or reach out to our support team.
             </p>
 
@@ -351,7 +351,7 @@ const TutorialsPage = () => {
               </a>
               <a
                 href="/contact"
-                className="inline-block border-2 border-blue-500 text-blue-600 hover:bg-blue-50 font-bold px-8 py-4 rounded-xl transition-all duration-300"
+                className="inline-block border-2 border-blue-500 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/40 font-bold px-8 py-4 rounded-xl transition-all duration-300"
               >
                 Contact Support
               </a>

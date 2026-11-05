@@ -176,14 +176,14 @@ const PartnerProgramsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -239,7 +239,7 @@ const PartnerProgramsPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Partner <span className="gradient-text">Programs</span>
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
               Join our partner ecosystem and earn commissions while helping schools transform education with Budlee AI
             </p>
           </div>
@@ -250,33 +250,33 @@ const PartnerProgramsPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-2 md:mb-5">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Choose Your Partnership</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 Multiple ways to partner with Budlee AI and grow your income
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {partnerPrograms.map((program, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 group">
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 dark:border-gray-800 group">
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-br ${program.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <program.icon className="w-8 h-8 text-white" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
                     {program.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {program.description}
                   </p>
 
                   {/* Benefits */}
                   <ul className="space-y-2 mb-6">
                     {program.benefits.map((benefit, idx) => (
-                      <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                      <li key={idx} className="text-gray-600 dark:text-gray-300 text-sm flex items-start gap-2">
                         <CheckCircle className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
                         {benefit}
                       </li>
@@ -298,11 +298,11 @@ const PartnerProgramsPage = () => {
         </section>
 
         {/* Why Partner With Us */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/40">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-2 md:mb-5">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Why Partner With Budlee AI?</h2>
-              <p className="text-gray-700 text-xl md:text-2xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium">
                 Join a growing ecosystem of education innovators
               </p>
             </div>
@@ -312,46 +312,46 @@ const PartnerProgramsPage = () => {
                 <div className="w-16 h-16 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 rounded-full flex items-center justify-center mx-auto mb-4">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Growing Market</h3>
-                <p className="text-gray-600 text-sm">Education technology is expanding rapidly with increasing demand for AI-powered learning solutions.</p>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Growing Market</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Education technology is expanding rapidly with increasing demand for AI-powered learning solutions.</p>
               </div>
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Proven Product</h3>
-                <p className="text-gray-600 text-sm">Budlee AI has helped thousands of students improve their learning outcomes with our innovative platform.</p>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Proven Product</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Budlee AI has helped thousands of students improve their learning outcomes with our innovative platform.</p>
               </div>
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-400 via-red-500 to-pink-400 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Zap className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">High Conversions</h3>
-                <p className="text-gray-600 text-sm">Our platform converts leads effectively, ensuring you earn commissions on successful partnerships.</p>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">High Conversions</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Our platform converts leads effectively, ensuring you earn commissions on successful partnerships.</p>
               </div>
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-400 via-cyan-500 to-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Dedicated Support</h3>
-                <p className="text-gray-600 text-sm">Our partner success team provides ongoing support, marketing materials, and strategic guidance.</p>
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Dedicated Support</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Our partner success team provides ongoing support, marketing materials, and strategic guidance.</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Partnership Application Form */}
-        <section id="referral-form" className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400">
+        <section id="referral-form" className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap text-white">Start Earning Today</h2>
-            <p className="text-green-100 text-lg mb-8">
+            <p className="text-green-100 dark:text-gray-300 text-lg mb-8">
               Join other partners who are already earning with Budlee AI
             </p>
 
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+            <div className="bg-white/10 dark:bg-gray-800/60 backdrop-blur-sm p-8 rounded-2xl border border-white/10 dark:border-gray-700/60">
               {/* Status Message */}
               {formStatus && (
                 <div className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
@@ -378,7 +378,7 @@ const PartnerProgramsPage = () => {
                     id="partnerFullName"
                     name="fullName"
                     required
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white/20 dark:bg-gray-900/60 border border-white/30 dark:border-gray-700 rounded-lg text-white placeholder-white/70 dark:placeholder-gray-400 focus:ring-2 focus:ring-white dark:focus:ring-emerald-400 focus:border-transparent transition-colors"
                     placeholder="Enter your full name"
                   />
                 </div>
@@ -392,7 +392,7 @@ const PartnerProgramsPage = () => {
                     id="partnerEmail"
                     name="email"
                     required
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white/20 dark:bg-gray-900/60 border border-white/30 dark:border-gray-700 rounded-lg text-white placeholder-white/70 dark:placeholder-gray-400 focus:ring-2 focus:ring-white dark:focus:ring-emerald-400 focus:border-transparent transition-colors"
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -406,7 +406,7 @@ const PartnerProgramsPage = () => {
                     id="partnerPhone"
                     name="phone"
                     required
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white/20 dark:bg-gray-900/60 border border-white/30 dark:border-gray-700 rounded-lg text-white placeholder-white/70 dark:placeholder-gray-400 focus:ring-2 focus:ring-white dark:focus:ring-emerald-400 focus:border-transparent transition-colors"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
@@ -421,7 +421,7 @@ const PartnerProgramsPage = () => {
                     required
                     value={selectedPartnershipType}
                     onChange={(e) => setSelectedPartnershipType(e.target.value)}
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:ring-2 focus:ring-white focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white/20 dark:bg-gray-900/60 border border-white/30 dark:border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-white dark:focus:ring-emerald-400 focus:border-transparent transition-colors [&>option]:text-gray-900 dark:[&>option]:text-white dark:[&>option]:bg-gray-900"
                   >
                     <option value="" className="text-gray-800">Select partnership type</option>
                     <option value="referral" className="text-gray-800">Referral Program</option>
@@ -439,7 +439,7 @@ const PartnerProgramsPage = () => {
                     id="partnerMessage"
                     name="message"
                     rows="4"
-                    className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/70 focus:ring-2 focus:ring-white focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white/20 dark:bg-gray-900/60 border border-white/30 dark:border-gray-700 rounded-lg text-white placeholder-white/70 dark:placeholder-gray-400 focus:ring-2 focus:ring-white dark:focus:ring-emerald-400 focus:border-transparent transition-colors"
                     placeholder="Describe your experience, audience, or how you plan to promote Budlee AI..."
                   ></textarea>
                 </div>
@@ -448,7 +448,7 @@ const PartnerProgramsPage = () => {
                   <button
                     type="submit"
                     disabled={formStatus === 'loading'}
-                    className="bg-white text-green-600 hover:bg-green-50 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto"
+                    className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 mx-auto"
                   >
                     {formStatus === 'loading' && <Loader2 className="w-5 h-5 animate-spin" />}
                     {formStatus === 'loading' ? 'Sending Application...' : 'Apply for Partnership'}

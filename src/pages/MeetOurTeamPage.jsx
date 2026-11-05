@@ -45,14 +45,14 @@ const MeetOurTeamPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -108,7 +108,7 @@ const MeetOurTeamPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Meet Our <span className="gradient-text">Team</span>
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-medium">
               Four passionate founders bringing together expertise in AI, engineering, product, and education to revolutionize learning
             </p>
           </div>
@@ -119,7 +119,7 @@ const MeetOurTeamPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {teamMembers.map((member, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-800">
                   {/* Header with Image and Basic Info */}
                   <div className="p-6 md:p-8">
                     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-6">
@@ -127,7 +127,7 @@ const MeetOurTeamPage = () => {
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover flex-shrink-0 border-4 border-white shadow-lg"
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover flex-shrink-0 border-4 border-white dark:border-gray-800 shadow-lg"
                         onContextMenu={(e) => e.preventDefault()}
                         onError={(e) => {
                           e.target.style.display = 'none';
@@ -135,7 +135,7 @@ const MeetOurTeamPage = () => {
                         }}
                       />
                       {/* Fallback Initials */}
-                      <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0 border-4 border-white shadow-lg" style={{display: 'none'}}>
+                      <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-green-400 via-emerald-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0 border-4 border-white dark:border-gray-800 shadow-lg" style={{display: 'none'}}>
                         <span className="text-white text-2xl font-bold">
                           {member.name.split(' ').map(n => n[0]).join('')}
                         </span>
@@ -143,10 +143,10 @@ const MeetOurTeamPage = () => {
 
                       {/* Name and Role */}
                       <div className="text-center sm:text-left">
-                        <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                        <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-1">
                           {member.name}
                         </h3>
-                        <p className="text-green-600 font-semibold mb-2">
+                        <p className="text-green-600 dark:text-green-400 font-semibold mb-2">
                           {member.role}
                         </p>
 
@@ -167,7 +167,7 @@ const MeetOurTeamPage = () => {
                               href={member.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-gray-800 transition-colors"
+                              className="text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors"
                             >
                               <Github className="w-5 h-5" />
                             </a>
@@ -177,17 +177,17 @@ const MeetOurTeamPage = () => {
                     </div>
 
                     {/* Bio */}
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                       {member.bio}
                     </p>
 
                     {/* Key Experience */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-gray-800 mb-2 flex items-center gap-2">
+                      <h4 className="text-sm font-semibold text-gray-800 dark:text-white mb-2 flex items-center gap-2">
                         <Award className="w-4 h-4 text-green-500" />
                         Key Experience
                       </h4>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
                         {member.experience}
                       </p>
                     </div>
@@ -199,31 +199,31 @@ const MeetOurTeamPage = () => {
         </section>
 
         {/* Team Culture Section */}
-        <section className="w-full bg-gray-50 py-16 md:py-5 px-4 md:px-12 lg:px-20">
+        <section className="w-full bg-gray-50 dark:bg-gray-900/40 py-16 md:py-5 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">
               Our Culture & Values
             </h2>
-            <p className="text-gray-700 text-xl md:text-2xl font-medium mb-8 leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium mb-8 leading-relaxed">
               We believe in learning through doing, embracing challenges, and building technology that makes a real difference in education.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Problem Solvers</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-transparent dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Problem Solvers</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   We identify real problems and build practical solutions, not just chase trends.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">User-Centric</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-transparent dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">User-Centric</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   Every decision is guided by direct feedback from students, teachers, and parents.
                 </p>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Continuous Learners</h3>
-                <p className="text-gray-600 text-sm">
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-sm border border-transparent dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-3">Continuous Learners</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   We stay curious, experiment boldly, and learn from every iteration.
                 </p>
               </div>
@@ -232,17 +232,17 @@ const MeetOurTeamPage = () => {
         </section>
 
         {/* Join Us CTA */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap text-white">
               Want to Join Our Team?
             </h2>
-            <p className="text-green-100 text-lg mb-8">
+            <p className="text-green-100 dark:text-gray-300 text-lg mb-8">
               We're always looking for passionate individuals who want to revolutionize education.
             </p>
             <a
               href="/careers"
-              className="inline-block bg-white text-green-600 hover:bg-green-50 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-block bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               View Open Positions
             </a>

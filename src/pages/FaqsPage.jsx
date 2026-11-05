@@ -172,14 +172,14 @@ const FaqsPage = () => {
   })).filter(category => category.questions.length > 0);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/30 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden transition-colors duration-200">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/30"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -235,7 +235,7 @@ const FaqsPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Frequently Asked <span className="gradient-text">Questions</span>
             </h1>
-            <p className="text-gray-700 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-700 dark:text-gray-300 text-xl md:text-2xl font-medium max-w-2xl mx-auto leading-relaxed">
               Find answers to common questions about Budlee AI. If you don't find what you're looking for, contact us at help@budlee.ai.
             </p>
 
@@ -248,7 +248,7 @@ const FaqsPage = () => {
                   placeholder="Search FAQs..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                 />
               </div>
             </div>
@@ -275,23 +275,23 @@ const FaqsPage = () => {
                   {category.questions.map((faq, questionIndex) => {
                     const isExpanded = expandedItems.has(`${categoryIndex}-${questionIndex}`);
                     return (
-                      <div key={questionIndex} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+                      <div key={questionIndex} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800 overflow-hidden">
                         <button
                           onClick={() => toggleExpanded(categoryIndex, questionIndex)}
-                          className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                          className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 dark:hover:bg-gray-800/80 transition-colors"
                         >
-                          <h3 className="text-lg font-semibold text-gray-800 pr-4">
+                          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4">
                             {faq.question}
                           </h3>
                           {isExpanded ? (
-                            <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                            <ChevronUp className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                           ) : (
-                            <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                            <ChevronDown className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
                           )}
                         </button>
                         {isExpanded && (
                           <div className="px-6 pb-4">
-                            <p className="text-gray-600 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                               {faq.answer}
                             </p>
                           </div>
@@ -306,25 +306,25 @@ const FaqsPage = () => {
             {filteredCategories.length === 0 && searchTerm && (
               <div className="text-center py-12">
                 <HelpCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold text-gray-600 mb-2">No results found</h3>
-                <p className="text-gray-500">Try adjusting your search terms or browse all categories above.</p>
+                <h3 className="text-xl font-semibold text-gray-600 dark:text-gray-300 mb-2">No results found</h3>
+                <p className="text-gray-500 dark:text-gray-400">Try adjusting your search terms or browse all categories above.</p>
               </div>
             )}
           </div>
         </section>
 
         {/* Contact Section */}
-        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/50 transition-colors duration-200">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">Still Need Help?</h2>
-            <p className="text-gray-700 text-lg font-medium mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 text-lg font-medium mb-8 max-w-2xl mx-auto">
               If these FAQs don't help, reach out to our support team. We're here to assist you!
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-              <div className="bg-white p-6 rounded-2xl shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Email Support</h3>
-                <p className="text-gray-600 mb-4">Get in touch with our support team</p>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-transparent dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Email Support</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">Get in touch with our support team</p>
                 <a
                   href="mailto:help@budlee.ai"
                   className="inline-block bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 hover:from-green-600 hover:via-emerald-600 hover:to-teal-500 text-white font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
@@ -333,15 +333,15 @@ const FaqsPage = () => {
                 </a>
               </div>
 
-              <div className="bg-white p-6 rounded-2xl shadow-lg">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">Visit Our Office</h3>
-                <p className="text-gray-600 mb-4">Located in Malappuram, Kerala</p>
-                <div className="text-sm text-gray-600 text-left">
-                  <p className="font-medium">Budlee AI Corporate Office</p>
+              <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-lg border border-transparent dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2">Visit Our Office</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-4">Located in Malappuram, Kerala</p>
+                <div className="text-sm text-gray-600 dark:text-gray-400 text-left">
+                  <p className="font-medium text-gray-800 dark:text-gray-200">Budlee AI Corporate Office</p>
                   <p>BUILDING NO 18 214 C KODUR PO NEAR BHARATH PETROLEUM,</p>
                   <p>MALAPPURAM, KODUR-MALABAR,</p>
                   <p>KERALA - 676504</p>
-                  <p className="font-medium mt-1">INDIA</p>
+                  <p className="font-medium mt-1 text-gray-800 dark:text-gray-200">INDIA</p>
                 </div>
               </div>
             </div>

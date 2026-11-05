@@ -385,14 +385,14 @@ const BlogArticlePage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
+      <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
-            <BookOpen className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-800 mb-2">Article Not Found</h1>
-            <p className="text-gray-600 mb-4">The article you're looking for doesn't exist.</p>
-            <Link to="/blog" className="text-green-600 hover:text-green-700 font-medium">
+            <BookOpen className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Article Not Found</h1>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">The article you're looking for doesn't exist.</p>
+            <Link to="/blog" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium">
               ← Back to Blog
             </Link>
           </div>
@@ -403,14 +403,14 @@ const BlogArticlePage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Back Navigation */}
-        <section className="w-full py-4 px-4 md:px-12 lg:px-20 bg-gray-50 border-b border-gray-200">
+        <section className="w-full py-4 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
           <div className="max-w-4xl mx-auto">
-            <Link to="/blog" className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
+            <Link to="/blog" className="inline-flex items-center gap-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors">
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
@@ -420,7 +420,7 @@ const BlogArticlePage = () => {
         {/* Article Header */}
         <section className="w-full py-8 md:py-12 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+            <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
               <span className="flex items-center gap-1">
                 <Calendar className="w-4 h-4" />
                 {new Date(article.date).toLocaleDateString('en-US', {
@@ -443,13 +443,13 @@ const BlogArticlePage = () => {
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-6 leading-tight">
               {article.title}
             </h1>
 
             <div className="flex flex-wrap gap-2 mb-8">
               {article.tags.map((tag, index) => (
-                <span key={index} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
+                <span key={index} className="bg-green-100 dark:bg-green-950/60 text-green-700 dark:text-green-300 px-3 py-1 rounded-full text-sm font-medium">
                   {tag}
                 </span>
               ))}
@@ -461,7 +461,7 @@ const BlogArticlePage = () => {
         <section className="w-full pb-16 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto">
             {/* Featured Image */}
-            <div className="w-full h-[300px] md:h-[450px] rounded-2xl mb-12 overflow-hidden shadow-xl bg-gray-100">
+            <div className="w-full h-[300px] md:h-[450px] rounded-2xl mb-12 overflow-hidden shadow-xl bg-gray-100 dark:bg-gray-800">
               <img
                 src={`${process.env.PUBLIC_URL || ''}/${article.image}`}
                 alt={article.title}
@@ -475,33 +475,33 @@ const BlogArticlePage = () => {
 
             {/* Article Body */}
             <div
-              className="max-w-none text-gray-700 leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-gray-800 [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:leading-tight
-                         [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-gray-800 [&_h3]:mt-6 [&_h3]:mb-3 [&_h3]:leading-tight
-                         [&_p]:text-gray-700 [&_p]:leading-relaxed [&_p]:mb-4
-                         [&_ul]:text-gray-700 [&_ul]:space-y-2 [&_ul]:ml-6 [&_ul]:list-disc
-                         [&_ol]:text-gray-700 [&_ol]:space-y-2 [&_ol]:ml-6 [&_ol]:list-decimal
-                         [&_li]:text-gray-700 [&_li]:leading-relaxed
-                         [&_strong]:text-gray-900 [&_strong]:font-semibold
-                         [&_a]:text-green-600 [&_a]:hover:text-green-700 [&_a]:no-underline
-                         [&_blockquote]:border-l-4 [&_blockquote]:border-green-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600 [&_blockquote]:my-4
-                         [&_table]:text-gray-700 [&_table]:w-full [&_table]:border-collapse
-                         [&_th]:bg-gray-50 [&_th]:text-gray-800 [&_th]:font-semibold [&_th]:p-3 [&_th]:text-left [&_th]:border [&_th]:border-gray-200
-                         [&_td]:p-3 [&_td]:border [&_td]:border-gray-200
-                         [&_code]:bg-gray-100 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono
-                         [&_pre]:bg-gray-100 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto [&_pre]:my-4"
+              className="max-w-none text-gray-700 dark:text-gray-300 leading-relaxed [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-gray-800 dark:[&_h2]:text-white [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:leading-tight
+                         [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-gray-800 dark:[&_h3]:text-white [&_h3]:mt-6 [&_h3]:mb-3 [&_h3]:leading-tight
+                         [&_p]:text-gray-700 dark:[&_p]:text-gray-300 [&_p]:leading-relaxed [&_p]:mb-4
+                         [&_ul]:text-gray-700 dark:[&_ul]:text-gray-300 [&_ul]:space-y-2 [&_ul]:ml-6 [&_ul]:list-disc
+                         [&_ol]:text-gray-700 dark:[&_ol]:text-gray-300 [&_ol]:space-y-2 [&_ol]:ml-6 [&_ol]:list-decimal
+                         [&_li]:text-gray-700 dark:[&_li]:text-gray-300 [&_li]:leading-relaxed
+                         [&_strong]:text-gray-900 dark:[&_strong]:text-white [&_strong]:font-semibold
+                         [&_a]:text-green-600 dark:[&_a]:text-green-400 [&_a]:hover:text-green-700 dark:[&_a]:hover:text-green-300 [&_a]:no-underline
+                         [&_blockquote]:border-l-4 [&_blockquote]:border-green-500 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-gray-600 dark:[&_blockquote]:text-gray-400 [&_blockquote]:my-4
+                         [&_table]:text-gray-700 dark:[&_table]:text-gray-300 [&_table]:w-full [&_table]:border-collapse
+                         [&_th]:bg-gray-50 dark:[&_th]:bg-gray-800 [&_th]:text-gray-800 dark:[&_th]:text-white [&_th]:font-semibold [&_th]:p-3 [&_th]:text-left [&_th]:border [&_th]:border-gray-200 dark:[&_th]:border-gray-700
+                         [&_td]:p-3 [&_td]:border [&_td]:border-gray-200 dark:[&_td]:border-gray-700
+                         [&_code]:bg-gray-100 dark:[&_code]:bg-gray-800 [&_code]:px-2 [&_code]:py-1 [&_code]:rounded [&_code]:text-sm [&_code]:font-mono
+                         [&_pre]:bg-gray-100 dark:[&_pre]:bg-gray-800 [&_pre]:p-4 [&_pre]:rounded [&_pre]:overflow-x-auto [&_pre]:my-4"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
 
             {/* Article Footer */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <button className="flex items-center gap-2 text-gray-600 hover:text-gray-800 transition-colors">
+                  <button className="flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors">
                     <Share2 className="w-4 h-4" />
                     Share
                   </button>
                 </div>
-                <Link to="/blog" className="text-green-600 hover:text-green-700 font-medium transition-colors">
+                <Link to="/blog" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors">
                   ← Back to Blog
                 </Link>
               </div>

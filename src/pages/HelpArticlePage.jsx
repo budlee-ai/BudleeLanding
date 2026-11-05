@@ -1482,14 +1482,14 @@ const HelpArticlePage = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
+      <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
-            <HelpCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-gray-800 mb-2">Article Not Found</h1>
-            <p className="text-gray-600 mb-4">The help article you're looking for doesn't exist.</p>
-            <Link to="/help" className="text-green-600 hover:text-green-700 font-medium">
+            <HelpCircle className="w-16 h-16 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Article Not Found</h1>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">The help article you're looking for doesn't exist.</p>
+            <Link to="/help" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium">
               ← Back to Help Center
             </Link>
           </div>
@@ -1500,14 +1500,14 @@ const HelpArticlePage = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
 
       <main className="flex-grow">
         {/* Back Navigation */}
-        <section className="w-full py-4 px-4 md:px-12 lg:px-20 bg-gray-50 border-b border-gray-200">
+        <section className="w-full py-4 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
           <div className="max-w-4xl mx-auto">
-            <Link to="/help" className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors">
+            <Link to="/help" className="inline-flex items-center gap-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors">
               <ArrowLeft className="w-4 h-4" />
               Back to Help Center
             </Link>
@@ -1521,12 +1521,12 @@ const HelpArticlePage = () => {
               <div className={`w-10 h-10 bg-gradient-to-br ${article.categoryColor || 'from-gray-400 to-gray-500'} rounded-lg flex items-center justify-center`}>
                 {article.categoryIcon ? <article.categoryIcon className="w-5 h-5 text-white" /> : <Lightbulb className="w-5 h-5 text-white" />}
               </div>
-              <span className="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+              <span className="text-sm font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
                 {article.category || 'General'}
               </span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 dark:text-white mb-6 leading-tight">
               {article.title}
             </h1>
           </div>
@@ -1537,26 +1537,26 @@ const HelpArticlePage = () => {
           <div className="max-w-4xl mx-auto">
             {/* Article Body */}
             <div
-              className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-p:leading-relaxed prose-ul:text-gray-700 prose-li:text-gray-700 prose-table:text-gray-700 prose-th:bg-gray-50 prose-th:text-gray-800 prose-td:border-gray-200"
+              className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-800 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-ul:text-gray-700 dark:prose-ul:text-gray-300 prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-table:text-gray-700 dark:prose-table:text-gray-300 prose-th:bg-gray-50 dark:prose-th:bg-gray-800 prose-th:text-gray-800 dark:prose-th:text-white prose-td:border-gray-200 dark:prose-td:border-gray-700"
               dangerouslySetInnerHTML={{ __html: article.content }}
             />
 
             {/* Article Footer */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-500">Was this article helpful?</span>
+                  <span className="text-sm text-gray-500 dark:text-gray-400">Was this article helpful?</span>
                   <div className="flex gap-2">
-                    <button className="flex items-center gap-1 text-green-600 hover:text-green-700 transition-colors">
+                    <button className="flex items-center gap-1 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">
                       <CheckCircle className="w-4 h-4" />
                       Yes
                     </button>
-                    <button className="text-gray-500 hover:text-gray-700 transition-colors">
+                    <button className="text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
                       No
                     </button>
                   </div>
                 </div>
-                <Link to="/help" className="text-green-600 hover:text-green-700 font-medium transition-colors">
+                <Link to="/help" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 font-medium transition-colors">
                   ← Back to Help Center
                 </Link>
               </div>

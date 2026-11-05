@@ -9,7 +9,7 @@ const RefundPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
       <main className="flex-grow py-16 md:py-5 px-4 md:px-12 lg:px-20">
         <div className="max-w-4xl mx-auto">
@@ -17,12 +17,12 @@ const RefundPage = () => {
             <h1 className="hero-tagline text-3xl md:text-4xl lg:text-5xl mb-6 whitespace-nowrap gradient-text">
               Refund & Cancellation Policy
             </h1>
-            <p className="text-gray-700 text-base md:text-lg font-medium">
+            <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg font-medium">
               Effective Date: October 27, 2026
             </p>
           </div>
 
-          <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+          <div className="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 leading-relaxed dark:prose-invert">
             <p className="mb-6">
               At Budlee AI (a product of Needoo AI Innovations LLP, hereinafter "we," "us," or "our"), we are committed to providing a reliable and transparent learning experience across our AI learning tools and 1-on-1 live tuition platform. This Refund & Cancellation Policy outlines the specific rules governing subscriptions, on-demand tuition bookings, cancellations, attendance outcomes, and platform credits. By using our Service, you agree to this policy.
             </p>

@@ -16,11 +16,11 @@ const OnDemandTuitionSection = () => {
   return (
     <section 
       aria-label="Budlee AI On-Demand Tuition"
-      className="w-full bg-gradient-to-br from-emerald-50/20 via-white to-amber-50/25 py-16 md:py-20 px-4 md:px-12 lg:px-20 relative overflow-hidden"
+      className="w-full bg-gradient-to-br from-emerald-50/20 via-white to-amber-50/25 dark:from-gray-950 dark:via-gray-900 dark:to-emerald-950/20 py-16 md:py-20 px-4 md:px-12 lg:px-20 relative overflow-hidden transition-colors duration-200"
     >
       {/* Background ambient decorative shapes */}
-      <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-100/30 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-96 h-96 bg-amber-100/20 rounded-full blur-3xl translate-y-1/3 pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-80 h-80 bg-emerald-100/30 dark:bg-emerald-900/20 rounded-full blur-3xl -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-10 w-96 h-96 bg-amber-100/20 dark:bg-amber-900/20 rounded-full blur-3xl translate-y-1/3 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -29,9 +29,9 @@ const OnDemandTuitionSection = () => {
           <div className="w-full lg:w-1/2 text-center lg:text-left order-1 lg:order-2">
             
             {/* Feature Tag */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 mb-5 shadow-2xs">
-              <GraduationCap className="w-4 h-4 text-emerald-600" />
-              <span className="text-xs md:text-sm font-bold text-emerald-800 tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200/80 dark:border-emerald-800/80 mb-5 shadow-2xs">
+              <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span className="text-xs md:text-sm font-bold text-emerald-800 dark:text-emerald-300 tracking-wide uppercase">
                 Budlee AI On-Demand Tuition
               </span>
             </div>
@@ -42,61 +42,61 @@ const OnDemandTuitionSection = () => {
             </h2>
             
             {/* Story Paragraphs */}
-            <div className="space-y-3.5 mb-8 text-gray-700">
+            <div className="space-y-3.5 mb-8 text-gray-700 dark:text-gray-200">
               <p className="text-lg md:text-xl font-medium leading-relaxed">
                 Some concepts need a <span className="gradient-text font-bold">dedicated human mentor</span>.
               </p>
-              <p className="text-base md:text-lg text-gray-600 font-normal leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 font-normal leading-relaxed">
                 Connect with verified, top-tier teachers for 1-on-1 personalized live coaching tailored directly to your CBSE or State Syllabus curriculum.
               </p>
             </div>
 
             {/* 4 Feature Points Grid */}
             <div className="grid sm:grid-cols-2 gap-3.5 text-left">
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 flex items-center justify-center text-emerald-600">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <Users className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">Verified Subject Experts</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">Verified Subject Experts</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   Experienced, screened educators specializing in Grade 6–10 Physics, Chemistry, and Biology.
                 </p>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-teal-100/80 flex items-center justify-center text-teal-600">
+                  <div className="w-7 h-7 rounded-lg bg-teal-100/80 dark:bg-teal-950/80 flex items-center justify-center text-teal-600 dark:text-teal-400">
                     <BookOpen className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">Chapter-Focused</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">Chapter-Focused</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   Target specific lessons—like Force, Cells, or Chemical Equations—ahead of unit tests.
                 </p>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-amber-100/80 flex items-center justify-center text-amber-600">
+                  <div className="w-7 h-7 rounded-lg bg-amber-100/80 dark:bg-amber-950/80 flex items-center justify-center text-amber-600 dark:text-amber-400">
                     <Clock className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">Flexible Scheduling</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">Flexible Scheduling</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   Book from 24 hours to 7 days ahead with options for in-session 30m or 60m extensions.
                 </p>
               </div>
 
-              <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 shadow-2xs hover:shadow-xs transition-shadow">
+              <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm p-4 rounded-xl border border-emerald-100 dark:border-gray-800 shadow-2xs hover:shadow-xs transition-shadow">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 flex items-center justify-center text-emerald-600">
+                  <div className="w-7 h-7 rounded-lg bg-emerald-100/80 dark:bg-emerald-950/80 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                     <ShieldCheck className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-gray-800 text-sm">10-Min Punctuality Guarantee</h4>
+                  <h4 className="font-bold text-gray-800 dark:text-gray-100 text-sm">10-Min Punctuality Guarantee</h4>
                 </div>
-                <p className="text-xs text-gray-600 leading-normal">
+                <p className="text-xs text-gray-600 dark:text-gray-400 leading-normal">
                   100% session credit returned if tutor does not arrive within 10 minutes.
                 </p>
               </div>
@@ -109,33 +109,33 @@ const OnDemandTuitionSection = () => {
             <div className="relative w-full max-w-[380px] md:max-w-[440px]">
               
               {/* Back ambient rotated card border */}
-              <div className="absolute -inset-3 bg-gradient-to-br from-green-200/50 via-emerald-100/40 to-teal-100/30 rounded-3xl transform -rotate-1.5 blur-xs" />
+              <div className="absolute -inset-3 bg-gradient-to-br from-green-200/50 via-emerald-100/40 to-teal-100/30 dark:from-emerald-950/60 dark:via-emerald-900/40 dark:to-teal-950/30 rounded-3xl transform -rotate-1.5 blur-xs" />
 
               {/* Main Virtual Classroom Preview Card */}
-              <div className="relative bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-xl border border-emerald-100 overflow-hidden">
+              <div className="relative bg-white/95 dark:bg-gray-900/95 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-xl border border-emerald-100 dark:border-gray-800 overflow-hidden">
                 
                 {/* Classroom Status Top Bar */}
-                <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-gray-100">
+                <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-gray-100 dark:border-gray-800">
                   <div className="flex items-center gap-2">
                     <span className="relative flex h-2.5 w-2.5">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
                     </span>
-                    <span className="text-xs font-bold text-gray-800">
+                    <span className="text-xs font-bold text-gray-800 dark:text-gray-100">
                       Live Classroom • 1-on-1 Session
                     </span>
                   </div>
-                  <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                  <span className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
                     Grade 9 Science
                   </span>
                 </div>
 
                 {/* Teacher Profile Info Strip */}
-                <div className="bg-gradient-to-r from-emerald-50/70 to-teal-50/50 p-3 rounded-2xl border border-emerald-100/80 mb-4 flex items-center justify-between">
+                <div className="bg-gradient-to-r from-emerald-50/70 to-teal-50/50 dark:from-gray-800/80 dark:to-gray-800/40 p-3 rounded-2xl border border-emerald-100/80 dark:border-gray-700 mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-green-500 to-teal-500 p-0.5 shadow-sm">
-                        <div className="w-full h-full rounded-full bg-white flex items-center justify-center font-bold text-emerald-700 text-sm">
+                        <div className="w-full h-full rounded-full bg-white dark:bg-gray-800 flex items-center justify-center font-bold text-emerald-700 dark:text-emerald-300 text-sm">
                           DS
                         </div>
                       </div>
@@ -144,18 +144,18 @@ const OnDemandTuitionSection = () => {
                       </div>
                     </div>
                     <div className="text-left">
-                      <h5 className="font-bold text-gray-900 text-xs md:text-sm">
+                      <h5 className="font-bold text-gray-900 dark:text-gray-100 text-xs md:text-sm">
                         Dr. Ananya Sharma
                       </h5>
-                      <p className="text-[11px] text-gray-600 font-medium">
+                      <p className="text-[11px] text-gray-600 dark:text-gray-400 font-medium">
                         M.Sc. Chemistry • CBSE & State Syllabus
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-amber-200/80 shadow-2xs">
+                  <div className="flex items-center gap-1 bg-white dark:bg-gray-800 px-2 py-1 rounded-lg border border-amber-200/80 dark:border-amber-800/80 shadow-2xs">
                     <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-                    <span className="text-xs font-bold text-gray-800">4.95</span>
+                    <span className="text-xs font-bold text-gray-800 dark:text-gray-100">4.95</span>
                   </div>
                 </div>
 
@@ -220,12 +220,12 @@ const OnDemandTuitionSection = () => {
                 </div>
 
                 {/* Trust Guarantee Footnote */}
-                <div className="flex items-center justify-between text-left text-xs text-gray-500">
+                <div className="flex items-center justify-between text-left text-xs text-gray-500 dark:text-gray-400">
                   <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     <span>Protected 1-on-1 Learning</span>
                   </span>
-                  <span className="font-semibold text-emerald-700">
+                  <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                     Book Tomorrow &rsaquo;
                   </span>
                 </div>

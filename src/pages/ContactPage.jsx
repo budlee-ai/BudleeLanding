@@ -97,13 +97,13 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
+        <section className="w-full bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 py-16 md:py-5 px-4 md:px-12 lg:px-20 relative overflow-hidden">
           {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-yellow-50 to-orange-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950"></div>
           
           {/* Floating Doodles - Hidden on mobile, visible on md+ */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
@@ -159,7 +159,7 @@ const ContactPage = () => {
             <h1 className="hero-tagline text-3xl sm:text-4xl md:text-5xl mb-0">
               Get <span className="gradient-text">in Touch</span>
             </h1>
-            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Have questions about Budlee AI? We'd love to hear from you. Reach out to our team and we'll get back to you soon.
             </p>
           </div>
@@ -171,26 +171,26 @@ const ContactPage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {contactMethods.map((method, index) => (
-                <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 group">
+                <div key={index} className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 md:p-8 border border-gray-100 dark:border-gray-800 group">
                   {/* Icon */}
                   <div className={`w-16 h-16 bg-gradient-to-br ${method.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <method.icon className="w-8 h-8 text-white" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white mb-4">
                     {method.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-600 mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {method.description}
                   </p>
 
                   {/* Details */}
                   <ul className="space-y-2 mb-6">
                     {method.details.map((detail, idx) => (
-                      <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
+                      <li key={idx} className="text-gray-600 dark:text-gray-300 text-sm flex items-start gap-2">
                         <span className="text-green-500 mt-1">•</span>
                         {detail}
                       </li>
@@ -211,26 +211,26 @@ const ContactPage = () => {
         </section>
 
         {/* Demo Request Form */}
-        <section id="demo-form" className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50">
+        <section id="demo-form" className="w-full py-16 md:py-5 px-4 md:px-12 lg:px-20 bg-gray-50 dark:bg-gray-900/60">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="hero-tagline text-2xl md:text-3xl lg:text-[32px] mb-8 md:mb-10 whitespace-nowrap gradient-text">
                 Request a Demo
               </h2>
-              <p className="text-gray-700 text-xl font-medium">
+              <p className="text-gray-700 dark:text-gray-300 text-xl font-medium">
                 Fill out the form below and we'll get back to you within 24 hours to schedule your personalized demo.
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100 dark:border-gray-800">
               {/* Status Message */}
               {formStatus && (
                 <div className={`mb-6 p-4 rounded-lg flex items-center gap-3 ${
                   formStatus === 'success'
-                    ? 'bg-green-100 border border-green-300 text-green-800'
+                    ? 'bg-green-100 dark:bg-green-950/50 border border-green-300 dark:border-green-800 text-green-800 dark:text-green-200'
                     : formStatus === 'error'
-                    ? 'bg-red-100 border border-red-300 text-red-800'
-                    : 'bg-blue-100 border border-blue-300 text-blue-800'
+                    ? 'bg-red-100 dark:bg-red-950/50 border border-red-300 dark:border-red-800 text-red-800 dark:text-red-200'
+                    : 'bg-blue-100 dark:bg-blue-950/50 border border-blue-300 dark:border-blue-800 text-blue-800 dark:text-blue-200'
                 }`}>
                   {formStatus === 'success' && <CheckCircle className="w-5 h-5 flex-shrink-0" />}
                   {formStatus === 'error' && <AlertCircle className="w-5 h-5 flex-shrink-0" />}
@@ -241,7 +241,7 @@ const ContactPage = () => {
 
               <form onSubmit={handleDemoRequest} className="space-y-6">
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Full Name *
                   </label>
                   <input
@@ -249,13 +249,13 @@ const ContactPage = () => {
                     id="fullName"
                     name="fullName"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                     placeholder="Enter your full name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Email Address *
                   </label>
                   <input
@@ -263,13 +263,13 @@ const ContactPage = () => {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                     placeholder="Enter your email address"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Phone Number *
                   </label>
                   <input
@@ -277,13 +277,13 @@ const ContactPage = () => {
                     id="phone"
                     name="phone"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                     placeholder="+1 (555) 123-4567"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="organization" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Organization/School *
                   </label>
                   <input
@@ -291,20 +291,20 @@ const ContactPage = () => {
                     id="organization"
                     name="organization"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                     placeholder="Enter your organization or school name"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="role" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Your Role *
                   </label>
                   <select
                     id="role"
                     name="role"
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                   >
                     <option value="">Select your role</option>
                     <option value="teacher">Teacher/Educator</option>
@@ -316,13 +316,13 @@ const ContactPage = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="demoType" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="demoType" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Demo Type
                   </label>
                   <select
                     id="demoType"
                     name="demoType"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                   >
                     <option value="general">General Overview</option>
                     <option value="teacher">Teacher-Focused Demo</option>
@@ -332,14 +332,14 @@ const ContactPage = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
                     Additional Information
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows="4"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
                     placeholder="Tell us about your specific needs or questions..."
                   ></textarea>
                 </div>
@@ -363,13 +363,13 @@ const ContactPage = () => {
         <section className="w-full py-8 px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 For support-related inquiries, please visit our{' '}
-                <a href="/terms" className="text-green-600 hover:text-green-700 underline underline-offset-2">
+                <a href="/terms" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 underline underline-offset-2">
                   Terms of Service
                 </a>{' '}
                 or{' '}
-                <a href="/privacy" className="text-green-600 hover:text-green-700 underline underline-offset-2">
+                <a href="/privacy" className="text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 underline underline-offset-2">
                   Privacy Policy
                 </a>{' '}
                 pages.

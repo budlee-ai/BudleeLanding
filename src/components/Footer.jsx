@@ -36,7 +36,7 @@ const Footer = ({
     <footer className="w-full">
       {/* Top Section - CTA with Green Gradient */}
       {showTopSection && (
-        <div className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 py-12 md:py-16 px-4 md:px-12 lg:px-20">
+        <div className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-400 dark:from-gray-900 dark:via-emerald-950/50 dark:to-gray-900 py-12 md:py-16 px-4 md:px-12 lg:px-20 border-t border-b border-transparent dark:border-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10">
               {/* Budlee Character - increased size, no yellow circle */}
@@ -54,20 +54,20 @@ const Footer = ({
                 <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">
                   {headline}
                 </h3>
-                <p className="text-green-100 text-base md:text-lg mb-4">
+                <p className="text-green-100 dark:text-gray-300 text-base md:text-lg mb-4">
                   {subtext}
                 </p>
                 {ctaOnClick ? (
                   <Button
                     onClick={ctaOnClick}
-                    className="bg-white text-green-600 hover:bg-green-50 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     {ctaText}
                   </Button>
                 ) : (
                   <a href={ctaLink} rel="noopener noreferrer">
                     <Button
-                      className="bg-white text-green-600 hover:bg-green-50 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       {ctaText}
                     </Button>
@@ -80,7 +80,7 @@ const Footer = ({
       )}
 
       {/* Bottom Section - 3 Column Layout */}
-      <div className="bg-white py-6 px-4 md:px-12 lg:px-20 border-t border-gray-100">
+      <div className="bg-white dark:bg-gray-950 py-6 px-4 md:px-12 lg:px-20 border-t border-gray-100 dark:border-gray-800 transition-colors duration-200">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
@@ -89,69 +89,75 @@ const Footer = ({
               <img
                 src="/images/logo_tagline_black.png"
                 alt="Budlee AI"
-                className="w-40 md:w-52 h-auto object-contain"
+                className="w-40 md:w-52 h-auto object-contain dark:hidden"
+                onContextMenu={(e) => e.preventDefault()}
+              />
+              <img
+                src="/images/logo_tagline_white.png"
+                alt="Budlee AI"
+                className="w-40 md:w-52 h-auto object-contain hidden dark:block"
                 onContextMenu={(e) => e.preventDefault()}
               />
             </div>
 
             {/* Center - Social Icons */}
             <div className="flex items-center gap-6">
-              <a href="https://www.linkedin.com/company/budlee-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://www.linkedin.com/company/budlee-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/BudleeAI" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://www.facebook.com/BudleeAI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://www.instagram.com/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://whatsapp.com/channel/0029VbCMKR8Bfxo8SgsXy93B" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://whatsapp.com/channel/0029VbCMKR8Bfxo8SgsXy93B" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <WhatsAppIcon className="w-5 h-5" />
               </a>
-              <a href="https://youtube.com/@budleeai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://youtube.com/@budleeai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="https://x.com/Budlee_AI" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://x.com/Budlee_AI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="https://www.threads.com/@budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://www.threads.com/@budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <ThreadsIcon className="w-5 h-5" />
               </a>
-              <a href="https://linktr.ee/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-green-600 transition-colors">
+              <a href="https://linktr.ee/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                 <LinktreeIcon className="w-5 h-5" />
               </a>
             </div>
 
             {/* Right - Copyright + Contact/Terms/Privacy */}
             <div className="flex flex-col items-center md:items-end gap-1">
-              <p className="text-gray-400 text-sm text-center md:text-right">
+              <p className="text-gray-400 dark:text-gray-500 text-sm text-center md:text-right">
                 © 2026 Budlee AI. All rights reserved.
               </p>
-              <p className="text-gray-400 text-xs text-center md:text-right">
+              <p className="text-gray-400 dark:text-gray-500 text-xs text-center md:text-right">
                 Budlee AI is a product of Needoo AI Innovations LLP.
               </p>
               <div className="flex items-center gap-3">
-                <Link to="/contact" className="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">
+                <Link to="/contact" className="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium transition-colors">
                   <span className="md:hidden">Contact</span>
                   <span className="hidden md:inline">Contact Us</span>
                 </Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/terms" className="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <Link to="/terms" className="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium transition-colors">
                   <span className="md:hidden">Terms</span>
                   <span className="hidden md:inline">Terms of Use</span>
                 </Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/privacy" className="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <Link to="/privacy" className="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium transition-colors">
                   <span className="md:hidden">Privacy</span>
                   <span className="hidden md:inline">Privacy Policy</span>
                 </Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/refund" className="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <Link to="/refund" className="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium transition-colors">
                   <span className="md:hidden">Refund</span>
                   <span className="hidden md:inline">Refund Policy</span>
                 </Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/cookies" className="text-gray-500 hover:text-green-600 text-sm font-medium transition-colors">
+                <span className="text-gray-300 dark:text-gray-700">|</span>
+                <Link to="/cookies" className="text-gray-500 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 text-sm font-medium transition-colors">
                   <span className="md:hidden">Cookies</span>
                   <span className="hidden md:inline">Cookies Policy</span>
                 </Link>

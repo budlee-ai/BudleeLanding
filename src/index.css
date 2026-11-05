@@ -77,6 +77,9 @@ code {
     * {
         @apply border-border;
     }
+    html.dark {
+        color-scheme: dark;
+    }
     body {
         @apply bg-background text-foreground;
     }
@@ -112,4 +115,26 @@ code {
         border-top-color: inherit;
         border-bottom-color: inherit;
     }
+}
+
+/* Dark mode typography and form overrides */
+.dark .prose {
+    color: #d1d5db;
+}
+.dark .prose strong {
+    color: #f9fafb;
+}
+.dark .prose h1, .dark .prose h2, .dark .prose h3, .dark .prose h4 {
+    color: #f9fafb;
+}
+.dark .prose a {
+    color: #34d399;
+}
+.dark .prose blockquote {
+    color: #9ca3af;
+    border-left-color: #374151;
+}
+.dark .prose code {
+    color: #f3f4f6;
+    background-color: #1f2937;
 }
