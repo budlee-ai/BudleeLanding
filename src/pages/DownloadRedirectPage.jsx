@@ -86,7 +86,7 @@ const DownloadRedirectPage = () => {
               className="transition-transform hover:scale-105 active:scale-95 shadow-md rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             >
               <img
-                src="/images/google-play-badge.svg"
+                src="/images/play_button.png"
                 alt="Get it on Google Play"
                 className="h-12 w-auto"
               />
@@ -96,7 +96,7 @@ const DownloadRedirectPage = () => {
               className="transition-transform hover:scale-105 active:scale-95 shadow-md rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             >
               <img
-                src="/images/app-store-badge.svg"
+                src="/images/app_button.png"
                 alt="Download on the App Store"
                 className="h-12 w-auto"
               />

@@ -71,7 +71,7 @@ const AppDownloadSection = () => {
                   aria-label="Get Budlee AI on Google Play"
                 >
                   <img
-                    src="/images/google-play-badge.svg"
+                    src="/images/play_button.png"
                     alt="Get it on Google Play"
                     className="h-11 md:h-12 w-auto"
                   />
@@ -87,7 +87,7 @@ const AppDownloadSection = () => {
                   aria-label="Download Budlee AI on the App Store"
                 >
                   <img
-                    src="/images/app-store-badge.svg"
+                    src="/images/app_button.png"
                     alt="Download on the App Store"
                     className="h-11 md:h-12 w-auto"
                   />

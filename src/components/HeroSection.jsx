@@ -301,7 +301,7 @@ const HeroSection = ({ videoUrl, videos }) => {
                     className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   >
                     <img
-                      src="/images/google-play-badge.svg"
+                      src="/images/play_button.png"
                       alt="Get it on Google Play"
                       className="h-10 md:h-11 w-auto"
                     />
@@ -316,7 +316,7 @@ const HeroSection = ({ videoUrl, videos }) => {
                     className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   >
                     <img
-                      src="/images/app-store-badge.svg"
+                      src="/images/app_button.png"
                       alt="Download on the App Store"
                       className="h-10 md:h-11 w-auto"
                     />
