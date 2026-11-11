@@ -38,7 +38,7 @@ const LandingPage = () => {
       <main className="flex-grow">
         <HeroSection videos={heroVideos} videoUrl={heroVideoFallback} />
         <AppDownloadSection />
-        <PromoBanner />
+        {/* <PromoBanner /> */}
         <CBSECurriculumSection />
         <AfterSchoolSection />
         <UnderstandingSection videoUrl={chatVideo} />

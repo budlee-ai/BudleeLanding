@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import mixpanel from 'mixpanel-browser';
 import { Play, Atom, FlaskConical, Lightbulb, Star, Sparkles, X, ChevronLeft, ChevronRight, Film } from 'lucide-react';
 import { Button } from './ui/button';
 import { heroData } from '../data/mock.js';
@@ -283,9 +284,48 @@ const HeroSection = ({ videoUrl, videos }) => {
                   <span className="text-lg">→</span>
                 </Button>
               </a>
+
+              {/* App Store & Play Store Badges */}
+              <div className="flex flex-col items-center gap-2 pt-1 w-full">
+                <span className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+                  Or get the mobile app
+                </span>
+                <div className="flex items-center justify-center gap-3 w-full">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.budlee.ai.b2c"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      try { mixpanel.track('App Download Clicked', { store: 'Google Play', location: 'Hero' }); } catch {}
+                    }}
+                    className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                  >
+                    <img
+                      src="/images/google-play-badge.svg"
+                      alt="Get it on Google Play"
+                      className="h-10 md:h-11 w-auto"
+                    />
+                  </a>
+                  <a
+                    href="https://apps.apple.com/in/app/budlee-ai/id6761577103"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      try { mixpanel.track('App Download Clicked', { store: 'App Store', location: 'Hero' }); } catch {}
+                    }}
+                    className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                  >
+                    <img
+                      src="/images/app-store-badge.svg"
+                      alt="Download on the App Store"
+                      className="h-10 md:h-11 w-auto"
+                    />
+                  </a>
+                </div>
+              </div>
               
               {/* School Link */}
-              <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base mt-1 md:mt-2 text-center">
+              <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base mt-1 text-center">
                 Are you a school?{' '}
                 <a 
                   href="/schools" 

@@ -26,6 +26,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 import PromoModal from "./components/PromoModal";
 import OfficialLaunchPage from "./pages/OfficialLaunchPage";
 import TuitionLaunchPage from "./pages/TuitionLaunchPage";
+import DownloadRedirectPage from "./pages/DownloadRedirectPage";
 
 // Scroll to top component
 function ScrollToTop() {
@@ -90,6 +91,7 @@ function App() {
             <Route path="/partner-programs" element={<LandingPage />} />
             <Route path="/official-launch" element={<OfficialLaunchPage />} />
             <Route path="/tuition-launch" element={<TuitionLaunchPage />} />
+            <Route path="/download" element={<DownloadRedirectPage />} />
           </Routes>
         </BrowserRouter>
       </div>

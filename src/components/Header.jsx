@@ -174,6 +174,11 @@ const Header = ({
           <Link to="/pricing" className="text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200">
             Pricing
           </Link>
+          {/* Download App Nav Link */}
+          <a href="#download-app" className="text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200 flex items-center gap-1">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Get App
+          </a>
         </nav>
 
         {/* CTA Buttons, Theme Toggle, and Mobile Menu */}
@@ -381,6 +386,21 @@ const Header = ({
                       Pricing
                     </Link>
 
+                    {/* Download App Link in Mobile Menu */}
+                    <a 
+                      href="#download-app" 
+                      className="flex items-center justify-between py-2 text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 font-medium transition-colors duration-200"
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="flex items-center gap-2">
+                        <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Get Mobile App
+                      </span>
+                      <span className="text-xs bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-bold px-2 py-0.5 rounded-full">
+                        iOS & Android
+                      </span>
+                    </a>
+
                     {/* Theme Mode Switcher in Mobile Drawer */}
                     <div className="pt-3 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between py-2">
                       <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
@@ -419,6 +439,43 @@ const Header = ({
                           Sign Up
                         </Button>
                       </a>
+                    </div>
+
+                    {/* Mobile App Store Badges in Drawer */}
+                    <div className="pt-2 flex flex-col items-center gap-2">
+                      <span className="text-[11px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        Download Mobile App
+                      </span>
+                      <div className="flex items-center justify-center gap-2.5 w-full">
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.budlee.ai.b2c"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
+                          className="transition-transform active:scale-95 shadow-sm rounded-lg overflow-hidden flex-1 flex justify-center"
+                          aria-label="Get Budlee AI on Google Play"
+                        >
+                          <img
+                            src="/images/google-play-badge.svg"
+                            alt="Get it on Google Play"
+                            className="h-9 w-auto"
+                          />
+                        </a>
+                        <a
+                          href="https://apps.apple.com/in/app/budlee-ai/id6761577103"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={closeMobileMenu}
+                          className="transition-transform active:scale-95 shadow-sm rounded-lg overflow-hidden flex-1 flex justify-center"
+                          aria-label="Download Budlee AI on the App Store"
+                        >
+                          <img
+                            src="/images/app-store-badge.svg"
+                            alt="Download on the App Store"
+                            className="h-9 w-auto"
+                          />
+                        </a>
+                      </div>
                     </div>
 
                     {ctaText !== "Explore Budlee AI" && (

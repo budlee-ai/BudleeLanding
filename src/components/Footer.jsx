@@ -1,4 +1,5 @@
 import React from 'react';
+import mixpanel from 'mixpanel-browser';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { Linkedin, Facebook, Instagram, Youtube, Twitter } from 'lucide-react';
@@ -57,22 +58,60 @@ const Footer = ({
                 <p className="text-green-100 dark:text-gray-300 text-base md:text-lg mb-4">
                   {subtext}
                 </p>
-                {ctaOnClick ? (
-                  <Button
-                    onClick={ctaOnClick}
-                    className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    {ctaText}
-                  </Button>
-                ) : (
-                  <a href={ctaLink} rel="noopener noreferrer">
+                <div className="flex flex-col sm:flex-row flex-wrap items-center gap-4 justify-center md:justify-start">
+                  {ctaOnClick ? (
                     <Button
-                      className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                      onClick={ctaOnClick}
+                      className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
                     >
                       {ctaText}
                     </Button>
-                  </a>
-                )}
+                  ) : (
+                    <a href={ctaLink} rel="noopener noreferrer" className="w-full sm:w-auto">
+                      <Button
+                        className="bg-white dark:bg-gradient-to-r dark:from-green-500 dark:via-emerald-500 dark:to-teal-400 text-green-600 dark:text-white hover:bg-green-50 dark:hover:from-green-600 dark:hover:via-emerald-600 dark:hover:to-teal-500 font-bold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
+                      >
+                        {ctaText}
+                      </Button>
+                    </a>
+                  )}
+
+                  {/* App Store & Google Play Badges in Footer */}
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.budlee.ai.b2c"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        try { mixpanel.track('App Download Clicked', { store: 'Google Play', location: 'Footer' }); } catch {}
+                      }}
+                      className="transition-transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/50"
+                      aria-label="Get Budlee AI on Google Play"
+                    >
+                      <img
+                        src="/images/google-play-badge.svg"
+                        alt="Get it on Google Play"
+                        className="h-11 w-auto"
+                      />
+                    </a>
+                    <a
+                      href="https://apps.apple.com/in/app/budlee-ai/id6761577103"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => {
+                        try { mixpanel.track('App Download Clicked', { store: 'App Store', location: 'Footer' }); } catch {}
+                      }}
+                      className="transition-transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-white/50"
+                      aria-label="Download Budlee AI on the App Store"
+                    >
+                      <img
+                        src="/images/app-store-badge.svg"
+                        alt="Download on the App Store"
+                        className="h-11 w-auto"
+                      />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
