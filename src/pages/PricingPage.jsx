@@ -419,25 +419,30 @@ const PricingPage = () => {
               <>
                 {/* Cycle Toggle - Light / Dark Style */}
                 {availableCycles.length > 1 && (
-                  <div className="flex justify-center mb-12">
-                    <div className="bg-gray-100 dark:bg-gray-800 p-1.5 rounded-xl flex items-center gap-1 border border-transparent dark:border-gray-700">
-                      {availableCycles.map((cycle) => (
-                        <button
-                          key={cycle}
-                          onClick={() => setActiveCycle(cycle)}
-                          className={cn(
-                            "relative rounded-lg px-6 py-2 text-sm font-bold transition-all duration-300 tracking-wide cursor-pointer",
-                            activeCycle === cycle ? "bg-white dark:bg-gray-900 text-green-600 dark:text-emerald-400 shadow-sm" : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-                          )}
-                        >
-                          {cycleLabels[cycle] || cycle}
-                          {cycle === 'yearly' && (
-                            <span className="ml-1.5 px-1.5 py-0.5 text-[10px] font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full">
-                              BEST
-                            </span>
-                          )}
-                        </button>
-                      ))}
+                  <div className="w-full flex justify-center mb-8 sm:mb-12">
+                    <div className="max-w-full overflow-x-auto scrollbar-hide py-1 px-4 sm:px-0">
+                      <div className="inline-flex items-center gap-1 bg-gray-100 dark:bg-gray-800 p-1 sm:p-1.5 rounded-xl border border-transparent dark:border-gray-700 shadow-inner">
+                        {availableCycles.map((cycle) => (
+                          <button
+                            key={cycle}
+                            type="button"
+                            onClick={() => setActiveCycle(cycle)}
+                            className={cn(
+                              "relative shrink-0 whitespace-nowrap rounded-lg px-3 sm:px-5 md:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-bold transition-all duration-300 tracking-wide cursor-pointer flex items-center justify-center",
+                              activeCycle === cycle
+                                ? "bg-white dark:bg-gray-900 text-green-600 dark:text-emerald-400 shadow-sm"
+                                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                            )}
+                          >
+                            <span>{cycleLabels[cycle] || cycle}</span>
+                            {cycle === 'yearly' && (
+                              <span className="ml-1 sm:ml-1.5 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-extrabold bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full leading-none">
+                                BEST
+                              </span>
+                            )}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
