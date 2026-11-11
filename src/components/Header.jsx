@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { ChevronDown, Menu, X, Sparkles } from 'lucide-react';
@@ -17,6 +18,8 @@ const Header = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(65);
+  const headerRef = useRef(null);
   const resourcesRef = useRef(null);
   const aboutRef = useRef(null);
 
@@ -26,6 +29,39 @@ const Header = ({
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Keep headerHeight in sync for the portal overlay offset
+  useEffect(() => {
+    const measure = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.getBoundingClientRect().height);
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, []);
+
+  // Lock body scroll when mobile menu is open to prevent background scroll
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = prev; };
+    }
+  }, [isMobileMenuOpen]);
+
+  // Close mobile menu on resize to desktop width
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+        setActiveDropdown(null);
+      }
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
 
   // Handle clicks outside dropdowns to close them (only on wide screens)
@@ -77,10 +113,14 @@ const Header = ({
   };
 
   return (
-    <header className={`w-full py-3 md:py-4 px-4 md:px-12 lg:px-20 sticky top-0 z-50 transition-all duration-300 ${isScrolled
-      ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md border-b border-transparent dark:border-gray-800/80'
-      : 'bg-gradient-to-r from-green-50/80 via-yellow-50/80 to-orange-50/80 dark:from-gray-950/90 dark:via-gray-900/90 dark:to-gray-950/90 border-b border-transparent dark:border-gray-800/40'
-      }`}>
+    <>
+      <header
+        ref={headerRef}
+        className={`w-full py-3 md:py-4 px-4 md:px-12 lg:px-20 sticky top-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md border-b border-transparent dark:border-gray-800/80'
+          : 'bg-gradient-to-r from-green-50/80 via-yellow-50/80 to-orange-50/80 dark:from-gray-950/90 dark:via-gray-900/90 dark:to-gray-950/90 border-b border-transparent dark:border-gray-800/40'
+        }`}
+      >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo - Clickable, links to home */}
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
@@ -283,19 +323,27 @@ const Header = ({
             )}
           </button>
         </div>
+      </div>
+    </header>
 
-        {/* Mobile Menu Overlay */}
-        {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <div
-              className="md:hidden fixed inset-0 top-[73px] bg-black/40 backdrop-blur-sm z-30"
-              onClick={closeMobileMenu}
-            />
-            {/* Menu Content */}
-            <div className="md:hidden fixed inset-0 top-[73px] z-40 overflow-y-auto">
-              <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg min-h-full border-t border-gray-100 dark:border-gray-800">
-                <div className="px-4 py-6 space-y-4">
+    {/* Mobile Menu Overlay — rendered in a portal so it escapes the sticky/backdrop-filter
+        stacking context that would otherwise clip fixed children on scroll */}
+    {isMobileMenuOpen && createPortal(
+      <>
+        {/* Backdrop */}
+        <div
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[998]"
+          style={{ top: `${headerHeight}px` }}
+          onClick={closeMobileMenu}
+          aria-hidden="true"
+        />
+        {/* Drawer */}
+        <div
+          className="fixed inset-x-0 bottom-0 z-[999] overflow-y-auto overscroll-contain"
+          style={{ top: `${headerHeight}px` }}
+        >
+          <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg min-h-full border-t border-gray-100 dark:border-gray-800">
+            <div className="px-4 py-6 space-y-4">
                   {/* Mobile Navigation Menu */}
                   <div className="space-y-4">
                     {/* Resources Dropdown */}
@@ -512,10 +560,10 @@ const Header = ({
                 </div>
               </div>
             </div>
-          </>
+          </>,
+          document.body
         )}
-      </div>
-    </header>
+    </>
   );
 };
 
