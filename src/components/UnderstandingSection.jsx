@@ -26,7 +26,7 @@ const UnderstandingSection = ({ videoUrl }) => {
                   {/* Video Frame Container */}
                   <div className="relative bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl w-[300px] h-[220px] md:w-[420px] md:h-[280px] border-4 border-white dark:border-gray-800">
                     {/* Video Placeholder Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-100 via-white to-yellow-50 dark:from-gray-900 dark:via-gray-850 dark:to-gray-900">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-100 via-white to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
                       {/* Decorative elements inside video frame */}
                       <div className="absolute top-4 left-4 w-12 h-12 bg-green-200 dark:bg-emerald-800/40 rounded-full opacity-40"></div>
                       <div className="absolute top-1/4 right-1/4 w-8 h-8 bg-orange-200 dark:bg-orange-800/40 rounded-full opacity-30"></div>

@@ -133,7 +133,7 @@ const PromoBanner = () => {
         <div className="w-full py-3 md:py-5 px-4 flex justify-center items-center">
             <div
                 onClick={openPromoModal}
-                className="promo-banner-card group relative flex flex-col items-center justify-center gap-1.5 px-6 py-3.5 md:px-10 md:py-4 rounded-2xl md:rounded-[26px] border border-white/30 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer max-w-full md:max-w-fit overflow-hidden text-center select-none"
+                className="promo-banner-card group relative flex flex-col items-center justify-center gap-1.5 px-6 py-3.5 md:px-10 md:py-4 rounded-2xl md:rounded-[26px] border border-white/30 dark:border-emerald-700/50 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 cursor-pointer max-w-full md:max-w-fit overflow-hidden text-center select-none"
             >
                 {/* Close Button */}
                 <button
@@ -245,6 +245,19 @@ const PromoBanner = () => {
                     background: linear-gradient(135deg, #047857 0%, #0d9488 35%, #059669 70%, #10b981 100%);
                     background-size: 250% 250%;
                     animation: promo-gradient-flow 7s ease infinite, promo-glow-pulse 2.5s ease-in-out infinite;
+                }
+                :is(.dark) .promo-banner-card {
+                    background: linear-gradient(135deg, #064e3b 0%, #0f766e 35%, #065f46 70%, #047857 100%);
+                    background-size: 250% 250%;
+                    animation: promo-gradient-flow 7s ease infinite, promo-glow-pulse-dark 2.5s ease-in-out infinite;
+                }
+                @keyframes promo-glow-pulse-dark {
+                    0%, 100% {
+                        box-shadow: 0 4px 20px -2px rgba(4, 120, 87, 0.5), 0 0 15px rgba(13, 148, 136, 0.3);
+                    }
+                    50% {
+                        box-shadow: 0 8px 30px 2px rgba(4, 120, 87, 0.8), 0 0 28px rgba(52, 211, 153, 0.4);
+                    }
                 }
                 .animate-banner-shimmer {
                     animation: banner-shimmer 3.2s infinite ease-in-out;
