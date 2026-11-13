@@ -112,69 +112,72 @@ const PromoModal = () => {
   const isVideo = isVideoMedia(posterUrl);
 
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(false);
-  const wasAutoplayMutedRef = useRef(false);
+  // Start muted so browser autoplay policy always allows playback immediately (Issue 3 fix)
+  const [isMuted, setIsMuted] = useState(true);
+  // Tracks if the user has ever interacted — persists across slide changes (Issue 4 fix)
+  const userHasInteractedRef = useRef(false);
 
-  // Auto-scrolling logic:
-  // For images, advance after 5 seconds if multiple promos exist.
-  // For videos, the carousel advances upon video completion (onEnded).
+  // Auto-scrolling: images advance after 5s. Videos advance on onEnded.
   useEffect(() => {
     if (!isOpen || promotions.length <= 1) return;
     if (isVideo) return;
-
     const timer = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % promotions.length);
-    }, 5000); // 5 seconds interval for images
-
+    }, 5000);
     return () => clearTimeout(timer);
   }, [isOpen, currentIndex, isVideo, promotions.length]);
 
-  // Attempt unmuted autoplay when video slide becomes active.
-  // If the browser blocks unmuted autoplay, immediately fall back to muted.
+  // When a video slide becomes active, play it.
+  // If user has already interacted this session, play unmuted. Otherwise play muted.
   useEffect(() => {
     if (!isOpen || !isVideo) return;
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = false;
-    setIsMuted(false);
-    wasAutoplayMutedRef.current = false;
-
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        // Browser autoplay policy prevented playback with sound
-        console.log('[PromoModal] Unmuted autoplay blocked, falling back to muted playback:', error);
-        video.muted = true;
-        setIsMuted(true);
-        wasAutoplayMutedRef.current = true;
-        video.play().catch((err) => {
-          console.error('[PromoModal] Muted playback also failed:', err);
-        });
-      });
+    if (userHasInteractedRef.current) {
+      // User already interacted — try unmuted
+      video.muted = false;
+      setIsMuted(false);
+    } else {
+      // No interaction yet — start muted so autoplay policy allows it
+      video.muted = true;
+      setIsMuted(true);
     }
+
+    video.play().catch(() => {
+      // If unmuted play fails (shouldn't happen since muted), force muted
+      video.muted = true;
+      setIsMuted(true);
+      video.play().catch((err) => {
+        console.error('[PromoModal] Muted playback failed:', err);
+      });
+    });
   }, [isOpen, currentIndex, isVideo, posterUrl]);
 
-  // Unmute on first user interaction anywhere on the window/modal if initial autoplay was forced to mute
+  // On the FIRST user interaction (tap/click anywhere), unmute the video.
+  // This listener is intentionally NOT re-registered on currentIndex change,
+  // so userHasInteractedRef persists across all slide changes in this session.
   useEffect(() => {
     if (!isOpen || !isVideo) return;
+    if (userHasInteractedRef.current) return; // already interacted
 
-    const handleUserInteraction = () => {
-      if (wasAutoplayMutedRef.current && videoRef.current) {
+    const handleInteraction = () => {
+      userHasInteractedRef.current = true;
+      if (videoRef.current) {
         videoRef.current.muted = false;
         setIsMuted(false);
-        wasAutoplayMutedRef.current = false;
       }
     };
 
-    window.addEventListener('click', handleUserInteraction, { capture: true, once: true });
-    window.addEventListener('touchstart', handleUserInteraction, { capture: true, once: true });
+    window.addEventListener('click', handleInteraction, { capture: true, once: true });
+    window.addEventListener('touchend', handleInteraction, { capture: true, once: true });
 
     return () => {
-      window.removeEventListener('click', handleUserInteraction, { capture: true });
-      window.removeEventListener('touchstart', handleUserInteraction, { capture: true });
+      window.removeEventListener('click', handleInteraction, { capture: true });
+      window.removeEventListener('touchend', handleInteraction, { capture: true });
     };
-  }, [isOpen, currentIndex, isVideo]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, isVideo]); // No currentIndex dep — listener persists across slides
 
   // Pause video cleanly when modal closes
   useEffect(() => {
@@ -223,20 +226,13 @@ const PromoModal = () => {
         <DialogPrimitive.Content
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
-          className={[
-            // Mobile: scroll from top with safe-area padding, no clipping
-            "fixed z-[60] left-1/2 -translate-x-1/2",
-            "top-0 h-[100dvh] w-full flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden",
-            "pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] px-3",
-            "focus:outline-none",
-            "data-[state=open]:animate-in data-[state=closed]:animate-out",
-            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
-            "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 duration-300",
-            // Desktop: centered dialog
-            "sm:top-1/2 sm:h-auto sm:-translate-y-1/2 sm:w-fit sm:max-w-[85vw] sm:max-h-[90vh]",
-            "sm:pt-0 sm:pb-0 sm:px-0 sm:justify-center sm:overflow-visible",
-          ].join(' ')}
+          className="fixed inset-0 z-[60] overflow-y-auto focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 duration-300"
         >
+          {/* This inner wrapper is the standard pattern for a centered+scrollable modal:
+              min-h-full ensures the flex container is at least viewport height so
+              items-center centres the card when it's short, and overflow-y-auto on
+              the parent lets it scroll when the card is taller than the viewport. */}
+          <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
           <div className="relative flex flex-col items-center w-full sm:w-auto">
 
             <DialogPrimitive.Title className="sr-only">Promotions</DialogPrimitive.Title>
@@ -328,7 +324,7 @@ const PromoModal = () => {
                         }
                       }}
                       onContextMenu={(e) => e.preventDefault()}
-                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none rounded-[12px] sm:rounded-[24px] ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none rounded-[12px] sm:rounded-[24px] [clip-path:inset(0_round_12px)] sm:[clip-path:inset(0_round_24px)] ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
                   ) : (
                     <img
@@ -401,6 +397,7 @@ const PromoModal = () => {
               </div>
             )}
           </div>
+          </div>{/* end min-h-full centering wrapper */}
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
 
