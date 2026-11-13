@@ -111,22 +111,29 @@ const PromoModal = () => {
   }
   const isVideo = isVideoMedia(posterUrl);
 
-  const videoRef = useRef(null);
+  const videoRefs = useRef({});
   // Start muted so browser autoplay policy always allows playback immediately
   const [isMuted, setIsMuted] = useState(true);
   // Tracks if the user has ever interacted — persists across slide changes
   const userHasInteractedRef = useRef(false);
 
+  // Helper to get currently active video DOM element
+  const getActiveVideo = () => {
+    if (!currentPromo) return null;
+    return videoRefs.current[currentPromo.id] || null;
+  };
+
   // Manual mute toggle
   const toggleMute = (e) => {
     if (e) e.stopPropagation();
-    if (!videoRef.current) return;
-    const nextMuted = !videoRef.current.muted;
-    videoRef.current.muted = nextMuted;
+    const video = getActiveVideo();
+    if (!video) return;
+    const nextMuted = !video.muted;
+    video.muted = nextMuted;
     setIsMuted(nextMuted);
     if (!nextMuted) {
       userHasInteractedRef.current = true;
-      videoRef.current.play().catch(() => {});
+      video.play().catch(() => {});
     }
   };
 
@@ -140,14 +147,25 @@ const PromoModal = () => {
     return () => clearTimeout(timer);
   }, [isOpen, currentIndex, isVideo, promotions.length]);
 
-  // When a video slide becomes active, play it.
-  // If user has already interacted this session, play unmuted. Otherwise play muted.
+  // When active slide changes:
+  // Pause any inactive videos. Play the active video.
+  // Because video elements remain mounted in the DOM, user activation and buffer are preserved across loops!
   useEffect(() => {
-    if (!isOpen || !isVideo) return;
-    const video = videoRef.current;
+    if (!isOpen) return;
+
+    // Pause all other videos
+    Object.entries(videoRefs.current).forEach(([id, el]) => {
+      if (el && String(id) !== String(currentPromo?.id)) {
+        el.pause();
+      }
+    });
+
+    if (!isVideo) return;
+    const video = getActiveVideo();
     if (!video) return;
 
-    if (userHasInteractedRef.current) {
+    // If user has unmuted earlier in this session, keep playing unmuted!
+    if (userHasInteractedRef.current && !isMuted) {
       video.muted = false;
       setIsMuted(false);
     } else {
@@ -155,26 +173,28 @@ const PromoModal = () => {
       setIsMuted(true);
     }
 
+    video.currentTime = 0;
     video.play().catch(() => {
-      // If unmuted play fails (e.g. browser blocks timer-triggered play), fall back to muted
+      // Fallback to muted only if browser strictly blocks
       video.muted = true;
       setIsMuted(true);
       video.play().catch((err) => {
-        console.error('[PromoModal] Muted playback failed:', err);
+        console.error('[PromoModal] Playback failed:', err);
       });
     });
-  }, [isOpen, currentIndex, isVideo, posterUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, currentIndex, isVideo, currentPromo?.id]);
 
   // Whenever video is muted, ANY tap or click on the modal / video card un-mutes it.
-  // This re-attaches automatically if the video is ever forced back to muted on a loop.
   useEffect(() => {
     if (!isOpen || !isVideo || !isMuted) return;
 
     const handleInteraction = (e) => {
       // Don't intercept close or navigation buttons or links
       if (e.target && (e.target.closest('button') || e.target.closest('a'))) return;
-      if (videoRef.current) {
-        videoRef.current.muted = false;
+      const video = getActiveVideo();
+      if (video) {
+        video.muted = false;
         setIsMuted(false);
         userHasInteractedRef.current = true;
       }
@@ -187,12 +207,18 @@ const PromoModal = () => {
       window.removeEventListener('click', handleInteraction, { capture: true });
       window.removeEventListener('touchend', handleInteraction, { capture: true });
     };
-  }, [isOpen, isVideo, isMuted]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, isVideo, isMuted, currentPromo?.id]);
 
-  // Pause video cleanly when modal closes
+  // Pause all videos cleanly when modal closes
   useEffect(() => {
-    if (!isOpen && videoRef.current) {
-      videoRef.current.pause();
+    if (!isOpen) {
+      Object.values(videoRefs.current).forEach((el) => {
+        if (el) {
+          el.pause();
+          el.currentTime = 0;
+        }
+      });
     }
   }, [isOpen]);
 
@@ -334,42 +360,62 @@ const PromoModal = () => {
                     </div>
                   )}
 
-                  {isVideo ? (
-                    <video
-                      ref={videoRef}
-                      key={posterUrl}
-                      src={posterUrl}
-                      autoPlay
-                      playsInline
-                      webkit-playsinline="true"
-                      loop={promotions.length === 1}
-                      muted={isMuted}
-                      controls={false}
-                      preload="auto"
-                      controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
-                      disablePictureInPicture
-                      disableRemotePlayback
-                      onLoadedData={() => handleImageLoad(currentPromo.id)}
-                      onCanPlay={() => handleImageLoad(currentPromo.id)}
-                      onError={() => handleImageLoad(currentPromo.id)}
-                      onEnded={() => {
-                        if (promotions.length > 1) {
-                          setCurrentIndex((prev) => (prev + 1) % promotions.length);
-                        }
-                      }}
-                      onContextMenu={(e) => e.preventDefault()}
-                      className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none promo-media-element ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                    />
-                  ) : (
-                    <img
-                      src={posterUrl}
-                      alt={`Promotion ${currentIndex + 1}`}
-                      onLoad={() => handleImageLoad(currentPromo.id)}
-                      onError={() => handleImageLoad(currentPromo.id)}
-                      className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-700 promo-media-element ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
-                      onContextMenu={(e) => e.preventDefault()}
-                    />
-                  )}
+                  {promotions.map((promo, idx) => {
+                    const rawP = promo.poster_image_url || promo.poster_image;
+                    let pUrl = rawP;
+                    if (pUrl && !pUrl.startsWith('http://') && !pUrl.startsWith('https://')) {
+                      const cleanP = pUrl.startsWith('/') ? pUrl.slice(1) : pUrl;
+                      pUrl = `${BACKEND_URL.replace(/\/api$/, '')}/${cleanP}`;
+                    }
+                    const isVid = isVideoMedia(pUrl);
+                    const isActive = idx === currentIndex;
+                    const isLoaded = imagesLoaded[promo.id];
+
+                    if (isVid) {
+                      return (
+                        <video
+                          key={promo.id}
+                          ref={(el) => { if (el) videoRefs.current[promo.id] = el; }}
+                          src={pUrl}
+                          playsInline
+                          webkit-playsinline="true"
+                          loop={promotions.length === 1}
+                          muted={isMuted}
+                          controls={false}
+                          preload="auto"
+                          controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+                          disablePictureInPicture
+                          disableRemotePlayback
+                          onLoadedData={() => handleImageLoad(promo.id)}
+                          onCanPlay={() => handleImageLoad(promo.id)}
+                          onError={() => handleImageLoad(promo.id)}
+                          onEnded={() => {
+                            if (promotions.length > 1) {
+                              setCurrentIndex((prev) => (prev + 1) % promotions.length);
+                            }
+                          }}
+                          onContextMenu={(e) => e.preventDefault()}
+                          className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-500 pointer-events-none promo-media-element ${
+                            isActive && isLoaded ? 'opacity-100 relative' : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
+                          }`}
+                        />
+                      );
+                    }
+
+                    return (
+                      <img
+                        key={promo.id}
+                        src={pUrl}
+                        alt={`Promotion ${idx + 1}`}
+                        onLoad={() => handleImageLoad(promo.id)}
+                        onError={() => handleImageLoad(promo.id)}
+                        className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-500 promo-media-element ${
+                          isActive && isLoaded ? 'opacity-100 relative' : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
+                        }`}
+                        onContextMenu={(e) => e.preventDefault()}
+                      />
+                    );
+                  })}
 
                   {isCurrentImageLoaded && (
                     <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-gradient-to-tr from-white/5 to-transparent animate-in fade-in duration-1000"></div>
