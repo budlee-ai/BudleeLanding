@@ -372,7 +372,16 @@ const PromoModal = () => {
                     }
                     const isVid = isVideoMedia(pUrl);
                     const isActive = idx === currentIndex;
-                    const isLoaded = imagesLoaded[promo.id];
+                    const isLoaded = !!imagesLoaded[promo.id];
+                    const nextIdx = promotions.length > 1 ? (currentIndex + 1) % promotions.length : null;
+                    const isNextToPreload = nextIdx !== null && idx === nextIdx && isCurrentImageLoaded;
+
+                    // Serial loading:
+                    // 1. First/active slide downloads first (100% bandwidth).
+                    // 2. Next slide only downloads AFTER the active slide has finished loading.
+                    // 3. Slides that have already loaded stay in DOM so they loop without re-downloading.
+                    const shouldRender = isActive || isLoaded || isNextToPreload;
+                    if (!shouldRender) return null;
 
                     if (isVid) {
                       return (
@@ -380,7 +389,7 @@ const PromoModal = () => {
                           key={promo.id}
                           ref={(el) => { if (el) videoRefs.current[promo.id] = el; }}
                           src={pUrl}
-                          autoPlay
+                          autoPlay={isActive}
                           playsInline
                           webkit-playsinline="true"
                           loop={promotions.length === 1}
