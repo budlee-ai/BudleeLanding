@@ -311,16 +311,18 @@ const PromoModal = () => {
               {/* The Poster Area */}
               <div className="relative w-full sm:w-auto overflow-visible group">
 
-                {/* Close Button — always visible, anchored to card */}
-                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[90]">
-                  <button
-                    onClick={handleManualClose}
-                    className="flex items-center justify-center p-2 sm:p-2.5 bg-black/60 hover:bg-black/80 text-white rounded-full transition-all duration-300 hover:rotate-90 active:scale-90 focus:outline-none border border-white/40 backdrop-blur-md shadow-xl"
-                    aria-label="Close"
-                  >
-                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </button>
-                </div>
+                {/* Close Button — only visible once current promo media has loaded */}
+                {isCurrentImageLoaded && (
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[90]">
+                    <button
+                      onClick={handleManualClose}
+                      className="flex items-center justify-center p-2 sm:p-2.5 bg-black/60 hover:bg-black/80 text-white rounded-full transition-all duration-300 hover:rotate-90 active:scale-90 focus:outline-none border border-white/40 backdrop-blur-md shadow-xl"
+                      aria-label="Close"
+                    >
+                      <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </button>
+                  </div>
+                )}
 
                 {/* Mobile overlay arrows — always visible on mobile */}
                 {promotions.length > 1 && isCurrentImageLoaded && (
@@ -347,9 +349,9 @@ const PromoModal = () => {
                   className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] ${isVideo ? 'cursor-pointer select-none' : ''}`}
                 >
 
-                  {/* Shimmer Placeholder */}
+                  {/* Shimmer Placeholder — visible while loading */}
                   {!isCurrentImageLoaded && (
-                    <div className="absolute inset-0 z-10 overflow-hidden bg-white/5 min-h-[300px] sm:min-w-[400px]">
+                    <div className="w-[85vw] max-w-[340px] sm:w-[380px] h-[60vh] sm:h-[72vh] overflow-hidden bg-white/5 relative flex items-center justify-center promo-media-element">
                       <div className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }}></div>
                     </div>
                   )}
