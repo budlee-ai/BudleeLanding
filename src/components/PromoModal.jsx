@@ -182,15 +182,22 @@ const PromoModal = () => {
       setIsMuted(true);
     }
 
-    video.currentTime = 0;
-    video.play().catch(() => {
-      // Fallback to muted only if browser strictly blocks
-      video.muted = true;
-      setIsMuted(true);
-      video.play().catch((err) => {
-        console.error('[PromoModal] Playback failed:', err);
+    // Only reset currentTime if playback had already progressed
+    if (video.currentTime > 0) {
+      video.currentTime = 0;
+    }
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Fallback to muted only if browser strictly blocks
+        video.muted = true;
+        setIsMuted(true);
+        video.play().catch((err) => {
+          console.error('[PromoModal] Playback failed:', err);
+        });
       });
-    });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, currentIndex, isVideo, currentPromo?.id]);
 
@@ -346,12 +353,12 @@ const PromoModal = () => {
                 <div
                   onClick={isVideo ? handleFrameClick : undefined}
                   onTouchEnd={isVideo ? handleFrameClick : undefined}
-                  className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] ${isVideo ? 'cursor-pointer select-none' : ''}`}
+                  className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] min-h-[350px] min-w-[200px] sm:min-h-[500px] sm:min-w-[300px] ${isVideo ? 'cursor-pointer select-none' : ''}`}
                 >
 
                   {/* Shimmer Placeholder — visible while loading */}
                   {!isCurrentImageLoaded && (
-                    <div className="w-[85vw] max-w-[340px] sm:w-[380px] h-[60vh] sm:h-[72vh] overflow-hidden bg-white/5 relative flex items-center justify-center promo-media-element">
+                    <div className="absolute inset-0 z-10 overflow-hidden bg-white/5 flex items-center justify-center promo-media-element">
                       <div className="w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }}></div>
                     </div>
                   )}
@@ -373,17 +380,22 @@ const PromoModal = () => {
                           key={promo.id}
                           ref={(el) => { if (el) videoRefs.current[promo.id] = el; }}
                           src={pUrl}
+                          autoPlay
                           playsInline
                           webkit-playsinline="true"
                           loop={promotions.length === 1}
                           muted={isMuted}
+                          defaultMuted
                           controls={false}
                           preload="auto"
                           controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
                           disablePictureInPicture
                           disableRemotePlayback
+                          onLoadedMetadata={() => handleImageLoad(promo.id)}
                           onLoadedData={() => handleImageLoad(promo.id)}
                           onCanPlay={() => handleImageLoad(promo.id)}
+                          onPlay={() => handleImageLoad(promo.id)}
+                          onPlaying={() => handleImageLoad(promo.id)}
                           onError={() => handleImageLoad(promo.id)}
                           onEnded={() => {
                             if (promotions.length > 1) {
@@ -392,7 +404,7 @@ const PromoModal = () => {
                           }}
                           onContextMenu={(e) => e.preventDefault()}
                           className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-500 pointer-events-none promo-media-element ${
-                            isActive && isLoaded ? 'opacity-100 relative' : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
+                            isActive ? (isLoaded ? 'opacity-100 relative' : 'opacity-0 relative') : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
                           }`}
                         />
                       );
@@ -406,7 +418,7 @@ const PromoModal = () => {
                         onLoad={() => handleImageLoad(promo.id)}
                         onError={() => handleImageLoad(promo.id)}
                         className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-500 promo-media-element ${
-                          isActive && isLoaded ? 'opacity-100 relative' : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
+                          isActive ? (isLoaded ? 'opacity-100 relative' : 'opacity-0 relative') : 'opacity-0 pointer-events-none absolute inset-0 m-auto'
                         }`}
                         onContextMenu={(e) => e.preventDefault()}
                       />
