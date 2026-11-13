@@ -223,47 +223,79 @@ const PromoModal = () => {
         <DialogPrimitive.Content
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
-          className="fixed left-[50%] top-[50%] z-[60] w-[92vw] sm:w-fit max-w-full sm:max-w-[85vw] max-h-[98vh] translate-x-[-50%] translate-y-[-50%] focus:outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95 data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 duration-300 flex flex-col items-center justify-center p-0"
+          className={[
+            // Mobile: scroll from top with safe-area padding, no clipping
+            "fixed z-[60] left-1/2 -translate-x-1/2",
+            "top-0 h-[100dvh] w-full flex flex-col items-center justify-start overflow-y-auto overflow-x-hidden",
+            "pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] px-3",
+            "focus:outline-none",
+            "data-[state=open]:animate-in data-[state=closed]:animate-out",
+            "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+            "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 duration-300",
+            // Desktop: centered dialog
+            "sm:top-1/2 sm:h-auto sm:-translate-y-1/2 sm:w-fit sm:max-w-[85vw] sm:max-h-[90vh]",
+            "sm:pt-0 sm:pb-0 sm:px-0 sm:justify-center sm:overflow-visible",
+          ].join(' ')}
         >
-          <div className="relative flex flex-col items-center w-full">
+          <div className="relative flex flex-col items-center w-full sm:w-auto">
 
             <DialogPrimitive.Title className="sr-only">Promotions</DialogPrimitive.Title>
             <DialogPrimitive.Description className="sr-only">View current promotions.</DialogPrimitive.Description>
 
             {/* Core Interaction Area */}
-            <div className="relative flex items-center justify-center w-full">
+            <div className="relative flex items-center justify-center w-full sm:w-auto">
               {/* External Arrows - Desktop Only */}
               {promotions.length > 1 && isCurrentImageLoaded && (
                 <>
                   <button
                     onClick={prevPromo}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 active:scale-90 backdrop-blur-md z-[70] hidden sm:flex border border-white/30 shadow-lg"
+                    className="absolute left-[-3.5rem] top-1/2 -translate-y-1/2 p-3 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 active:scale-90 backdrop-blur-md z-[70] hidden sm:flex border border-white/30 shadow-lg"
                   >
                     <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
                   </button>
                   <button
                     onClick={nextPromo}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 active:scale-90 backdrop-blur-md z-[70] hidden sm:flex border border-white/30 shadow-lg"
+                    className="absolute right-[-3.5rem] top-1/2 -translate-y-1/2 p-3 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all duration-300 active:scale-90 backdrop-blur-md z-[70] hidden sm:flex border border-white/30 shadow-lg"
                   >
                     <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
                   </button>
                 </>
               )}
 
-              {/* Close Button - Always Visible */}
-              <div className="absolute top-3 right-3 sm:top-5 sm:right-5 z-[80]">
-                <button
-                  onClick={handleManualClose}
-                  className="p-2 sm:p-2.5 bg-black/50 hover:bg-black/70 text-white rounded-full transition-all duration-300 hover:rotate-90 active:scale-90 focus:outline-none border border-white/30 backdrop-blur-md shadow-lg"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
-                </button>
-              </div>
-
               {/* The Poster Area */}
               <div className="relative w-full sm:w-auto overflow-visible group">
-                <div className="relative overflow-hidden rounded-[10px] sm:rounded-[24px] shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center">
+
+                {/* Close Button — always visible, anchored to card */}
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[90]">
+                  <button
+                    onClick={handleManualClose}
+                    className="flex items-center justify-center p-2 sm:p-2.5 bg-black/60 hover:bg-black/80 text-white rounded-full transition-all duration-300 hover:rotate-90 active:scale-90 focus:outline-none border border-white/40 backdrop-blur-md shadow-xl"
+                    aria-label="Close"
+                  >
+                    <X className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </button>
+                </div>
+
+                {/* Mobile overlay arrows — always visible on mobile */}
+                {promotions.length > 1 && isCurrentImageLoaded && (
+                  <>
+                    <button
+                      onClick={prevPromo}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 p-2.5 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all backdrop-blur-sm z-[80] flex sm:hidden border border-white/25 active:scale-90 shadow-lg"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={nextPromo}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-black/40 hover:bg-black/60 text-white rounded-full transition-all backdrop-blur-sm z-[80] flex sm:hidden border border-white/25 active:scale-90 shadow-lg"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
+
+                {/* Media card */}
+                <div className="relative overflow-hidden rounded-[12px] sm:rounded-[24px] shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)]">
 
                   {/* Shimmer Placeholder */}
                   {!isCurrentImageLoaded && (
@@ -283,6 +315,7 @@ const PromoModal = () => {
                       loop={promotions.length === 1}
                       muted={isMuted}
                       controls={false}
+                      preload="auto"
                       controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
                       disablePictureInPicture
                       disableRemotePlayback
@@ -295,7 +328,7 @@ const PromoModal = () => {
                         }
                       }}
                       onContextMenu={(e) => e.preventDefault()}
-                      className={`w-full sm:w-auto h-auto max-w-full max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none rounded-[12px] sm:rounded-[24px] ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
                   ) : (
                     <img
@@ -303,7 +336,7 @@ const PromoModal = () => {
                       alt={`Promotion ${currentIndex + 1}`}
                       onLoad={() => handleImageLoad(currentPromo.id)}
                       onError={() => handleImageLoad(currentPromo.id)}
-                      className={`w-full sm:w-auto h-auto max-w-full max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                       onContextMenu={(e) => e.preventDefault()}
                     />
                   )}
@@ -319,31 +352,17 @@ const PromoModal = () => {
             {isCurrentImageLoaded && (
               <div className="flex flex-col items-center gap-3 mt-4 sm:mt-6 w-full max-w-[280px] sm:max-w-[320px] animate-in fade-in slide-in-from-bottom-2 duration-700">
 
-                {/* Mobile Navigation */}
+                {/* Mobile dot indicators (arrows overlaid on card) */}
                 {promotions.length > 1 && (
-                  <div className="flex sm:hidden items-center gap-6 mb-1">
-                    <button
-                      onClick={prevPromo}
-                      className="p-3 bg-black/40 text-white rounded-full active:scale-90 transition-all border border-white/20 backdrop-blur-sm shadow-md"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-
+                  <div className="flex sm:hidden items-center gap-3 mb-1">
                     <div className="flex gap-1.5">
                       {promotions.map((_, idx) => (
                         <div
                           key={idx}
-                          className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-emerald-400 w-5' : 'bg-white/30'}`}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-emerald-400 w-5' : 'bg-white/30 w-1.5'}`}
                         />
                       ))}
                     </div>
-
-                    <button
-                      onClick={nextPromo}
-                      className="p-3 bg-black/40 text-white rounded-full active:scale-90 transition-all border border-white/20 backdrop-blur-sm shadow-md"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
                   </div>
                 )}
 
