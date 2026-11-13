@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import axios from 'axios';
 
@@ -123,17 +123,26 @@ const PromoModal = () => {
     return videoRefs.current[currentPromo.id] || null;
   };
 
-  // Manual mute toggle
-  const toggleMute = (e) => {
+  const lastInteractionTimeRef = useRef(0);
+
+  // Clicking/tapping anywhere on the video frame unmutes and starts/continues playing with audio
+  const handleFrameClick = (e) => {
     if (e) e.stopPropagation();
+    const now = Date.now();
+    if (now - lastInteractionTimeRef.current < 400) return;
+    lastInteractionTimeRef.current = now;
+
     const video = getActiveVideo();
     if (!video) return;
-    const nextMuted = !video.muted;
-    video.muted = nextMuted;
-    setIsMuted(nextMuted);
-    if (!nextMuted) {
+
+    if (video.muted) {
+      video.muted = false;
+      setIsMuted(false);
       userHasInteractedRef.current = true;
       video.play().catch(() => {});
+    } else {
+      video.muted = true;
+      setIsMuted(true);
     }
   };
 
@@ -185,18 +194,23 @@ const PromoModal = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, currentIndex, isVideo, currentPromo?.id]);
 
-  // Whenever video is muted, ANY tap or click on the modal / video card un-mutes it.
+  // Whenever video is muted, ANY tap or click on the modal / video card un-mutes it and ensures playback with audio.
   useEffect(() => {
     if (!isOpen || !isVideo || !isMuted) return;
 
     const handleInteraction = (e) => {
       // Don't intercept close or navigation buttons or links
       if (e.target && (e.target.closest('button') || e.target.closest('a'))) return;
+      const now = Date.now();
+      if (now - lastInteractionTimeRef.current < 400) return;
+      lastInteractionTimeRef.current = now;
+
       const video = getActiveVideo();
       if (video) {
         video.muted = false;
         setIsMuted(false);
         userHasInteractedRef.current = true;
+        video.play().catch(() => {});
       }
     };
 
@@ -326,32 +340,12 @@ const PromoModal = () => {
                   </>
                 )}
 
-                {/* Media card */}
+                {/* Media card — tapping anywhere on the frame unmutes and starts/continues playing with audio */}
                 <div
-                  onClick={isVideo ? toggleMute : undefined}
-                  className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] ${isVideo ? 'cursor-pointer' : ''}`}
+                  onClick={isVideo ? handleFrameClick : undefined}
+                  onTouchEnd={isVideo ? handleFrameClick : undefined}
+                  className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] ${isVideo ? 'cursor-pointer select-none' : ''}`}
                 >
-
-                  {/* Sound Toggle Button / Indicator */}
-                  {isVideo && isCurrentImageLoaded && (
-                    <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-[85]">
-                      <button
-                        type="button"
-                        onClick={toggleMute}
-                        className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-black/70 hover:bg-black/90 text-white rounded-full backdrop-blur-md border border-white/30 shadow-xl active:scale-95 transition-all text-xs font-medium cursor-pointer"
-                        aria-label={isMuted ? "Unmute video" : "Mute video"}
-                      >
-                        {isMuted ? (
-                          <>
-                            <VolumeX className="w-4 h-4 text-white" />
-                            <span className="text-[11px] sm:text-xs tracking-wide">Tap for sound</span>
-                          </>
-                        ) : (
-                          <Volume2 className="w-4 h-4 text-emerald-400" />
-                        )}
-                      </button>
-                    </div>
-                  )}
 
                   {/* Shimmer Placeholder */}
                   {!isCurrentImageLoaded && (
