@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react';
 import { Button } from './ui/button';
 import axios from 'axios';
 
@@ -112,10 +112,23 @@ const PromoModal = () => {
   const isVideo = isVideoMedia(posterUrl);
 
   const videoRef = useRef(null);
-  // Start muted so browser autoplay policy always allows playback immediately (Issue 3 fix)
+  // Start muted so browser autoplay policy always allows playback immediately
   const [isMuted, setIsMuted] = useState(true);
-  // Tracks if the user has ever interacted — persists across slide changes (Issue 4 fix)
+  // Tracks if the user has ever interacted — persists across slide changes
   const userHasInteractedRef = useRef(false);
+
+  // Manual mute toggle
+  const toggleMute = (e) => {
+    if (e) e.stopPropagation();
+    if (!videoRef.current) return;
+    const nextMuted = !videoRef.current.muted;
+    videoRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
+    if (!nextMuted) {
+      userHasInteractedRef.current = true;
+      videoRef.current.play().catch(() => {});
+    }
+  };
 
   // Auto-scrolling: images advance after 5s. Videos advance on onEnded.
   useEffect(() => {
@@ -135,17 +148,15 @@ const PromoModal = () => {
     if (!video) return;
 
     if (userHasInteractedRef.current) {
-      // User already interacted — try unmuted
       video.muted = false;
       setIsMuted(false);
     } else {
-      // No interaction yet — start muted so autoplay policy allows it
       video.muted = true;
       setIsMuted(true);
     }
 
     video.play().catch(() => {
-      // If unmuted play fails (shouldn't happen since muted), force muted
+      // If unmuted play fails (e.g. browser blocks timer-triggered play), fall back to muted
       video.muted = true;
       setIsMuted(true);
       video.play().catch((err) => {
@@ -154,30 +165,29 @@ const PromoModal = () => {
     });
   }, [isOpen, currentIndex, isVideo, posterUrl]);
 
-  // On the FIRST user interaction (tap/click anywhere), unmute the video.
-  // This listener is intentionally NOT re-registered on currentIndex change,
-  // so userHasInteractedRef persists across all slide changes in this session.
+  // Whenever video is muted, ANY tap or click on the modal / video card un-mutes it.
+  // This re-attaches automatically if the video is ever forced back to muted on a loop.
   useEffect(() => {
-    if (!isOpen || !isVideo) return;
-    if (userHasInteractedRef.current) return; // already interacted
+    if (!isOpen || !isVideo || !isMuted) return;
 
-    const handleInteraction = () => {
-      userHasInteractedRef.current = true;
+    const handleInteraction = (e) => {
+      // Don't intercept close or navigation buttons or links
+      if (e.target && (e.target.closest('button') || e.target.closest('a'))) return;
       if (videoRef.current) {
         videoRef.current.muted = false;
         setIsMuted(false);
+        userHasInteractedRef.current = true;
       }
     };
 
-    window.addEventListener('click', handleInteraction, { capture: true, once: true });
-    window.addEventListener('touchend', handleInteraction, { capture: true, once: true });
+    window.addEventListener('click', handleInteraction, { capture: true });
+    window.addEventListener('touchend', handleInteraction, { capture: true });
 
     return () => {
       window.removeEventListener('click', handleInteraction, { capture: true });
       window.removeEventListener('touchend', handleInteraction, { capture: true });
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, isVideo]); // No currentIndex dep — listener persists across slides
+  }, [isOpen, isVideo, isMuted]);
 
   // Pause video cleanly when modal closes
   useEffect(() => {
@@ -291,7 +301,31 @@ const PromoModal = () => {
                 )}
 
                 {/* Media card */}
-                <div className="relative overflow-hidden rounded-[12px] sm:rounded-[24px] shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)]">
+                <div
+                  onClick={isVideo ? toggleMute : undefined}
+                  className={`relative overflow-hidden promo-media-container shadow-[0_40px_80px_rgba(0,0,0,0.9)] flex items-center justify-center [transform:translateZ(0)] ${isVideo ? 'cursor-pointer' : ''}`}
+                >
+
+                  {/* Sound Toggle Button / Indicator */}
+                  {isVideo && isCurrentImageLoaded && (
+                    <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 z-[85]">
+                      <button
+                        type="button"
+                        onClick={toggleMute}
+                        className="flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-black/70 hover:bg-black/90 text-white rounded-full backdrop-blur-md border border-white/30 shadow-xl active:scale-95 transition-all text-xs font-medium cursor-pointer"
+                        aria-label={isMuted ? "Unmute video" : "Mute video"}
+                      >
+                        {isMuted ? (
+                          <>
+                            <VolumeX className="w-4 h-4 text-white" />
+                            <span className="text-[11px] sm:text-xs tracking-wide">Tap for sound</span>
+                          </>
+                        ) : (
+                          <Volume2 className="w-4 h-4 text-emerald-400" />
+                        )}
+                      </button>
+                    </div>
+                  )}
 
                   {/* Shimmer Placeholder */}
                   {!isCurrentImageLoaded && (
@@ -324,7 +358,7 @@ const PromoModal = () => {
                         }
                       }}
                       onContextMenu={(e) => e.preventDefault()}
-                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none rounded-[12px] sm:rounded-[24px] [clip-path:inset(0_round_12px)] sm:[clip-path:inset(0_round_24px)] ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-700 pointer-events-none promo-media-element ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                     />
                   ) : (
                     <img
@@ -332,7 +366,7 @@ const PromoModal = () => {
                       alt={`Promotion ${currentIndex + 1}`}
                       onLoad={() => handleImageLoad(currentPromo.id)}
                       onError={() => handleImageLoad(currentPromo.id)}
-                      className={`w-full sm:w-auto h-auto max-w-full max-h-[60vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain select-none align-middle block transition-opacity duration-700 ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      className={`w-auto h-auto max-w-[92vw] sm:max-w-full max-h-[74vh] sm:max-h-[80vh] md:max-h-[85vh] object-contain select-none align-middle block transition-opacity duration-700 promo-media-element ${isCurrentImageLoaded ? 'opacity-100' : 'opacity-0'}`}
                       onContextMenu={(e) => e.preventDefault()}
                     />
                   )}
@@ -408,6 +442,41 @@ const PromoModal = () => {
         }
         .animate-shimmer {
           animation: shimmer 2s infinite linear;
+        }
+        .promo-media-container {
+          border-radius: 16px;
+          -webkit-border-radius: 16px;
+          overflow: hidden;
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          mask-image: radial-gradient(white, black);
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+          isolation: isolate;
+        }
+        @media (min-width: 640px) {
+          .promo-media-container {
+            border-radius: 24px;
+            -webkit-border-radius: 24px;
+          }
+        }
+        .promo-media-element {
+          border-radius: 16px;
+          -webkit-border-radius: 16px;
+          overflow: hidden;
+          -webkit-mask-image: -webkit-radial-gradient(white, black);
+          mask-image: radial-gradient(white, black);
+          -webkit-clip-path: inset(0 round 16px);
+          clip-path: inset(0 round 16px);
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
+        @media (min-width: 640px) {
+          .promo-media-element {
+            border-radius: 24px;
+            -webkit-border-radius: 24px;
+            -webkit-clip-path: inset(0 round 24px);
+            clip-path: inset(0 round 24px);
+          }
         }
       `}</style>
     </DialogPrimitive.Root>
