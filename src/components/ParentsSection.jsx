@@ -56,8 +56,10 @@ const ParentsSection = () => {
                     </div>
                   </div>
                   <img 
-                    src="/images/logo.png" 
+                    src="/images/logo.webp" 
                     alt="Budlee" 
+                    width="32"
+                    height="32"
                     className="w-8 h-8 object-contain"
                     onContextMenu={(e) => e.preventDefault()}
                   />

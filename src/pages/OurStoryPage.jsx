@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Atom, FlaskConical, Lightbulb, Star, Sparkles } from 'lucide-react';
@@ -11,6 +12,11 @@ const OurStoryPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Our Story & Mission | Budlee AI"
+        description="Discover how Budlee AI was born to revolutionize personalized learning and ignite natural curiosity in students worldwide."
+        canonical="/our-story"
+      />
       <Header />
 
       <main className="flex-grow">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Calendar, User, Tag, Search, BookOpen, TrendingUp, Users, Lightbulb, Atom, Star, Sparkles, FlaskConical } from 'lucide-react';
@@ -32,7 +33,7 @@ const BlogPage = () => {
       date: "2025-02-15",
       category: "AI & Learning",
       readTime: "5 min read",
-      image: "images/blog/ai-classroom.jpg",
+      image: "images/blog/ai-classroom.webp",
       featured: true
     },
     {
@@ -44,7 +45,7 @@ const BlogPage = () => {
       date: "2025-02-12",
       category: "Education Technology",
       readTime: "7 min read",
-      image: "images/blog/personalized-learning.jpg",
+      image: "images/blog/personalized-learning.webp",
       featured: true
     },
     {
@@ -56,7 +57,7 @@ const BlogPage = () => {
       date: "2025-02-10",
       category: "Teaching Tips",
       readTime: "6 min read",
-      image: "images/blog/digital-literacy.jpg",
+      image: "images/blog/digital-literacy.webp",
       featured: false
     },
     {
@@ -68,7 +69,7 @@ const BlogPage = () => {
       date: "2025-02-08",
       category: "Student Success",
       readTime: "4 min read",
-      image: "images/blog/gamification.jpg",
+      image: "images/blog/gamification.webp",
       featured: false
     },
     {
@@ -80,7 +81,7 @@ const BlogPage = () => {
       date: "2025-02-05",
       category: "Innovation",
       readTime: "8 min read",
-      image: "images/blog/ai-tutors.jpg",
+      image: "images/blog/ai-tutors.webp",
       featured: false
     },
     {
@@ -92,7 +93,7 @@ const BlogPage = () => {
       date: "2025-02-03",
       category: "Teaching Tips",
       readTime: "6 min read",
-      image: "images/blog/inclusive-learning.jpg",
+      image: "images/blog/inclusive-learning.webp",
       featured: false
     }
   ];
@@ -110,6 +111,11 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Educational Blog & Insights | Budlee AI"
+        description="Read the latest articles on AI in education, classroom innovation, personalized learning strategies, and tips for parents and students."
+        canonical="/blog"
+      />
       <Header />
 
       <main className="flex-grow">

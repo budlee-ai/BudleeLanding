@@ -71,8 +71,10 @@ const AppDownloadSection = () => {
                   aria-label="Get Budlee AI on Google Play"
                 >
                   <img
-                    src="/images/play_button.png"
+                    src="/images/play_button.webp"
                     alt="Get it on Google Play"
+                    width="135"
+                    height="48"
                     className="h-11 md:h-12 w-auto"
                   />
                 </a>
@@ -87,8 +89,10 @@ const AppDownloadSection = () => {
                   aria-label="Download Budlee AI on the App Store"
                 >
                   <img
-                    src="/images/app_button.png"
+                    src="/images/app_button.webp"
                     alt="Download on the App Store"
+                    width="135"
+                    height="48"
                     className="h-11 md:h-12 w-auto"
                   />
                 </a>
@@ -102,8 +106,10 @@ const AppDownloadSection = () => {
                 {/* QR Code Container */}
                 <div className="relative p-2.5 bg-white rounded-xl shadow-inner border border-gray-200/80 shrink-0">
                   <img
-                    src="/images/qr-code-app.png"
+                    src="/images/qr-code-app.webp"
                     alt="Scan QR code to install Budlee AI"
+                    width="128"
+                    height="128"
                     className="w-28 h-28 md:w-32 md:h-32 object-contain rounded-lg"
                   />
                 </div>

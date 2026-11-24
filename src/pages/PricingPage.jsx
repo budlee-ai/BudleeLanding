@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
 import axios from 'axios';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Check, Star, CreditCard, Shield, Users, Zap, HelpCircle, Mail, MapPin, Sparkles, Loader2, Atom, FlaskConical, Lightbulb, CheckCircle } from 'lucide-react';
@@ -374,6 +375,11 @@ const PricingPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Pricing Plans & Subscriptions"
+        description="Choose the right plan for your learning journey. Affordable subscription plans for Budlee AI personalized tutoring, voice companion, and science curriculum practice."
+        canonical="/pricing"
+      />
       <Header />
 
       <main className="flex-grow">

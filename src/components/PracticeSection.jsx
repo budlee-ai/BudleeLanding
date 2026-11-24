@@ -98,8 +98,10 @@ const PracticeSection = ({ videoUrl }) => {
                         </div>
                         {/* Budlee with nod animation - increased size */}
                         <img 
-                          src="/images/logo.png" 
+                          src="/images/logo.webp" 
                           alt="Budlee" 
+                          width="80"
+                          height="80"
                           className="w-16 h-16 md:w-20 md:h-20 object-contain animate-nod cursor-pointer hover:scale-110 transition-transform duration-300"
                           onContextMenu={(e) => e.preventDefault()}
                         />

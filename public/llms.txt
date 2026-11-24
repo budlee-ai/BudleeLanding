@@ -1,0 +1,27 @@
+# Budlee AI
+
+> Budlee AI is an AI-powered personalized educational platform and tutoring companion for students in Grades 6–10.
+
+## Overview
+Budlee AI combines conversational voice tutoring, interactive problem-solving, and syllabus-aligned learning paths. It specifically supports CBSE and Indian State Boards (Kerala, Tamil Nadu, Karnataka, Andhra Pradesh, Maharashtra, Gujarat) focusing on Science (Physics, Chemistry, Biology) and Mathematics.
+
+## Key Offerings & Capabilities
+- **AI Voice Tutor**: Conversational, step-by-step tutoring that explains complex concepts without just giving away answers.
+- **CBSE & State Board Curriculum Alignment**: Chapter-by-chapter mapping for grades 6 through 10 in Science and Mathematics.
+- **Curiosity Quests & Practice**: Active practice problems with instant feedback, hints, and mastery tracking.
+- **School & Partner Portals**: Analytics dashboards for schools, tuition centers, and educators to track student learning progress.
+- **Parental Visibility**: Meaningful insights into student curiosity, understanding, and learning consistency.
+
+## Platforms
+- Web Application: https://app.budlee.ai
+- Android (Google Play Store): https://play.google.com/store/apps/details?id=com.budlee.ai.b2c
+- iOS (Apple App Store): https://apps.apple.com/in/app/budlee-ai/id6761577103
+
+## Core Links & Resources
+- Website: https://budlee.ai
+- Pricing: https://budlee.ai/pricing
+- For Schools: https://budlee.ai/schools
+- Blog: https://budlee.ai/blog
+- Help Center: https://budlee.ai/help
+- FAQs: https://budlee.ai/faqs
+- Contact: https://budlee.ai/contact

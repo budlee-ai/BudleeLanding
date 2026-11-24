@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import mixpanel from 'mixpanel-browser';
 import emailjs from '@emailjs/browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { EMAILJS_CONFIG } from '../config/emailjs';
@@ -98,6 +99,11 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Contact Us & School Demo Request | Budlee AI"
+        description="Get in touch with Budlee AI for support, school partnerships, demo requests, or media inquiries."
+        canonical="/contact"
+      />
       <Header />
       <main className="flex-grow">
         {/* Hero Section */}

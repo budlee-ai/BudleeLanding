@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -54,13 +55,18 @@ const DownloadRedirectPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Download Budlee AI Mobile App | iOS & Android"
+        description="Download Budlee AI on Google Play Store and Apple App Store for personalized AI science tutoring and homework help on your mobile device."
+        canonical="/download"
+      />
       <Header />
       <main className="flex-grow flex items-center justify-center py-16 px-4">
         <div className="max-w-md w-full text-center bg-gradient-to-br from-white via-emerald-50/40 to-teal-50/30 dark:from-gray-900 dark:via-gray-900 dark:to-emerald-950/40 border border-emerald-100 dark:border-emerald-900/50 rounded-3xl p-8 shadow-2xl">
           
           <div className="w-20 h-20 mx-auto mb-4 relative">
             <img 
-              src="/images/logo.png" 
+              src="/images/logo.webp" 
               alt="Budlee AI" 
               className="w-full h-full object-contain animate-bounce-gentle"
             />
@@ -86,7 +92,7 @@ const DownloadRedirectPage = () => {
               className="transition-transform hover:scale-105 active:scale-95 shadow-md rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             >
               <img
-                src="/images/play_button.png"
+                src="/images/play_button.webp"
                 alt="Get it on Google Play"
                 className="h-12 w-auto"
               />
@@ -96,7 +102,7 @@ const DownloadRedirectPage = () => {
               className="transition-transform hover:scale-105 active:scale-95 shadow-md rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
             >
               <img
-                src="/images/app_button.png"
+                src="/images/app_button.webp"
                 alt="Download on the App Store"
                 className="h-12 w-auto"
               />

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
+import { HelmetProvider } from "react-helmet-async";
 import LandingPage from "./pages/LandingPage";
 import SchoolsPage from "./pages/SchoolsPage";
 import TermsPage from "./pages/TermsPage";
@@ -27,6 +28,7 @@ import PromoModal from "./components/PromoModal";
 import OfficialLaunchPage from "./pages/OfficialLaunchPage";
 import TuitionLaunchPage from "./pages/TuitionLaunchPage";
 import DownloadRedirectPage from "./pages/DownloadRedirectPage";
+import CurriculumPage from "./pages/CurriculumPage";
 
 // Scroll to top component
 function ScrollToTop() {
@@ -56,46 +58,49 @@ function GlobalElements() {
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
-      <div className="App min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
-        <BrowserRouter
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true
-          }}
-        >
-          <ScrollToTop />
-          <GlobalElements />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/schools" element={<SchoolsPage />} />
-            <Route path="/terms" element={<TermsPage />} />
-            <Route path="/privacy" element={<PrivacyPage />} />
-            <Route path="/refund" element={<RefundPage />} />
-            <Route path="/cookies" element={<CookiePage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/our-story" element={<OurStoryPage />} />
-            <Route path="/team" element={<MeetOurTeamPage />} />
-            <Route path="/mission-vision" element={<MissionVisionPage />} />
-            <Route path="/core-values" element={<CoreValuesPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/partner-programs" element={<PartnerProgramsPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogArticlePage />} />
-            <Route path="/tutorials" element={<TutorialsPage />} />
-            <Route path="/help" element={<HelpCenterPage />} />
-            <Route path="/help/:slug" element={<HelpArticlePage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/faqs" element={<FaqsPage />} />
-            <Route path="/book-demo" element={<LandingPage />} />
-            <Route path="/partner-programs" element={<LandingPage />} />
-            <Route path="/official-launch" element={<OfficialLaunchPage />} />
-            <Route path="/tuition-launch" element={<TuitionLaunchPage />} />
-            <Route path="/download" element={<DownloadRedirectPage />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} disableTransitionOnChange={false}>
+        <div className="App min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true
+            }}
+          >
+            <ScrollToTop />
+            <GlobalElements />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/schools" element={<SchoolsPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
+              <Route path="/refund" element={<RefundPage />} />
+              <Route path="/cookies" element={<CookiePage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/our-story" element={<OurStoryPage />} />
+              <Route path="/team" element={<MeetOurTeamPage />} />
+              <Route path="/mission-vision" element={<MissionVisionPage />} />
+              <Route path="/core-values" element={<CoreValuesPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/partner-programs" element={<PartnerProgramsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogArticlePage />} />
+              <Route path="/tutorials" element={<TutorialsPage />} />
+              <Route path="/help" element={<HelpCenterPage />} />
+              <Route path="/help/:slug" element={<HelpArticlePage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/faqs" element={<FaqsPage />} />
+              <Route path="/book-demo" element={<LandingPage />} />
+              <Route path="/partner-programs" element={<LandingPage />} />
+              <Route path="/official-launch" element={<OfficialLaunchPage />} />
+              <Route path="/tuition-launch" element={<TuitionLaunchPage />} />
+              <Route path="/download" element={<DownloadRedirectPage />} />
+              <Route path="/curriculum" element={<CurriculumPage />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

@@ -5,7 +5,7 @@ export const heroData = {
   taglineLine2: "and discover curiosity early.",
   primaryCTA: "Get Started for Students",
   secondaryCTA: "For Schools & Partners",
-  heroImage: "/images/hero.png"
+  heroImage: "/images/hero.webp"
 };
 
 export const curriculumData = {

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -10,6 +11,11 @@ const CookiePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Cookie Policy | Budlee AI"
+        description="Understand how cookies and analytics are used on Budlee AI."
+        canonical="/cookies"
+      />
       <Header />
       <main className="flex-grow py-16 md:py-5 px-4 md:px-12 lg:px-20">
         <div className="max-w-4xl mx-auto">

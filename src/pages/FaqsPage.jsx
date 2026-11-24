@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ChevronDown, ChevronUp, Search, HelpCircle, Atom, FlaskConical, Lightbulb, Star, Sparkles } from 'lucide-react';
@@ -171,8 +172,28 @@ const FaqsPage = () => {
     )
   })).filter(category => category.questions.length > 0);
 
+  const allQuestions = faqCategories.flatMap(c => c.questions);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allQuestions.slice(0, 15).map(q => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.answer
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Frequently Asked Questions (FAQs) | Budlee AI"
+        description="Find answers to common questions about Budlee AI, subscriptions, curriculum coverage, voice tutor features, and account settings."
+        canonical="/faqs"
+        schema={faqSchema}
+      />
       <Header />
 
       <main className="flex-grow">

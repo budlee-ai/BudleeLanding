@@ -2,10 +2,18 @@
   publish = "build"
   command = "npm run build"
 
+[build.environment]
+  NETLIFY_PRERENDER_READY = "true"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/images/*"
@@ -21,3 +29,21 @@
   for = "/favicon.ico"
   [headers.values]
     Cache-Control = "public, max-age=604800, s-maxage=604800"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    Cache-Control = "public, max-age=86400"

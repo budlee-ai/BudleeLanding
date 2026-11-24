@@ -121,8 +121,10 @@ const VoiceTutorSection = () => {
                     <div className="relative w-20 h-20 md:w-22 md:h-22 rounded-full bg-gradient-to-tr from-green-400 via-emerald-400 to-teal-400 p-1 shadow-lg shadow-emerald-500/20">
                       <div className="w-full h-full bg-white dark:bg-gray-800 rounded-full flex items-center justify-center p-2.5">
                         <img
-                          src="/images/logo.png"
+                          src="/images/logo.webp"
                           alt="Budlee AI Voice Assistant"
+                          width="64"
+                          height="64"
                           className="w-full h-full object-contain animate-bounce-gentle select-none"
                           onContextMenu={(e) => e.preventDefault()}
                         />

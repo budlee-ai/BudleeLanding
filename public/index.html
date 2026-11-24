@@ -3,27 +3,86 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="description" content="Your AI Learning Companion" />
-        <meta name="apple-itunes-app" content="app-id=6761577103" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <!--
-        manifest.json provides metadata used when your web app is installed on a
-        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-        -->
-        <!--
-        Notice the use of %PUBLIC_URL% in the tags above.
-        It will be replaced with the URL of the `public` folder during the build.
-        Only files inside the `public` folder can be referenced from the HTML.
+        <meta name="theme-color" content="#0d1f1a" />
+        
+        <!-- Primary SEO Meta Tags -->
+        <title>Budlee AI | AI Learning Companion & Tutor for CBSE & State Boards</title>
+        <meta name="title" content="Budlee AI | AI Learning Companion & Tutor for CBSE & State Boards" />
+        <meta name="description" content="Budlee AI helps students in Grades 6-10 master Science, Physics, Chemistry, and Biology. Aligned with CBSE and State syllabuses with personalized AI tutoring and step-by-step guidance." />
+        <meta name="keywords" content="AI tutor, CBSE learning app, personalized education, Science tutor Grade 10, AI homework helper, Budlee AI, edtech India" />
+        <meta name="author" content="Needoo AI Innovations LLP" />
+        <link rel="canonical" href="https://budlee.ai/" />
+        <meta name="apple-itunes-app" content="app-id=6761577103, app-argument=https://budlee.ai" />
+        <meta name="google-play-app" content="app-id=com.budlee.ai.b2c" />
 
-        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-        work correctly both with client-side routing and a non-root public URL.
-        Learn how to configure a non-root public URL by running `npm run build`.
-        -->
-        <title>Budlee AI</title>
-        <link rel="preload" as="image" href="/images/logo_tagline_black.png" />
-        <link rel="preload" as="image" href="/images/logo_tagline_white.png" />
-        <link rel="preload" as="image" href="/images/hero.png" />
+        <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://budlee.ai/" />
+        <meta property="og:site_name" content="Budlee AI" />
+        <meta property="og:title" content="Budlee AI | AI Learning Companion & Tutor" />
+        <meta property="og:description" content="Personalized learning for students aligned with CBSE and State Syllabuses. Understand lessons with interactive AI voice tutoring and quests." />
+        <meta property="og:image" content="https://budlee.ai/images/hero.webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@Budlee_AI" />
+        <meta name="twitter:creator" content="@Budlee_AI" />
+        <meta name="twitter:title" content="Budlee AI | AI Learning Companion & Tutor" />
+        <meta name="twitter:description" content="Understands how students learn and helps curiosity grow early. Aligned with CBSE & State Boards." />
+        <meta name="twitter:image" content="https://budlee.ai/images/hero.webp" />
+
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.webp" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+        <!-- Performance Preconnects -->
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://us.i.posthog.com" />
+
+        <!-- Preload critical images -->
+        <link rel="preload" as="image" href="/images/logo_tagline_black.webp" />
+        <link rel="preload" as="image" href="/images/logo_tagline_white.webp" />
+        <link rel="preload" as="image" href="/images/hero.webp" />
+
+        <!-- Structured Data (JSON-LD) for Search Engines & AI Crawlers -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://budlee.ai/#organization",
+              "name": "Budlee AI",
+              "url": "https://budlee.ai",
+              "logo": "https://budlee.ai/logo.png",
+              "sameAs": [
+                "https://www.linkedin.com/company/budlee-ai",
+                "https://www.facebook.com/BudleeAI",
+                "https://www.instagram.com/budlee.ai",
+                "https://x.com/Budlee_AI",
+                "https://youtube.com/@budleeai",
+                "https://whatsapp.com/channel/0029VbCMKR8Bfxo8SgsXy93B"
+              ]
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://budlee.ai/#app",
+              "name": "Budlee AI",
+              "operatingSystem": "Web, iOS, Android",
+              "applicationCategory": "EducationalApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0.00",
+                "priceCurrency": "INR"
+              },
+              "description": "Intelligent educational platform using RAG and AI voice tutoring for personalized learning and CBSE syllabus support."
+            }
+          ]
+        }
+        </script>
                     <!-- Google Analytics -->
                     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HHE9LE162"></script>
                     <script>

@@ -274,7 +274,7 @@ const TuitionLaunchPage = () => {
 
         {/* Top Logo Badge - floating and glowing */}
         <div className="flex flex-col items-center mb-6 animate-fade-in-down select-none">
-          <img src="/images/logo_tagline_white.png" alt="Budlee AI" className="h-14 md:h-16 object-contain" />
+          <img src="/images/logo_tagline_white.webp" alt="Budlee AI" className="h-14 md:h-16 object-contain" />
           <span className="text-sm md:text-base font-bold text-green-400 bg-green-950/50 px-5 py-2 rounded-full uppercase tracking-widest border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.15)] mt-3">
             Tuition Launch
           </span>
@@ -293,7 +293,7 @@ const TuitionLaunchPage = () => {
                 {/* Gold gradient border wrapper */}
                 <div className="relative p-1 rounded-full bg-gradient-to-tr from-amber-400 via-yellow-200 to-orange-500 shadow-2xl">
                   <img
-                    src="/images/sahid.png"
+                    src="/images/sahid.webp"
                     alt="Dr. Sahid Cholayil"
                     className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border border-black/10"
                     onContextMenu={(e) => e.preventDefault()}

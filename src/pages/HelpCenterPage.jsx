@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { HelpCircle, Search, MessageCircle, FileText, Phone, Mail, MapPin, Clock, Atom, FlaskConical, Lightbulb, Star, Sparkles } from 'lucide-react';
@@ -112,6 +113,11 @@ const HelpCenterPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Help Center & Support | Budlee AI"
+        description="Find setup guides, troubleshooting steps, subscription info, and answers to your questions about Budlee AI."
+        canonical="/help"
+      />
       <Header />
 
       <main className="flex-grow">

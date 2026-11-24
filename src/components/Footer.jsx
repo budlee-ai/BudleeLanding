@@ -29,8 +29,10 @@ const Footer = ({
               {/* Budlee Character - increased size, no yellow circle */}
               <div className="relative">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo.webp"
                   alt="Budlee"
+                  width="112"
+                  height="112"
                   className="w-20 h-20 md:w-28 md:h-28 object-contain animate-bounce-gentle"
                   onContextMenu={(e) => e.preventDefault()}
                 />
@@ -75,8 +77,10 @@ const Footer = ({
                       aria-label="Get Budlee AI on Google Play"
                     >
                       <img
-                        src="/images/play_button.png"
+                        src="/images/play_button.webp"
                         alt="Get it on Google Play"
+                        width="135"
+                        height="44"
                         className="h-11 w-auto"
                       />
                     </a>
@@ -91,8 +95,10 @@ const Footer = ({
                       aria-label="Download Budlee AI on the App Store"
                     >
                       <img
-                        src="/images/app_button.png"
+                        src="/images/app_button.webp"
                         alt="Download on the App Store"
+                        width="135"
+                        height="44"
                         className="h-11 w-auto"
                       />
                     </a>
@@ -104,22 +110,48 @@ const Footer = ({
         </div>
       )}
 
-      {/* Bottom Section - 3 Column Layout */}
-      <div className="bg-white dark:bg-gray-950 py-6 px-4 md:px-12 lg:px-20 border-t border-gray-100 dark:border-gray-800 transition-colors duration-200">
-        <div className="max-w-6xl mx-auto">
+      {/* Bottom Section - Navigation Links & Copyright */}
+      <div className="bg-white dark:bg-gray-950 py-8 px-4 md:px-12 lg:px-20 border-t border-gray-100 dark:border-gray-800 transition-colors duration-200">
+        <div className="max-w-6xl mx-auto space-y-6">
+          
+          {/* Direct Crawlable Nav Links for Crawlers & Users */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-gray-600 dark:text-gray-300 font-medium border-b border-gray-100 dark:border-gray-800 pb-5">
+            <Link to="/curriculum" className="text-emerald-600 dark:text-emerald-400 font-semibold hover:text-green-700 dark:hover:text-green-300 transition-colors">Curriculum</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/pricing" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Pricing</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/schools" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">For Schools</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/blog" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Blog</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/tutorials" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Tutorials</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/help" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Help Center</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/faqs" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">FAQs</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/our-story" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Our Story</Link>
+            <span className="text-gray-300 dark:text-gray-700 hidden sm:inline">•</span>
+            <Link to="/careers" className="hover:text-green-600 dark:hover:text-green-400 transition-colors">Careers</Link>
+          </div>
+
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
             {/* Left - Logo with Tagline */}
             <div className="flex items-center md:items-start">
               <img
-                src="/images/logo_tagline_black.png"
+                src="/images/logo_tagline_black.webp"
                 alt="Budlee AI"
+                width="208"
+                height="48"
                 className="w-40 md:w-52 h-auto object-contain dark:hidden"
                 onContextMenu={(e) => e.preventDefault()}
               />
               <img
-                src="/images/logo_tagline_white.png"
+                src="/images/logo_tagline_white.webp"
                 alt="Budlee AI"
+                width="208"
+                height="48"
                 className="w-40 md:w-52 h-auto object-contain hidden dark:block"
                 onContextMenu={(e) => e.preventDefault()}
               />
@@ -127,22 +159,22 @@ const Footer = ({
 
             {/* Center - Social Icons */}
             <div className="flex items-center gap-6">
-              <a href="https://www.linkedin.com/company/budlee-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://www.linkedin.com/company/budlee-ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/BudleeAI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://www.facebook.com/BudleeAI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.instagram.com/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://www.instagram.com/budlee.ai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://whatsapp.com/channel/0029VbCMKR8Bfxo8SgsXy93B" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://whatsapp.com/channel/0029VbCMKR8Bfxo8SgsXy93B" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="WhatsApp Channel">
                 <WhatsAppIcon className="w-5 h-5" />
               </a>
-              <a href="https://youtube.com/@budleeai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://youtube.com/@budleeai" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="YouTube">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="https://x.com/Budlee_AI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors">
+              <a href="https://x.com/Budlee_AI" target="_blank" rel="noopener noreferrer" className="text-gray-400 dark:text-gray-500 hover:text-green-600 dark:hover:text-green-400 transition-colors" aria-label="X / Twitter">
                 <Twitter className="w-5 h-5" />
               </a>
             </div>

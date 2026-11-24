@@ -1,15 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Button } from '../components/ui/button';
-import { FlaskConical, GraduationCap, Users, School, ArrowRight, Calendar, Beaker, BarChart3, Rocket, Globe, Atom, Lightbulb, Star, Sparkles } from 'lucide-react';
+import { FlaskConical, GraduationCap, Users, School, ArrowRight, Calendar, Beaker, BarChart3, Rocket, Globe, Atom, Lightbulb, Star, Sparkles, Copy, Check, Code } from 'lucide-react';
 
 const SchoolsPage = () => {
+  const [copied, setCopied] = useState(false);
+
   useEffect(() => {
     mixpanel.track('Schools Page Viewed');
   }, []);
+
+  const badgeEmbedCode = `<a href="https://budlee.ai" target="_blank" rel="noopener" title="Budlee AI Learning Partner School">\n  <img src="https://budlee.ai/images/logo_tagline_black.webp" alt="Official Budlee AI Learning Partner" width="180" height="42" />\n</a>`;
+
+  const handleCopyBadge = () => {
+    navigator.clipboard.writeText(badgeEmbedCode);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
 
   const benefits = [
     {
@@ -34,6 +45,11 @@ const SchoolsPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Budlee AI for Schools & Partners | Empower Teachers & Classrooms"
+        description="Transform science and math classrooms with Budlee AI. Chapter-aligned teacher insights, student mastery tracking, and curriculum alignment for CBSE and State boards."
+        canonical="/schools"
+      />
       <Header 
         ctaText="Request a School Demo" 
         ctaLink="/contact#demo-form"
@@ -104,7 +120,7 @@ const SchoolsPage = () => {
                 
                 {/* Budlee Character - No speech bubble */}
                 <img 
-                  src="/images/logo.png" 
+                  src="/images/logo.webp" 
                   alt="Budlee" 
                   className="w-14 h-14 md:w-20 md:h-20 object-contain animate-bounce-gentle flex-shrink-0"
                 />
@@ -340,7 +356,7 @@ const SchoolsPage = () => {
                   {/* Logo Container */}
                   <div className="flex-shrink-0 w-28 h-28 md:w-32 md:h-32 bg-gray-50 dark:bg-gray-800 rounded-2xl flex items-center justify-center p-4 border border-gray-100 dark:border-gray-700">
                     <img 
-                      src="/images/partners/kedu.png" 
+                      src="/images/partners/kedu.webp" 
                       alt="KEDU Logo" 
                       className="w-full h-full object-contain"
                     />
@@ -365,6 +381,76 @@ const SchoolsPage = () => {
                   </div>
                 </div>
               </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Partner School Badge Section for Educational Backlinks */}
+        <section className="py-16 md:py-20 px-4 md:px-12 lg:px-20 bg-emerald-50/50 dark:bg-emerald-950/20 border-t border-emerald-100 dark:border-emerald-900/40">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
+                <Code className="w-3.5 h-3.5" />
+                <span>Partner Schools & Tuition Centers</span>
+              </div>
+              <h2 className="hero-tagline text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
+                Display Your <span className="gradient-text">Partner Badge</span>
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 max-w-xl mx-auto text-sm md:text-base">
+                Show parents and students that your institution uses Budlee AI. Copy the embed snippet below to add the official partner badge to your school website or portal.
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-gray-900 rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row items-center gap-8">
+              {/* Badge Preview */}
+              <div className="w-full md:w-1/2 flex flex-col items-center text-center p-6 bg-gradient-to-br from-emerald-50 to-teal-50/50 dark:from-gray-800 dark:to-emerald-950/30 rounded-2xl border border-emerald-100 dark:border-emerald-900/40">
+                <span className="text-xs uppercase tracking-wider font-semibold text-emerald-700 dark:text-emerald-300 mb-4">Badge Preview</span>
+                <div className="bg-white dark:bg-gray-900 px-6 py-4 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 flex items-center gap-3">
+                  <img
+                    src="/images/logo_tagline_black.webp"
+                    alt="Budlee AI Partner"
+                    width="160"
+                    height="38"
+                    className="w-36 md:w-44 h-auto dark:hidden"
+                  />
+                  <img
+                    src="/images/logo_tagline_white.webp"
+                    alt="Budlee AI Partner"
+                    width="160"
+                    height="38"
+                    className="w-36 md:w-44 h-auto hidden dark:block"
+                  />
+                </div>
+                <span className="text-xs text-gray-500 dark:text-gray-400 mt-3 font-medium">Official Learning Partner</span>
+              </div>
+
+              {/* Code Snippet & Copy Action */}
+              <div className="w-full md:w-1/2 flex flex-col">
+                <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+                  HTML Embed Snippet
+                </label>
+                <div className="relative">
+                  <pre className="bg-gray-900 text-emerald-400 p-4 rounded-xl text-xs overflow-x-auto font-mono leading-relaxed border border-gray-800">
+                    {badgeEmbedCode}
+                  </pre>
+                  <Button
+                    onClick={handleCopyBadge}
+                    className="mt-3 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 shadow-sm transition-all"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-4 h-4 text-emerald-200" />
+                        <span>Copied to Clipboard!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        <span>Copy Embed Code</span>
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>

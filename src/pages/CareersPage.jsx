@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Briefcase, Code, Smartphone, Palette, Megaphone, MapPin, Clock, DollarSign, Atom, FlaskConical, Lightbulb, Star, Sparkles } from 'lucide-react';
@@ -92,6 +93,11 @@ const CareersPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Careers & Open Positions | Budlee AI"
+        description="Join the team building the future of AI-driven personalized education. Explore open developer, design, and product roles at Budlee AI."
+        canonical="/careers"
+      />
       <Header />
 
       <main className="flex-grow">

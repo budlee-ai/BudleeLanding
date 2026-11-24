@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Linkedin, Github, Award, MapPin, Calendar, Atom, FlaskConical, Lightbulb, Star, Sparkles } from 'lucide-react';
@@ -13,7 +14,7 @@ const MeetOurTeamPage = () => {
     {
       name: "Saleej Kuruniyan",
       role: "Co-founder & Head of Technology",
-      image: "/images/founders/saleej.jpg",
+      image: "/images/founders/saleej.webp",
       bio: "Saleej spearheads our technology vision, bringing over 15 years of experience in building scalable systems at industry leaders like Amazon, Intel, and Samsung. As a seasoned founder, he ensures our platform delivers reliable, high-performance solutions that scale with our growing user base.",
       linkedin: "https://www.linkedin.com/in/saleejkuruniyan/",
       experience: "CTO of Needoo AI Innovations, Senior Software Engineer at Wakeb Data Communications, Ex-Software Engineer at Amazon, Intel and Samsung"
@@ -21,7 +22,7 @@ const MeetOurTeamPage = () => {
     {
       name: "Abdul Rahim",
       role: "Co-founder & Head of AI",
-      image: "/images/founders/abdul.jpg",
+      image: "/images/founders/abdul.webp",
       bio: "Abdul drives our AI innovation, leveraging his deep expertise in data architecture and machine learning from his time at Accenture and Proofpoint. He focuses on creating intelligent systems that understand and adapt to educational needs.",
       linkedin: "https://www.linkedin.com/in/abdul-rahim-kamaludeen/",
       experience: "Data Architect at Accenture, Big Data Specialist at Proofpoint"
@@ -29,7 +30,7 @@ const MeetOurTeamPage = () => {
     {
       name: "Mohammed Irfan",
       role: "Co-founder & Head of Growth",
-      image: "/images/founders/irfan.jpg",
+      image: "/images/founders/irfan.webp",
       bio: "Irfan leads our growth initiatives, combining his engineering background with a passion for education. Having successfully transitioned from telecom to edtech, he brings valuable insights from real user interactions and market validation.",
       linkedin: "https://www.linkedin.com/in/mohammed--irfan/",
       experience: "Growth & Partnerships at Budlee AI, AI Product Manager at Needoo AI Innovations"
@@ -37,7 +38,7 @@ const MeetOurTeamPage = () => {
     {
       name: "Suhail Mohammed",
       role: "Co-founder & Head of Product",
-      image: "/images/founders/suhail.jpg",
+      image: "/images/founders/suhail.webp",
       bio: "Suhail shapes our product experience, drawing from his entrepreneurial journey building AI agents, procurement platforms, and EV solutions. He ensures every feature serves our mission of making learning more effective and engaging.",
       linkedin: "https://www.linkedin.com/in/suhail-in/",
       experience: "Product Head at Kadel Labs, Co-founder of Procuremart.ai"
@@ -46,6 +47,11 @@ const MeetOurTeamPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title="Meet Our Team & Leadership | Budlee AI"
+        description="Meet the passionate engineers, educators, and product leaders building Budlee AI with alumni from Amazon, Intel, Samsung, and Accenture."
+        canonical="/team"
+      />
       <Header />
 
       <main className="flex-grow">

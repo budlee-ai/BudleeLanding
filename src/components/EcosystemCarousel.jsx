@@ -3,27 +3,27 @@ import React, { useRef, useEffect } from 'react';
 const basePartners = [
   {
     name: 'Mohammed Bin Rashid Innovation Fund',
-    logo: '/images/ecosystem/activate.png',
+    logo: '/images/ecosystem/activate.webp',
     heightClass: 'h-8 md:h-10',
   },
   {
     name: 'NVIDIA Inception Program',
-    logo: '/images/ecosystem/nvidia.png',
+    logo: '/images/ecosystem/nvidia.webp',
     heightClass: 'h-10 md:h-12',
   },
   {
     name: 'Startup India',
-    logo: '/images/ecosystem/startup_india.png',
+    logo: '/images/ecosystem/startup_india.webp',
     heightClass: 'h-8 md:h-10',
   },
   {
     name: 'Startup Kerala',
-    logo: '/images/ecosystem/startup_kerala.png',
+    logo: '/images/ecosystem/startup_kerala.webp',
     heightClass: 'h-14 md:h-16',
   },
   {
     name: 'Microsoft for Startups',
-    logo: '/images/ecosystem/startup_microsoft.png',
+    logo: '/images/ecosystem/startup_microsoft.webp',
     heightClass: 'h-14 md:h-16',
   },
 ];

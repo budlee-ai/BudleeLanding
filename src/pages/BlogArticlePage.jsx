@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Calendar, User, Tag, ArrowLeft, Share2, BookOpen, Clock } from 'lucide-react';
@@ -19,7 +20,7 @@ const BlogArticlePage = () => {
       date: "2025-02-15",
       category: "AI & Learning",
       readTime: "5 min read",
-      image: "images/blog/ai-classroom.jpg",
+      image: "images/blog/ai-classroom.webp",
       content: `
         <h2>The Dawn of AI-Powered Education</h2>
         <p>Artificial Intelligence is no longer a futuristic concept—it's actively transforming how we teach and learn in classrooms worldwide. From personalized learning paths to intelligent tutoring systems, AI is creating unprecedented opportunities for educational excellence.</p>
@@ -48,7 +49,7 @@ const BlogArticlePage = () => {
       date: "2025-02-12",
       category: "Education Technology",
       readTime: "7 min read",
-      image: "images/blog/personalized-learning.jpg",
+      image: "images/blog/personalized-learning.webp",
       content: `
         <h2>Understanding Personalized Education</h2>
         <p>Personalized education represents a fundamental shift from traditional classroom models to learning experiences tailored to individual student needs, preferences, and learning styles. This approach recognizes that every student has unique strengths, challenges, and pathways to success.</p>
@@ -86,7 +87,7 @@ const BlogArticlePage = () => {
       date: "2025-02-10",
       category: "Teaching Tips",
       readTime: "6 min read",
-      image: "images/blog/digital-literacy.jpg",
+      image: "images/blog/digital-literacy.webp",
       content: `
         <h2>The Importance of Digital Literacy</h2>
         <p>In today's digital age, digital literacy is no longer optional—it's essential. Students need more than just technical skills; they need the ability to navigate, evaluate, and create digital content effectively and responsibly.</p>
@@ -135,7 +136,7 @@ const BlogArticlePage = () => {
       date: "2025-02-08",
       category: "Student Success",
       readTime: "4 min read",
-      image: "images/blog/gamification.jpg",
+      image: "images/blog/gamification.webp",
       content: `
         <h2>The Power of Gamification in Education</h2>
         <p>Gamification is transforming education by making learning engaging, interactive, and enjoyable. By incorporating game design elements into educational content, educators can increase student motivation and improve learning outcomes.</p>
@@ -206,7 +207,7 @@ const BlogArticlePage = () => {
       date: "2025-02-05",
       category: "Innovation",
       readTime: "8 min read",
-      image: "images/blog/ai-tutors.jpg",
+      image: "images/blog/ai-tutors.webp",
       content: `
         <h2>The Evolution of AI Tutoring</h2>
         <p>AI tutors are revolutionizing personalized education by providing 24/7 access to intelligent tutoring systems that adapt to individual student needs. These sophisticated tools are changing how students learn and how educators teach.</p>
@@ -285,7 +286,7 @@ const BlogArticlePage = () => {
       date: "2025-02-03",
       category: "Teaching Tips",
       readTime: "6 min read",
-      image: "images/blog/inclusive-learning.jpg",
+      image: "images/blog/inclusive-learning.webp",
       content: `
         <h2>The Importance of Inclusive Education</h2>
         <p>Inclusive learning environments celebrate diversity and ensure that all students, regardless of background, abilities, or learning styles, have equitable access to high-quality education. Creating such environments requires intentional planning and commitment from educators and institutions.</p>
@@ -383,9 +384,38 @@ const BlogArticlePage = () => {
 
   const article = articles[slug];
 
+  const stripHtml = (html) => html ? html.replace(/<[^>]*>?/gm, '').replace(/\s+/g, ' ').trim() : '';
+  const metaDescription = article ? stripHtml(article.content).slice(0, 155) + '...' : '';
+
+  const articleSchema = article ? {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "description": metaDescription,
+    "image": `https://budlee.ai/${article.image}`,
+    "datePublished": article.date,
+    "author": {
+      "@type": "Person",
+      "name": article.author
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Budlee AI",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://budlee.ai/images/logo.webp"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://budlee.ai/blog/${slug}`
+    }
+  } : null;
+
   if (!article) {
     return (
       <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <SEO title="Article Not Found" canonical="/blog" />
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
@@ -404,6 +434,14 @@ const BlogArticlePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title={article.title}
+        description={metaDescription}
+        canonical={`/blog/${slug}`}
+        ogType="article"
+        ogImage={article.image}
+        schema={articleSchema}
+      />
       <Header />
 
       <main className="flex-grow">

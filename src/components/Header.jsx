@@ -125,14 +125,18 @@ const Header = ({
         {/* Logo - Clickable, links to home */}
         <Link to="/" className="flex items-center hover:opacity-80 transition-opacity">
           <img
-            src="/images/logo_tagline_black.png"
+            src="/images/logo_tagline_black.webp"
             alt="Budlee AI"
+            width="208"
+            height="48"
             className="w-40 md:w-52 h-auto object-contain dark:hidden"
             onContextMenu={(e) => e.preventDefault()}
           />
           <img
-            src="/images/logo_tagline_white.png"
+            src="/images/logo_tagline_white.webp"
             alt="Budlee AI"
+            width="208"
+            height="48"
             className="w-40 md:w-52 h-auto object-contain hidden dark:block"
             onContextMenu={(e) => e.preventDefault()}
           />
@@ -151,6 +155,9 @@ const Header = ({
             </button>
             {activeDropdown === 'resources' && (
               <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 py-2 z-50">
+                <Link to="/curriculum" className="block px-4 py-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:bg-green-50 dark:hover:bg-gray-700 transition-colors" onClick={closeDropdown}>
+                  Syllabus & Curriculum
+                </Link>
                 <Link to="/blog" className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-gray-700 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeDropdown}>
                   Blog
                 </Link>
@@ -357,6 +364,9 @@ const Header = ({
                       </button>
                       {activeDropdown === 'resources' && (
                         <div className="mt-2 ml-4 space-y-2">
+                          <Link to="/curriculum" className="block py-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
+                            Syllabus & Curriculum
+                          </Link>
                           <Link to="/blog" className="block py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors" onClick={closeMobileMenu}>
                             Blog
                           </Link>
@@ -504,8 +514,10 @@ const Header = ({
                           aria-label="Get Budlee AI on Google Play"
                         >
                           <img
-                            src="/images/play_button.png"
+                            src="/images/play_button.webp"
                             alt="Get it on Google Play"
+                            width="120"
+                            height="36"
                             className="h-9 w-auto"
                           />
                         </a>
@@ -518,8 +530,10 @@ const Header = ({
                           aria-label="Download Budlee AI on the App Store"
                         >
                           <img
-                            src="/images/app_button.png"
+                            src="/images/app_button.webp"
                             alt="Download on the App Store"
+                            width="120"
+                            height="36"
                             className="h-9 w-auto"
                           />
                         </a>

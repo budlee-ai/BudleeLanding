@@ -139,6 +139,8 @@ const HeroSection = ({ videoUrl, videos }) => {
                     <img
                       src={heroData.heroImage}
                       alt="Student learning with Budlee AI"
+                      width="420"
+                      height="320"
                       className="w-full h-full object-cover object-center group-hover/hero:scale-105 transition-transform duration-700"
                     />
                     
@@ -250,8 +252,10 @@ const HeroSection = ({ videoUrl, videos }) => {
               </div>
               {/* Budlee Character - Smaller on mobile */}
               <img 
-                src="/images/logo.png" 
+                src="/images/logo.webp" 
                 alt="Budlee" 
+                width="80"
+                height="80"
                 className="w-14 h-14 md:w-20 md:h-20 object-contain animate-bounce-gentle cursor-pointer hover:scale-110 transition-transform"
                 onContextMenu={(e) => e.preventDefault()}
               />
@@ -265,12 +269,13 @@ const HeroSection = ({ videoUrl, videos }) => {
               <span className="inline-block text-xs md:text-sm text-emerald-700 dark:text-emerald-300 font-medium uppercase tracking-[0.2em] mb-4 md:mb-5 bg-emerald-100/80 dark:bg-emerald-950/60 border border-transparent dark:border-emerald-800/60 px-4 py-1.5 rounded-full">
                 AI Learning Companion
               </span>
-              {/* Tagline - Smaller on mobile, allows wrapping */}
+              {/* Tagline - Unified semantic h1 */}
               <h1 className="hero-tagline text-xl sm:text-2xl md:text-3xl lg:text-[32px]">
-                Understands how students learn
-              </h1>
-              <h1 className="hero-tagline text-xl sm:text-2xl md:text-3xl lg:text-[32px] mt-1">
-                and helps <span className="gradient-text">curiosity</span> grow early.
+                <span className="sr-only">Budlee AI: AI Tutor & Learning Companion. </span>
+                <span className="block">Understands how students learn</span>
+                <span className="block mt-1">
+                  and helps <span className="gradient-text">curiosity</span> grow early.
+                </span>
               </h1>
             </div>
 
@@ -301,8 +306,10 @@ const HeroSection = ({ videoUrl, videos }) => {
                     className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   >
                     <img
-                      src="/images/play_button.png"
+                      src="/images/play_button.webp"
                       alt="Get it on Google Play"
+                      width="135"
+                      height="44"
                       className="h-10 md:h-11 w-auto"
                     />
                   </a>
@@ -316,8 +323,10 @@ const HeroSection = ({ videoUrl, videos }) => {
                     className="transition-all duration-300 hover:scale-105 active:scale-95 shadow-md hover:shadow-lg rounded-xl overflow-hidden focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
                   >
                     <img
-                      src="/images/app_button.png"
+                      src="/images/app_button.webp"
                       alt="Download on the App Store"
+                      width="135"
+                      height="44"
                       className="h-10 md:h-11 w-auto"
                     />
                   </a>

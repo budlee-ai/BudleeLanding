@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import mixpanel from 'mixpanel-browser';
+import SEO from '../components/SEO';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ArrowLeft, HelpCircle, MessageCircle, FileText, Phone, Lightbulb, CheckCircle } from 'lucide-react';
@@ -1483,6 +1484,7 @@ const HelpArticlePage = () => {
   if (!article) {
     return (
       <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+        <SEO title="Article Not Found | Budlee AI Help Center" canonical="/help" />
         <Header />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
@@ -1501,6 +1503,11 @@ const HelpArticlePage = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-200">
+      <SEO
+        title={`${article.title} | Budlee AI Help Center`}
+        description={`Learn ${article.title.toLowerCase()} on Budlee AI with our step-by-step instructions and troubleshooting tips.`}
+        canonical={`/help/${slug}`}
+      />
       <Header />
 
       <main className="flex-grow">
